@@ -1,4 +1,4 @@
-# qlyBanHang
+# QlyBanHang
 
 # Thành Viên
 | MSSV          | Họ tên       |
