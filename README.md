@@ -8,7 +8,7 @@
 
 # Nghiệp vụ
 - Quản lý sản phẩm theo số imei/serial
-    - (link tham khảo)[https://www.kiotviet.vn/huong-dan-su-dung-kiotviet/huong-dan-hang-hoa/hang-hoa-serial-imei/]
+    - [link tham khảo](https://www.kiotviet.vn/huong-dan-su-dung-kiotviet/huong-dan-hang-hoa/hang-hoa-serial-imei/)
 - Kiểm tra tồn kho
     - Lập phiếu kiểm kho
         - 1 phiếu kiểm kho bao gồm:
