@@ -8,6 +8,9 @@
 
 # Nghiệp vụ
 - Quản lý sản phẩm theo số imei/serial
+    - Số imei là gì?
+        - [link1](https://en.wikipedia.org/wiki/International_Mobile_Equipment_Identity)
+        - [link2](https://en.tab-tv.com/?p=18840)
     - [link tham khảo](https://www.kiotviet.vn/huong-dan-su-dung-kiotviet/huong-dan-hang-hoa/hang-hoa-serial-imei/)
 - Kiểm tra tồn kho
     - Lập phiếu kiểm kho
