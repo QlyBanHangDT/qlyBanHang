@@ -8,10 +8,11 @@
 
 # Nghiệp vụ
 - Quản lý sản phẩm theo số imei/serial
-    - Số imei là gì?
-        - [link1](https://en.wikipedia.org/wiki/International_Mobile_Equipment_Identity)
-        - [link2](https://en.tab-tv.com/?p=18840)
-    - [link tham khảo](https://www.kiotviet.vn/huong-dan-su-dung-kiotviet/huong-dan-hang-hoa/hang-hoa-serial-imei/)
+    - Số IMEI (***International Mobile Equipment Identity***) là một mã định danh duy nhất trên mỗi thiết bị
+        - [thông tin cơ bản về imei](https://en.wikipedia.org/wiki/International_Mobile_Equipment_Identity)
+        - [giải mã số imei](https://en.tab-tv.com/?p=18840)
+    - [link tham khảo 1](https://www.kiotviet.vn/huong-dan-su-dung-kiotviet/huong-dan-hang-hoa/hang-hoa-serial-imei/)
+    - [Quản lý nhập xuất hàng theo mã imei](https://eshop.misa.vn/help/vi/kb/quan_ly_hang_hoa_theo_serialimei)
 - Kiểm tra tồn kho
     - Lập phiếu kiểm kho
         - 1 phiếu kiểm kho bao gồm:
@@ -28,4 +29,9 @@
     - Thông tin cơ bản
     - Lịch sử mua hàng
     - Điểm tích lũy
-- Bán hàng
+- Mua/bán hàng
+    - Tìm kiếm/nhập sản phẩm theo số imei/tên
+    - Thực hiện thanh toán & xuất hóa đơn
+- AI: Đánh giá cảm xúc khách hàng thông qua bình luận
+    - Dùng thuật toán ***bayes*** để phân loại (tích cực | tiêu cực)
+    - TF-IDF (***Term Frequency – Inverse Document Frequency***): để phân tích đoạn bình luận
