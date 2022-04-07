@@ -111,6 +111,7 @@ CREATE TABLE CHITIETHD (
     ID INT IDENTITY NOT NULL,
     ID_HD VARCHAR(10) REFERENCES HOADON(ID),
 	ID_IMEI INT REFERENCES IMEICODE(ID),
+	DONGIA FLOAT, -- ĐƠN GIÁ CỦA 1 SP TẠI THỜI ĐIỂM MUA
     CONSTRAINT PK_CTHD PRIMARY KEY (ID, ID_HD) 
 )
 CREATE TABLE PHIEUNHAP (
@@ -123,6 +124,7 @@ CREATE TABLE CHITIETPN (
     ID INT IDENTITY NOT NULL,
     ID_PN VARCHAR(10) REFERENCES PHIEUNHAP(ID),
     ID_IMEI INT REFERENCES IMEICODE(ID),
+	DONGIA FLOAT, -- ĐƠN GIÁ CỦA 1 SP TẠI THỜI ĐIỂM NHẬP HÀNG
     CONSTRAINT PK_CTPN PRIMARY KEY (ID, ID_PN) 
 )
 CREATE TABLE THONGKECMT (
@@ -216,7 +218,7 @@ GO
 
 ---------------------------------------------------------------------------------------
 
-CREATE FUNCTION fn_Ten(@idTK VARCHAR(15)) -- TRẢ VỀ CODE GR
+CREATE FUNCTION fn_Ten(@idTK VARCHAR(15))
 RETURNS NVARCHAR(50)
 AS
 BEGIN
@@ -446,7 +448,6 @@ CREATE PROC sp_AddHD
 @maHD VARCHAR(10),
 @tenKH NVARCHAR(50),
 @tenNV NVARCHAR(50),
-@tenSP NVARCHAR(MAX),
 @soIMEI VARCHAR(16)
 AS
 	BEGIN TRY
@@ -465,28 +466,25 @@ AS
 			UPDATE HOADON SET ID_KH = @maKH, ID_NV = @maNV WHERE ID = @maHD
 		END
 
-		-- LẤY MÃ SẢN PHẨM 
-		SELECT @maSP = ID FROM SANPHAM WHERE TENSP = @tenSP
-
-		-- LẤY ID IMEI
-		SELECT @idIMEI = ID FROM IMEICODE WHERE MA = @soIMEI
-
-		-- THÊM THÔNG TIN CHO HÓA ĐƠN
-		INSERT CHITIETHD(ID_HD, ID_IMEI) SELECT @maHD, @idIMEI
-
-		-- cập nhật TRẠNG THÁI CỦA SỐ IMEI
-		UPDATE IMEICODE SET TRANGTHAI = 0
+		-- LẤY ID IMEI & và mã sản phẩm
+		SELECT @idIMEI = ID, @maSP = ID_SP FROM IMEICODE WHERE MA = @soIMEI
 
 		-- CẬP NHẬT ĐƠN GIÁ ---------------------- kiểm tra ngày mới nhất trong đơn giá
 		DECLARE @donGia FLOAT -- đơn giá của sản phẩm x
 
-		SELECT TOP 1 @donGia = SUM(GIA)
+		SELECT TOP 1 @donGia = GIA
 		FROM DONGIA
 		WHERE ID_SP = @maSP
-		GROUP BY NGCAPNHAT
 		ORDER BY NGCAPNHAT DESC
-		
+
+		-- THÊM THÔNG TIN CHO HÓA ĐƠN
+		INSERT CHITIETHD(ID_HD, ID_IMEI, DONGIA) SELECT @maHD, @idIMEI, @donGia
+
+		-- cập nhật hóa đơn		
 		UPDATE HOADON SET DONGIA = DONGIA + @donGia WHERE ID = @maHD
+
+		-- cập nhật trạng thái số imei
+		UPDATE IMEICODE SET TRANGTHAI = 0 WHERE MA = @soIMEI -- SẢN PHẨM ĐÃ BÁN
 	END TRY
 	BEGIN CATCH
 		EXEC sp_GetErrorInfo;
@@ -694,6 +692,7 @@ AS
 	END CATCH
 GO
 
+-- thay đổi mật khẩu người dùng
 CREATE PROC sp_ChangeAcc
 @userName VARCHAR(50), -- THÔNG TIN TÀI KHOẢN
 @pw VARCHAR(50),
@@ -2695,14 +2694,20 @@ GO
 
 -----------------------------------------------------------------------------
 
+-- CREATE PROC sp_AddHD
+-- @maHD VARCHAR(10),
+-- @tenKH NVARCHAR(50),
+-- @tenNV NVARCHAR(50),
+-- @soIMEI VARCHAR(16)
 -- BẢNG HÓA ĐƠN VÀ CHITIETHD
--- DECLARE @maHD_ VARCHAR(10)
+DECLARE @maHD_ VARCHAR(10)
 
--- EXEC sp_GetMaHD @maHD_ OUTPUT
--- EXEC sp_AddHD @maHD_, N'Lê Thị Linh', N'Đỗ Gia Nguyên', N'OPPO A74', 1
--- EXEC sp_AddHD @maHD_, N'Lê Thị Linh', N'Đỗ Gia Nguyên', N'Pin sạc dự phòng Polymer 20.000 mAh Type C PD Energizer UE20011PQ', 2
--- EXEC sp_AddHD @maHD_, N'Lê Thị Linh', N'Đỗ Gia Nguyên', N'iPhone 13 Pro Max 1TB', 1
--- UPDATE HOADON set NGTAO = '1/10/2019' WHERE ID = @maHD_
+EXEC sp_GetMaHD @maHD_ OUTPUT
+EXEC sp_AddHD @maHD_, N'Lê Thị Linh', N'Đỗ Gia Nguyên', '866592712300001'
+EXEC sp_AddHD @maHD_, N'Lê Thị Linh', N'Đỗ Gia Nguyên', '359159074600001'
+EXEC sp_AddHD @maHD_, N'Lê Thị Linh', N'Đỗ Gia Nguyên', '865921346900001'
+EXEC sp_AddHD @maHD_, N'Lê Thị Linh', N'Đỗ Gia Nguyên', '865921346900002'
+UPDATE HOADON set NGTAO = '1/10/2019' WHERE ID = @maHD_
 
 -- EXEC sp_GetMaHD @maHD_ OUTPUT
 -- EXEC sp_AddHD @maHD_, N'Cao Gia Vinh', N'Từ Huệ Sơn', N'iPhone XR 128GB', 1
@@ -3133,4 +3138,13 @@ select * from danhmuc
 			ORDER BY NGCAPNHAT DESC
 			select * from dongia
 		-------------------------------------- debug ---------------------------------------
+
+XEM SỐ LƯỢNG SP
+SELECT TENSP, COUNT(MA) SOLUONG
+FROM SANPHAM SP JOIN IMEICODE
+    ON SP.ID = IMEICODE.ID_SP
+WHERE TRANGTHAI = 1
+GROUP BY TENSP
+
+
 */
