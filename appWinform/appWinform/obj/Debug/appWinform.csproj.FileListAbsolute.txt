@@ -1,1 +1,11 @@
 D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\bin\Debug\appWinform.exe.config
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\bin\Debug\appWinform.exe
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\bin\Debug\appWinform.pdb
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\bin\Debug\GUI.dll
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\bin\Debug\GUI.pdb
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.csprojResolveAssemblyReference.cache
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.Form1.resources
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.Properties.Resources.resources
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.csproj.GenerateResource.Cache
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.exe
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.pdb

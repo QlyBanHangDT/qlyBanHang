@@ -10,15 +10,11 @@ using System.Windows.Forms;
 
 namespace GUI
 {
-    public partial class Login: UserControl
+    public partial class Login : UserControl
     {
         public Login()
         {
             InitializeComponent();
-        }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
         }
     }
 }
