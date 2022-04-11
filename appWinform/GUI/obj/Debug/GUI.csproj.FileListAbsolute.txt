@@ -15,3 +15,4 @@ C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.Properties.Resources
 C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
 C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.dll
 C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.pdb
+D:\github\project_net_ad\qlyBanHang\appWinform\GUI\obj\Debug\QlyBanDT.RJControls.textBoxCustom.resources

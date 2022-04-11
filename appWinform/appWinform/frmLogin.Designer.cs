@@ -1,6 +1,6 @@
 ﻿namespace appWinform
 {
-    partial class Form1
+    partial class frmLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -33,18 +33,22 @@
             // 
             // login1
             // 
-            this.login1.Location = new System.Drawing.Point(-20, -6);
+            this.login1.BackColor = System.Drawing.Color.White;
+            this.login1.Location = new System.Drawing.Point(12, 12);
             this.login1.Name = "login1";
-            this.login1.Size = new System.Drawing.Size(422, 208);
+            this.login1.Size = new System.Drawing.Size(410, 415);
             this.login1.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(406, 212);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.ClientSize = new System.Drawing.Size(434, 439);
             this.Controls.Add(this.login1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.ResumeLayout(false);
 
@@ -53,6 +57,9 @@
         #endregion
 
         private GUI.Login login1;
+
+
+
     }
 }
 

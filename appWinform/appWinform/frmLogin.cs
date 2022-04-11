@@ -10,11 +10,15 @@ using System.Windows.Forms;
 
 namespace appWinform
 {
-    public partial class Form1 : Form
+    public partial class frmLogin : Form
     {
-        public Form1()
+        public frmLogin()
         {
             InitializeComponent();
         }
+
+
+
+
     }
 }
