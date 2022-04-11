@@ -7,3 +7,11 @@ D:\github\project_net_ad\qlyBanHang\appWinform\GUI\obj\Debug\GUI.csproj.Generate
 D:\github\project_net_ad\qlyBanHang\appWinform\GUI\obj\Debug\GUI.dll
 D:\github\project_net_ad\qlyBanHang\appWinform\GUI\obj\Debug\GUI.pdb
 D:\github\project_net_ad\qlyBanHang\appWinform\GUI\obj\Debug\GUI.Login.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\bin\Debug\GUI.dll.config
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\bin\Debug\GUI.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\bin\Debug\GUI.pdb
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.Login.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.pdb
