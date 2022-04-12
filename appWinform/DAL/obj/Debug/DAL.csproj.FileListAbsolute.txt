@@ -1,0 +1,10 @@
+D:\github\project_net_ad\qlyBanHang\appWinform\DAL\bin\Debug\DAL.dll.config
+D:\github\project_net_ad\qlyBanHang\appWinform\DAL\bin\Debug\DAL.dll
+D:\github\project_net_ad\qlyBanHang\appWinform\DAL\bin\Debug\DAL.pdb
+D:\github\project_net_ad\qlyBanHang\appWinform\DAL\bin\Debug\DTO.dll
+D:\github\project_net_ad\qlyBanHang\appWinform\DAL\bin\Debug\DTO.pdb
+D:\github\project_net_ad\qlyBanHang\appWinform\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\github\project_net_ad\qlyBanHang\appWinform\DAL\obj\Debug\DAL.Properties.Resources.resources
+D:\github\project_net_ad\qlyBanHang\appWinform\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache
+D:\github\project_net_ad\qlyBanHang\appWinform\DAL\obj\Debug\DAL.dll
+D:\github\project_net_ad\qlyBanHang\appWinform\DAL\obj\Debug\DAL.pdb

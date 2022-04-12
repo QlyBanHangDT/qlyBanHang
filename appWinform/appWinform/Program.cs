@@ -8,6 +8,7 @@ namespace appWinform
 {
     static class Program
     {
+        public static Form formMain = null;
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern bool SetProcessDPIAware(); 
         /// <summary>

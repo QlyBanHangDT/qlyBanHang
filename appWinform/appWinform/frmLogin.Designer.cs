@@ -38,8 +38,9 @@
             this.login1.Name = "login1";
             this.login1.Size = new System.Drawing.Size(410, 415);
             this.login1.TabIndex = 0;
+            this.login1.ButtonLogin += new System.EventHandler(this.login1_ButtonLogin);
             // 
-            // Form1
+            // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -47,7 +48,7 @@
             this.ClientSize = new System.Drawing.Size(434, 439);
             this.Controls.Add(this.login1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.ResumeLayout(false);

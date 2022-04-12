@@ -20,3 +20,10 @@ C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.Proper
 C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.csproj.GenerateResource.Cache
 D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmLogin.resources
 C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmLogin.resources
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\bin\Debug\BUS.dll
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\bin\Debug\DTO.dll
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\bin\Debug\DAL.dll
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\bin\Debug\BUS.pdb
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\bin\Debug\DTO.pdb
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\bin\Debug\DAL.pdb
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmMain.resources

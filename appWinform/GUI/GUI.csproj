@@ -47,14 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigSQL.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ConfigSQL.Designer.cs">
-      <DependentUpon>ConfigSQL.cs</DependentUpon>
-    </Compile>
     <Compile Include="CustomButton.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConfig.Designer.cs">
+      <DependentUpon>frmConfig.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>UserControl</SubType>
@@ -70,8 +70,8 @@
     <Compile Include="textBoxCustom.Designer.cs">
       <DependentUpon>textBoxCustom.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ConfigSQL.resx">
-      <DependentUpon>ConfigSQL.cs</DependentUpon>
+    <EmbeddedResource Include="frmConfig.resx">
+      <DependentUpon>frmConfig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -102,7 +102,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BUS\BUS.csproj">
+      <Project>{83491b0d-41b7-4fab-a605-02e6e474abc1}</Project>
+      <Name>BUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{1d3fc3b4-7b1e-4dde-8edc-be505168151f}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="Image\Key-icon.png" />
   </ItemGroup>

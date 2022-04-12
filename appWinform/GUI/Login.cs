@@ -7,19 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BUS;
+using DTO;
 
 namespace GUI
 {
     public partial class Login : UserControl
     {
+        BUS_Login busLogin = new BUS_Login();
+
         public Login()
         {
             InitializeComponent();
         }
 
-        private void AlertMessage(string pMessage)
+        private void AlertMessage(string pMessage, MessageBoxIcon icon = MessageBoxIcon.Warning)
         {
-            MessageBox.Show(pMessage, "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+            MessageBox.Show(pMessage, "Thông báo", MessageBoxButtons.OK, icon, MessageBoxDefaultButton.Button1);
         }
 
         private void btnDangNhap_Click(object sender, EventArgs e)
@@ -45,6 +49,32 @@ namespace GUI
                 txtPw.Focus();
                 return;
             }
+
+            // kiểm tra username & pw
+            try
+            {
+                //LoginResult rs = busLogin.Check_User(txtTDN.Texts.Trim(), txtPw.Texts.Trim());
+
+                //if (rs == LoginResult.Disabled)
+                //{
+                //    AlertMessage("Tài khoản bị khóa");
+                //    return;
+                //}
+                //if (rs == LoginResult.Invalid)
+                //{
+                //    AlertMessage("Username hoặc mật khẩu sai");
+                //    return;
+                //}
+
+                ButtonLogin_Click(this, EventArgs.Empty); // đăng nhập thành công
+
+            }
+            catch (Exception err)
+            {
+                AlertMessage(err.Message);
+                new frmConfig().ShowDialog();
+            }
+
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -52,6 +82,15 @@ namespace GUI
             this.Parent.Dispose();
         }
 
+        [Browsable(true)]
+        [Category("Action")]
+        [Description("after click button login")]
+        public event EventHandler ButtonLogin;
 
+        protected virtual void ButtonLogin_Click(object sender, EventArgs e)
+        {
+            if (this.ButtonLogin != null)
+                this.ButtonLogin(this, e);
+        }
     }
 }

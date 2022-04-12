@@ -18,3 +18,10 @@ C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.pdb
 D:\github\project_net_ad\qlyBanHang\appWinform\GUI\obj\Debug\QlyBanDT.RJControls.textBoxCustom.resources
 C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
 C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\QlyBanDT.RJControls.textBoxCustom.resources
+D:\github\project_net_ad\qlyBanHang\appWinform\GUI\bin\Debug\BUS.dll
+D:\github\project_net_ad\qlyBanHang\appWinform\GUI\bin\Debug\DTO.dll
+D:\github\project_net_ad\qlyBanHang\appWinform\GUI\bin\Debug\DAL.dll
+D:\github\project_net_ad\qlyBanHang\appWinform\GUI\bin\Debug\BUS.pdb
+D:\github\project_net_ad\qlyBanHang\appWinform\GUI\bin\Debug\DTO.pdb
+D:\github\project_net_ad\qlyBanHang\appWinform\GUI\bin\Debug\DAL.pdb
+D:\github\project_net_ad\qlyBanHang\appWinform\GUI\obj\Debug\GUI.frmConfig.resources
