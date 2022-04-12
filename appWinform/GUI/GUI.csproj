@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigSQL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ConfigSQL.Designer.cs">
+      <DependentUpon>ConfigSQL.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -64,6 +70,9 @@
     <Compile Include="textBoxCustom.Designer.cs">
       <DependentUpon>textBoxCustom.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ConfigSQL.resx">
+      <DependentUpon>ConfigSQL.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
