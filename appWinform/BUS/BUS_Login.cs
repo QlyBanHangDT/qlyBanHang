@@ -10,7 +10,7 @@ namespace BUS
 {
     public class BUS_Login
     {
-        DAL_Login dalLogin = new DAL_Login();
+        private DAL_Login dalLogin = new DAL_Login();
 
         public LoginResult Check_User(string pUsername, string pPw)
         {

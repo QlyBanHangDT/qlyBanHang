@@ -29,136 +29,173 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQL_KH));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
+            this.dgrvKH = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.txtFind = new System.Windows.Forms.TextBox();
-            this.customButton1 = new GUI.CustomButton();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnTimKH = new GUI.CustomButton();
+            this.clID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clHoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clSDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clDTL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clTDG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrvKH)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgrvKH
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column9,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5});
-            this.dataGridView1.Location = new System.Drawing.Point(0, 115);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(846, 326);
-            this.dataGridView1.TabIndex = 0;
+            this.dgrvKH.AllowUserToAddRows = false;
+            this.dgrvKH.AllowUserToDeleteRows = false;
+            this.dgrvKH.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgrvKH.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgrvKH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgrvKH.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clID,
+            this.clHoTen,
+            this.clSDT,
+            this.clDTL,
+            this.clTDG});
+            this.dgrvKH.Location = new System.Drawing.Point(0, 115);
+            this.dgrvKH.MultiSelect = false;
+            this.dgrvKH.Name = "dgrvKH";
+            this.dgrvKH.ReadOnly = true;
+            this.dgrvKH.RowTemplate.Height = 24;
+            this.dgrvKH.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgrvKH.Size = new System.Drawing.Size(792, 412);
+            this.dgrvKH.TabIndex = 0;
+            this.dgrvKH.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvKH_CellDoubleClick);
             // 
-            // Column1
+            // tableLayoutPanel1
             // 
-            this.Column1.DataPropertyName = "HOTEN";
-            this.Column1.HeaderText = "HỌ TÊN";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 180;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(792, 100);
+            this.tableLayoutPanel1.TabIndex = 5;
             // 
-            // Column9
+            // panel1
             // 
-            this.Column9.DataPropertyName = "SDT";
-            this.Column9.HeaderText = "SDT";
-            this.Column9.Name = "Column9";
+            this.panel1.Controls.Add(this.btnTimKH);
+            this.panel1.Controls.Add(this.txtFind);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(201, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(390, 94);
+            this.panel1.TabIndex = 0;
             // 
-            // Column2
+            // txtFind
             // 
-            this.Column2.DataPropertyName = "DCHI";
-            this.Column2.HeaderText = "ĐỊA CHỈ";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 200;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "DIEMTICHLUY";
-            this.Column3.HeaderText = "ĐIỂM TÍCH LŨY";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "NGTAO";
-            this.Column4.HeaderText = "NGÀY TẠO";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 120;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "DONGIA";
-            this.Column5.HeaderText = "ĐƠN GIÁ";
-            this.Column5.Name = "Column5";
+            this.txtFind.Location = new System.Drawing.Point(120, 36);
+            this.txtFind.Name = "txtFind";
+            this.txtFind.Size = new System.Drawing.Size(207, 22);
+            this.txtFind.TabIndex = 6;
+            this.txtFind.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFind_KeyDown);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(223, 64);
+            this.label1.Location = new System.Drawing.Point(17, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 20);
-            this.label1.TabIndex = 2;
+            this.label1.TabIndex = 5;
             this.label1.Text = "Tìm kiếm";
             // 
-            // txtFind
+            // btnTimKH
             // 
-            this.txtFind.Location = new System.Drawing.Point(326, 62);
-            this.txtFind.Name = "txtFind";
-            this.txtFind.Size = new System.Drawing.Size(207, 22);
-            this.txtFind.TabIndex = 3;
+            this.btnTimKH.BackColor = System.Drawing.SystemColors.Control;
+            this.btnTimKH.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.btnTimKH.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnTimKH.BorderRadius = 0;
+            this.btnTimKH.BorderSize = 0;
+            this.btnTimKH.FlatAppearance.BorderSize = 0;
+            this.btnTimKH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTimKH.ForeColor = System.Drawing.Color.White;
+            this.btnTimKH.Image = ((System.Drawing.Image)(resources.GetObject("btnTimKH.Image")));
+            this.btnTimKH.Location = new System.Drawing.Point(333, 32);
+            this.btnTimKH.Name = "btnTimKH";
+            this.btnTimKH.Size = new System.Drawing.Size(41, 31);
+            this.btnTimKH.TabIndex = 7;
+            this.btnTimKH.TextColor = System.Drawing.Color.White;
+            this.btnTimKH.UseVisualStyleBackColor = false;
+            this.btnTimKH.Click += new System.EventHandler(this.btnTimKH_Click);
             // 
-            // customButton1
+            // clID
             // 
-            this.customButton1.BackColor = System.Drawing.SystemColors.Control;
-            this.customButton1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.customButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.customButton1.BorderRadius = 0;
-            this.customButton1.BorderSize = 0;
-            this.customButton1.FlatAppearance.BorderSize = 0;
-            this.customButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.customButton1.ForeColor = System.Drawing.Color.White;
-            this.customButton1.Image = ((System.Drawing.Image)(resources.GetObject("customButton1.Image")));
-            this.customButton1.Location = new System.Drawing.Point(558, 56);
-            this.customButton1.Name = "customButton1";
-            this.customButton1.Size = new System.Drawing.Size(41, 31);
-            this.customButton1.TabIndex = 4;
-            this.customButton1.TextColor = System.Drawing.Color.White;
-            this.customButton1.UseVisualStyleBackColor = false;
+            this.clID.DataPropertyName = "ID";
+            this.clID.HeaderText = "ID";
+            this.clID.Name = "clID";
+            this.clID.ReadOnly = true;
+            // 
+            // clHoTen
+            // 
+            this.clHoTen.DataPropertyName = "HOTEN";
+            this.clHoTen.HeaderText = "HỌ TÊN";
+            this.clHoTen.Name = "clHoTen";
+            this.clHoTen.ReadOnly = true;
+            // 
+            // clSDT
+            // 
+            this.clSDT.DataPropertyName = "SDT";
+            this.clSDT.HeaderText = "SDT";
+            this.clSDT.Name = "clSDT";
+            this.clSDT.ReadOnly = true;
+            // 
+            // clDTL
+            // 
+            this.clDTL.DataPropertyName = "DIEMTICHLUY";
+            this.clDTL.HeaderText = "ĐIỂM TÍCH LŨY";
+            this.clDTL.Name = "clDTL";
+            this.clDTL.ReadOnly = true;
+            // 
+            // clTDG
+            // 
+            this.clTDG.DataPropertyName = "TONGDONGIA";
+            this.clTDG.HeaderText = "TỔNG ĐƠN GIÁ";
+            this.clTDG.Name = "clTDG";
+            this.clTDG.ReadOnly = true;
             // 
             // frmQL_KH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.customButton1);
-            this.Controls.Add(this.txtFind);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.dgrvKH);
             this.Name = "frmQL_KH";
-            this.Size = new System.Drawing.Size(846, 441);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Size = new System.Drawing.Size(792, 527);
+            ((System.ComponentModel.ISupportInitialize)(this.dgrvKH)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dgrvKH;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel panel1;
+        private CustomButton btnTimKH;
         private System.Windows.Forms.TextBox txtFind;
-        private CustomButton customButton1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clHoTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clSDT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clDTL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clTDG;
     }
 }

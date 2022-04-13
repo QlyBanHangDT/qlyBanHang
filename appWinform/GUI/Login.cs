@@ -21,31 +21,26 @@ namespace GUI
             InitializeComponent();
         }
 
-        private void AlertMessage(string pMessage, MessageBoxIcon icon = MessageBoxIcon.Warning)
-        {
-            MessageBox.Show(pMessage, "Thông báo", MessageBoxButtons.OK, icon, MessageBoxDefaultButton.Button1);
-        }
-
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             // txtTDN & txtPw are null
             if (string.IsNullOrEmpty(txtTDN.Texts.Trim()) && string.IsNullOrEmpty(txtPw.Texts.Trim()))
             {
-                AlertMessage("Vui lòng nhập đủ thông tin đăng nhập");
+                Program.AlertMessage("Vui lòng nhập đủ thông tin đăng nhập");
                 txtTDN.Focus();
                 return;
             }
 
             if (string.IsNullOrEmpty(txtTDN.Texts.Trim()))
             {
-                AlertMessage("Vui lòng nhập tên đăng nhập");
+                Program.AlertMessage("Vui lòng nhập tên đăng nhập");
                 txtTDN.Focus();
                 return;
             }
 
             if (string.IsNullOrEmpty(txtPw.Texts.Trim()))
             {
-                AlertMessage("Vui lòng nhập mật khẩu");
+                Program.AlertMessage("Vui lòng nhập mật khẩu");
                 txtPw.Focus();
                 return;
             }
@@ -71,7 +66,7 @@ namespace GUI
             }
             catch (Exception err)
             {
-                AlertMessage(err.Message);
+                Program.AlertMessage(err.Message);
                 new frmConfig().ShowDialog();
             }
 

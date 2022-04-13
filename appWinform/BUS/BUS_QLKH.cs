@@ -11,10 +11,16 @@ namespace BUS
 {
     public class BUS_QLKH
     {
+        private DataTableQL_KHTableAdapter db = new DataTableQL_KHTableAdapter();
+
         public DataTable getDSKH()
         {
-            DataTableQL_KHTableAdapter db = new DataTableQL_KHTableAdapter();
             return db.GetDataQLKH();
+        }
+
+        public DataTable findKHs(string pTenKH)
+        {
+            return db.GetDataBy(pTenKH);
         }
     }
 }

@@ -96,10 +96,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{1d3fc3b4-7b1e-4dde-8edc-be505168151f}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GUI\GUI.csproj">
       <Project>{b65e8b7a-58f8-41cf-8976-776a3deffd66}</Project>
       <Name>GUI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

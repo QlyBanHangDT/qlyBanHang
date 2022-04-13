@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DTO;
 
 namespace appWinform
 {
@@ -15,6 +16,13 @@ namespace appWinform
         public frmKhachHang()
         {
             InitializeComponent();
+        }
+
+        private void frmQL_KH1_SelectedRow(object sender, EventArgs e)
+        {
+            KhachHang kh = sender as KhachHang;
+            // hiển thị thông tin khách hàng
+            MessageBox.Show(kh.Ten);
         }
     }
 }

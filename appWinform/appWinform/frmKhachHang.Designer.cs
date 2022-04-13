@@ -33,10 +33,12 @@
             // 
             // frmQL_KH1
             // 
-            this.frmQL_KH1.Location = new System.Drawing.Point(12, 12);
+            this.frmQL_KH1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frmQL_KH1.Location = new System.Drawing.Point(0, 0);
             this.frmQL_KH1.Name = "frmQL_KH1";
-            this.frmQL_KH1.Size = new System.Drawing.Size(856, 458);
+            this.frmQL_KH1.Size = new System.Drawing.Size(860, 455);
             this.frmQL_KH1.TabIndex = 0;
+            this.frmQL_KH1.SelectedRow += new System.EventHandler(this.frmQL_KH1_SelectedRow);
             // 
             // frmKhachHang
             // 
