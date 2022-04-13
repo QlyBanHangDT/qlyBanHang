@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="BUS_db.cs" />
     <Compile Include="BUS_Login.cs" />
+    <Compile Include="BUS_QLKH.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

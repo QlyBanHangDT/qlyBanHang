@@ -25,3 +25,11 @@ D:\github\project_net_ad\qlyBanHang\appWinform\GUI\bin\Debug\BUS.pdb
 D:\github\project_net_ad\qlyBanHang\appWinform\GUI\bin\Debug\DTO.pdb
 D:\github\project_net_ad\qlyBanHang\appWinform\GUI\bin\Debug\DAL.pdb
 D:\github\project_net_ad\qlyBanHang\appWinform\GUI\obj\Debug\GUI.frmConfig.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\bin\Debug\BUS.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\bin\Debug\DTO.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\bin\Debug\DAL.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\bin\Debug\BUS.pdb
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\bin\Debug\DTO.pdb
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\bin\Debug\DAL.pdb
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.frmConfig.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.frmQL_KH.resources

@@ -7,3 +7,12 @@ D:\github\project_net_ad\qlyBanHang\appWinform\BUS\bin\Debug\DTO.pdb
 D:\github\project_net_ad\qlyBanHang\appWinform\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
 D:\github\project_net_ad\qlyBanHang\appWinform\BUS\obj\Debug\BUS.dll
 D:\github\project_net_ad\qlyBanHang\appWinform\BUS\obj\Debug\BUS.pdb
+C:\Users\ad\Desktop\qlyBanHang\appWinform\BUS\bin\Debug\BUS.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\BUS\bin\Debug\BUS.pdb
+C:\Users\ad\Desktop\qlyBanHang\appWinform\BUS\bin\Debug\DAL.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\BUS\bin\Debug\DTO.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\BUS\bin\Debug\DAL.pdb
+C:\Users\ad\Desktop\qlyBanHang\appWinform\BUS\bin\Debug\DTO.pdb
+C:\Users\ad\Desktop\qlyBanHang\appWinform\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
+C:\Users\ad\Desktop\qlyBanHang\appWinform\BUS\obj\Debug\BUS.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\BUS\obj\Debug\BUS.pdb

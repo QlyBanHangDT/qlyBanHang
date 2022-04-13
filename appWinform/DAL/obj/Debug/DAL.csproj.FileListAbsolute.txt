@@ -8,3 +8,13 @@ D:\github\project_net_ad\qlyBanHang\appWinform\DAL\obj\Debug\DAL.Properties.Reso
 D:\github\project_net_ad\qlyBanHang\appWinform\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache
 D:\github\project_net_ad\qlyBanHang\appWinform\DAL\obj\Debug\DAL.dll
 D:\github\project_net_ad\qlyBanHang\appWinform\DAL\obj\Debug\DAL.pdb
+C:\Users\ad\Desktop\qlyBanHang\appWinform\DAL\bin\Debug\DAL.dll.config
+C:\Users\ad\Desktop\qlyBanHang\appWinform\DAL\bin\Debug\DAL.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\DAL\bin\Debug\DAL.pdb
+C:\Users\ad\Desktop\qlyBanHang\appWinform\DAL\bin\Debug\DTO.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\DAL\bin\Debug\DTO.pdb
+C:\Users\ad\Desktop\qlyBanHang\appWinform\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\ad\Desktop\qlyBanHang\appWinform\DAL\obj\Debug\DAL.Properties.Resources.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache
+C:\Users\ad\Desktop\qlyBanHang\appWinform\DAL\obj\Debug\DAL.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\DAL\obj\Debug\DAL.pdb

@@ -47,6 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL_DataSet.cs">
+      <DependentUpon>DAL_DataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DAL_DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DAL_DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DAL_Login.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="Program.cs" />
@@ -60,6 +69,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="DAL_DataSet.xsc">
+      <DependentUpon>DAL_DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DAL_DataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DAL_DataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DAL_DataSet.xss">
+      <DependentUpon>DAL_DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

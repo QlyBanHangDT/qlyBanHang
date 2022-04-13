@@ -27,3 +27,11 @@ D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\bin\Debug\BUS.pdb
 D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\bin\Debug\DTO.pdb
 D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\bin\Debug\DAL.pdb
 D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmMain.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\bin\Debug\BUS.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\bin\Debug\DAL.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\bin\Debug\DTO.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\bin\Debug\BUS.pdb
+C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\bin\Debug\DAL.pdb
+C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\bin\Debug\DTO.pdb
+C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmKhachHang.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmMain.resources
