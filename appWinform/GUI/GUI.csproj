@@ -62,6 +62,18 @@
     <Compile Include="frmQL_KH.Designer.cs">
       <DependentUpon>frmQL_KH.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmQL_SP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FrmQL_SP.Designer.cs">
+      <DependentUpon>FrmQL_SP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQL_TK.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmQL_TK.Designer.cs">
+      <DependentUpon>frmQL_TK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -86,6 +98,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmQL_KH.resx">
       <DependentUpon>frmQL_KH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmQL_SP.resx">
+      <DependentUpon>FrmQL_SP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQL_TK.resx">
+      <DependentUpon>frmQL_TK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

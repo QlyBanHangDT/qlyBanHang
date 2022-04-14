@@ -36,3 +36,5 @@ C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\bin\Debug\DTO.pdb
 C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmKhachHang.resources
 C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmMain.resources
 D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmKhachHang.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmQLTaiKhoan.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmQLSP.resources

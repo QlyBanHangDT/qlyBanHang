@@ -55,5 +55,7 @@
         #endregion
 
         private GUI.frmQL_KH frmQL_KH1;
+
+        public GUI.frmQL_KH frmQL_KHa { get; set; }
     }
 }

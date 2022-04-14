@@ -14,8 +14,8 @@ namespace DTO
 
         public KhachHang(string pId, string pTen, string pSDT=null, string pEmail=null)
         {
-            Ten = pTen;
             Id = pId;
+            Ten = pTen;
             Sdt = pSDT;
             Email = pEmail;
         }
