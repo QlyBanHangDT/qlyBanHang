@@ -35,8 +35,16 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FontAwesome.Sharp">
+      <HintPath>..\packages\FontAwesome.Sharp.5.8.3\lib\net40\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +53,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomButton.cs">
@@ -93,6 +102,13 @@
     <Compile Include="textBoxCustom.Designer.cs">
       <DependentUpon>textBoxCustom.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThongTinKH.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ThongTinKH.Designer.cs">
+      <DependentUpon>ThongTinKH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KiemTra.cs" />
     <EmbeddedResource Include="frmConfig.resx">
       <DependentUpon>frmConfig.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,6 +132,11 @@
     <EmbeddedResource Include="textBoxCustom.resx">
       <DependentUpon>textBoxCustom.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ThongTinKH.resx">
+      <DependentUpon>ThongTinKH.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -135,7 +156,7 @@
       <Name>BUS</Name>
     </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{006A2238-F2C3-43BB-A10D-5E773DA2A33B}</Project>
+      <Project>{006a2238-f2c3-43bb-a10d-5e773da2a33b}</Project>
       <Name>DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
@@ -146,8 +167,11 @@
   <ItemGroup>
     <None Include="Image\Key-icon.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Image\edit.png" />
     <Content Include="Image\Start-Menu-Search-icon.png" />
     <None Include="Resources\Start-Menu-Search-icon.png" />
   </ItemGroup>

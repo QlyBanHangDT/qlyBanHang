@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
-namespace QlyBanDT.RJControls
+namespace GUI
 {
     [DefaultEvent("_TextChanged")]
     public partial class textBoxCustom : UserControl

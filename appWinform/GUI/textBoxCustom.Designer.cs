@@ -1,4 +1,4 @@
-﻿namespace QlyBanDT.RJControls
+﻿namespace GUI
 {
     partial class textBoxCustom
     {

@@ -2321,6 +2321,8 @@ namespace DAL {
             
             private global::System.Data.DataColumn columnHOTEN;
             
+            private global::System.Data.DataColumn columnEMAIL;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DataTableQL_KHDataTable() {
@@ -2396,6 +2398,14 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EMAILColumn {
+                get {
+                    return this.columnEMAIL;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2431,14 +2441,15 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTableQL_KHRow AddDataTableQL_KHRow(string SDT, int DIEMTICHLUY, double TONGDONGIA, string ID, string HOTEN) {
+            public DataTableQL_KHRow AddDataTableQL_KHRow(string SDT, int DIEMTICHLUY, double TONGDONGIA, string ID, string HOTEN, string EMAIL) {
                 DataTableQL_KHRow rowDataTableQL_KHRow = ((DataTableQL_KHRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         SDT,
                         DIEMTICHLUY,
                         TONGDONGIA,
                         ID,
-                        HOTEN};
+                        HOTEN,
+                        EMAIL};
                 rowDataTableQL_KHRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTableQL_KHRow);
                 return rowDataTableQL_KHRow;
@@ -2473,6 +2484,7 @@ namespace DAL {
                 this.columnTONGDONGIA = base.Columns["TONGDONGIA"];
                 this.columnID = base.Columns["ID"];
                 this.columnHOTEN = base.Columns["HOTEN"];
+                this.columnEMAIL = base.Columns["EMAIL"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2488,6 +2500,8 @@ namespace DAL {
                 base.Columns.Add(this.columnID);
                 this.columnHOTEN = new global::System.Data.DataColumn("HOTEN", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHOTEN);
+                this.columnEMAIL = new global::System.Data.DataColumn("EMAIL", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEMAIL);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnSDT.MaxLength = 11;
@@ -2497,6 +2511,7 @@ namespace DAL {
                 this.columnID.MaxLength = 10;
                 this.columnHOTEN.ReadOnly = true;
                 this.columnHOTEN.MaxLength = 2147483647;
+                this.columnEMAIL.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5054,6 +5069,22 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EMAIL {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTableQL_KH.EMAILColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EMAIL\' in table \'DataTableQL_KH\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableQL_KH.EMAILColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsSDTNull() {
                 return this.IsNull(this.tableDataTableQL_KH.SDTColumn);
             }
@@ -5098,6 +5129,18 @@ namespace DAL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetHOTENNull() {
                 this[this.tableDataTableQL_KH.HOTENColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEMAILNull() {
+                return this.IsNull(this.tableDataTableQL_KH.EMAILColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEMAILNull() {
+                this[this.tableDataTableQL_KH.EMAILColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8490,6 +8533,7 @@ SELECT ID, MA, TRANGTHAI, ID_SP FROM IMEICODE WHERE (ID = @ID)";
             tableMapping.ColumnMappings.Add("TONGDONGIA", "TONGDONGIA");
             tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("HOTEN", "HOTEN");
+            tableMapping.ColumnMappings.Add("EMAIL", "EMAIL");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -8503,29 +8547,34 @@ SELECT ID, MA, TRANGTHAI, ID_SP FROM IMEICODE WHERE (ID = @ID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT dbo.fn_ConvertFirstLetterinCapital(THONGTINTAIKHOAN.HOTEN) AS HOTEN, THONGTINTAIKHOAN.SDT, KHACHHANG.DIEMTICHLUY, SUM(HOADON.DONGIA) AS TONGDONGIA, KHACHHANG.ID
+            this._commandCollection[0].CommandText = @"SELECT KHACHHANG.ID, dbo.fn_ConvertFirstLetterinCapital(THONGTINTAIKHOAN.HOTEN) AS HOTEN, THONGTINTAIKHOAN.EMAIL, THONGTINTAIKHOAN.SDT, KHACHHANG.DIEMTICHLUY, SUM(HOADON.DONGIA) AS TONGDONGIA
 FROM     HOADON INNER JOIN
                   KHACHHANG ON HOADON.ID_KH = KHACHHANG.ID INNER JOIN
                   TAIKHOAN ON KHACHHANG.ID_TK = TAIKHOAN.ID INNER JOIN
                   THONGTINTAIKHOAN ON TAIKHOAN.ID = THONGTINTAIKHOAN.ID_TAIKHOAN
-GROUP BY THONGTINTAIKHOAN.HOTEN, THONGTINTAIKHOAN.SDT, KHACHHANG.DIEMTICHLUY, KHACHHANG.ID
+GROUP BY THONGTINTAIKHOAN.HOTEN, THONGTINTAIKHOAN.SDT, KHACHHANG.DIEMTICHLUY, KHACHHANG.ID, THONGTINTAIKHOAN.EMAIL
 ORDER BY KHACHHANG.ID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT dbo.fn_ConvertFirstLetterinCapital(THONGTINTAIKHOAN.HOTEN) AS HoTen, THONGTINTAIKHOAN.SDT, KHACHHANG.DIEMTICHLUY, SUM(HOADON.DONGIA) AS TONGDONGIA, KHACHHANG.ID
+            this._commandCollection[1].CommandText = @"SELECT KHACHHANG.ID, dbo.fn_ConvertFirstLetterinCapital(THONGTINTAIKHOAN.HOTEN) AS HoTen, THONGTINTAIKHOAN.EMAIL, THONGTINTAIKHOAN.SDT, KHACHHANG.DIEMTICHLUY, SUM(HOADON.DONGIA) AS TONGDONGIA
 FROM     HOADON INNER JOIN
                   KHACHHANG ON HOADON.ID_KH = KHACHHANG.ID INNER JOIN
                   TAIKHOAN ON KHACHHANG.ID_TK = TAIKHOAN.ID INNER JOIN
                   THONGTINTAIKHOAN ON TAIKHOAN.ID = THONGTINTAIKHOAN.ID_TAIKHOAN
 WHERE  (THONGTINTAIKHOAN.HOTEN LIKE { fn CONCAT({ fn CONCAT('%', @tenKhachHang) }, '%') })
-GROUP BY THONGTINTAIKHOAN.HOTEN, THONGTINTAIKHOAN.SDT, KHACHHANG.DIEMTICHLUY, KHACHHANG.ID
+GROUP BY THONGTINTAIKHOAN.HOTEN, THONGTINTAIKHOAN.SDT, KHACHHANG.DIEMTICHLUY, KHACHHANG.ID, THONGTINTAIKHOAN.EMAIL
 ORDER BY KHACHHANG.ID";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tenKhachHang", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "HOTEN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT SUM(DONGIA) AS DonGia\r\nFROM     HOADON\r\nWHERE  (ID_KH = @id)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "ID_KH", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8586,6 +8635,40 @@ ORDER BY KHACHHANG.ID";
             DAL_DataSet.DataTableQL_KHDataTable dataTable = new DAL_DataSet.DataTableQL_KHDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual global::System.Nullable<double> TongBan(string id) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            if ((id == null)) {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[0].Value = ((string)(id));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return new global::System.Nullable<double>();
+            }
+            else {
+                return new global::System.Nullable<double>(((double)(returnValue)));
+            }
         }
     }
     

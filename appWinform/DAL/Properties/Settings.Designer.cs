@@ -26,8 +26,7 @@ namespace DAL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-7RNKS49\\SQLEXPRESS;Initial Catalog=QLDT_LK;User ID=sa;Passwor" +
-            "d=123")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MSI-PC;Initial Catalog=QLDT_LK;User ID=sa;Password=sa123")]
         public string QLDT_LKConnectionString {
             get {
                 return ((string)(this["QLDT_LKConnectionString"]));

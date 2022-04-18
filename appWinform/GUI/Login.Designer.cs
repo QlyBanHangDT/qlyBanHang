@@ -33,8 +33,8 @@
             this.lbTDN = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExit = new GUI.CustomButton();
-            this.txtPw = new QlyBanDT.RJControls.textBoxCustom();
-            this.txtTDN = new QlyBanDT.RJControls.textBoxCustom();
+            this.txtPw = new GUI.textBoxCustom();
+            this.txtTDN = new GUI.textBoxCustom();
             this.btnDangNhap = new GUI.CustomButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -190,10 +190,10 @@
         private System.Windows.Forms.Label label3;
         private CustomButton btnDangNhap;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private QlyBanDT.RJControls.textBoxCustom txtTDN;
+        private GUI.textBoxCustom txtTDN;
         private System.Windows.Forms.Label lbTDN;
         private System.Windows.Forms.Label label1;
-        private QlyBanDT.RJControls.textBoxCustom txtPw;
+        private GUI.textBoxCustom txtPw;
         private CustomButton btnExit;
     }
 }

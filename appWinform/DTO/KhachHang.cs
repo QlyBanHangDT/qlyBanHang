@@ -8,16 +8,26 @@ namespace DTO
 {
     public class KhachHang
     {
-        string _sdt, _email, _id, _ten;
+        string _sdt, _email, _id, _ten, _gioiTinh, _ngaySinh, _ngayTao;
+
+       
 
         public KhachHang() { }
 
-        public KhachHang(string pId, string pTen, string pSDT=null, string pEmail=null)
+        public KhachHang(string pId, string pTen, string ngaySinh=null, string gioiTinh=null, string pSDT=null, string pEmail=null)
         {
             Id = pId;
             Ten = pTen;
             Sdt = pSDT;
             Email = pEmail;
+            GioiTinh = gioiTinh;
+            NgaySinh = ngaySinh;
+        }
+
+        public string NgayTao
+        {
+            get { return _ngayTao; }
+            set { _ngayTao = value; }
         }
 
         public string Email
@@ -46,6 +56,23 @@ namespace DTO
                     throw new Exception("Giá trị truyền vào rỗng");
                 _id = value; 
             }
+        }
+
+        public string NgaySinh
+        {
+            get { return _ngaySinh; }
+            set { _ngaySinh = value; }
+        }
+
+        public string GioiTinh
+        {
+            get { return _gioiTinh; }
+            set { _gioiTinh = value; }
+        }
+
+        public string ToString()
+        {
+            return this._ten;
         }
     }
 }

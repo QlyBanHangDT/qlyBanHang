@@ -22,7 +22,13 @@ namespace appWinform
         {
             KhachHang kh = sender as KhachHang;
             // hiển thị thông tin khách hàng
-            MessageBox.Show(kh.Ten);
+            new frmThongTinKhachHang(kh).ShowDialog();
+            //MessageBox.Show(kh.Ten);
+        }
+
+        private void frmKhachHang_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

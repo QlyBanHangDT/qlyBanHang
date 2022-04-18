@@ -12,6 +12,12 @@ namespace DAL
     public class DBConnect
     {
         private SqlConnection _conn;
+        protected SqlCommand cmd;
+
+        public DBConnect()
+        {
+            cmd = new SqlCommand();
+        }
 
         protected SqlConnection Conn
         {
@@ -30,6 +36,15 @@ namespace DAL
                     throw new Exception("Chuỗi cấu hình không phù hợp"); ;
                 }
                 return _conn; 
+            }
+        }
+
+        public void close()
+        {
+            if (this._conn.State == ConnectionState.Open)
+            {
+                this.cmd.Parameters.Clear(); // xóa tất cả parameter trong cmd
+                this._conn.Close();
             }
         }
 

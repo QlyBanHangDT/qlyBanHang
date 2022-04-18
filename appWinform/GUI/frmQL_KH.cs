@@ -41,16 +41,6 @@ namespace GUI
             dgrvKH.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige; // dòng chẵn
         }
 
-        // nhấn double để chọn 1 khách hàng
-        private void dgrvKH_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            KhachHang kh = new KhachHang(
-                dgrvKH.CurrentRow.Cells["clID"].Value.ToString(),
-                dgrvKH.CurrentRow.Cells["clHoTen"].Value.ToString());
-
-            SelectedRow_Click(kh, EventArgs.Empty);
-        }
-
         // tìm thông tin của khách hàng
         private void btnTimKH_Click(object sender, EventArgs e)
         {
@@ -70,7 +60,7 @@ namespace GUI
         private void txtFind_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-                btnTimKH.PerformClick();
+                btnTimKh.PerformClick();
         }
 
         [Browsable(true)]
@@ -78,11 +68,27 @@ namespace GUI
         [Description("after click double a row in data grid view")]
         public event EventHandler SelectedRow;
 
+        // sự kiện clik datagrid view
         protected virtual void SelectedRow_Click(object sender, EventArgs e)
         {
             if (this.SelectedRow != null)
                 this.SelectedRow(sender, e);
         }
+
+        // chọn khách hàng
+        private void dgrvKH_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // không click vào item
+            if (dgrvKH.CurrentRow == null) return;
+
+            // thông tin khách hàng
+            KhachHang kh = new KhachHang(
+                dgrvKH.CurrentRow.Cells["clID"].Value.ToString(),
+                dgrvKH.CurrentRow.Cells["clHoTen"].Value.ToString());
+
+            SelectedRow_Click(kh, EventArgs.Empty);
+        }
+
     
     }
 }

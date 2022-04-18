@@ -18,15 +18,29 @@ namespace DAL
         {
             try
             {
-                string strLogin = "select * from TaiKhoan where username='" + pUsername + "' and pw='" + pPw + "'";
+                string strSql = "sp_CKAcc";
+                this.cmd.CommandText = strSql;
+                this.cmd.Connection = this.Conn;
+                this.cmd.CommandType = CommandType.StoredProcedure;
 
-                SqlDataAdapter daUser = new SqlDataAdapter(strLogin, Conn);
-                DataTable tb = new DataTable();
-                daUser.Fill(tb);
+                // truyền tham số cho proc
+                this.cmd.Parameters.Clear();
+                this.cmd.Parameters.AddWithValue("@userName", pUsername);
+                this.cmd.Parameters.AddWithValue("@pw", pPw);
 
-                if (tb.Rows.Count == 0)
+                SqlDataReader rd = this.cmd.ExecuteReader();
+
+                int ck = 1;
+
+                if (rd.Read())
+                {
+                    ck = int.Parse(rd["Message"].ToString());
+                }
+                this.close();
+
+                if (ck == 0)
                     return LoginResult.Invalid;
-                if (tb.Rows[0][3] == null || tb.Rows[0][3] == "False") // kiểm tra tài khoản còn hoạt động không(khóa)
+                if (ck == 2) // kiểm tra tài khoản còn hoạt động không(khóa)
                     return LoginResult.Disabled;
                 return LoginResult.Success;
             }

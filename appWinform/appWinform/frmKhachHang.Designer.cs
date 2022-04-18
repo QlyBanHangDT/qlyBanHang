@@ -48,6 +48,7 @@
             this.Controls.Add(this.frmQL_KH1);
             this.Name = "frmKhachHang";
             this.Text = "frmKhachHang";
+            this.Load += new System.EventHandler(this.frmKhachHang_Load);
             this.ResumeLayout(false);
 
         }

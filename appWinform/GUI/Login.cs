@@ -48,19 +48,19 @@ namespace GUI
             // kiểm tra username & pw
             try
             {
-                //LoginResult rs = busLogin.Check_User(txtTDN.Texts.Trim(), txtPw.Texts.Trim());
+                LoginResult rs = busLogin.Check_User(txtTDN.Texts.Trim(), txtPw.Texts.Trim());
 
-                //if (rs == LoginResult.Disabled)
-                //{
-                //    AlertMessage("Tài khoản bị khóa");
-                //    return;
-                //}
-                //if (rs == LoginResult.Invalid)
-                //{
-                //    AlertMessage("Username hoặc mật khẩu sai");
-                //    return;
-                //}
-
+                if (rs == LoginResult.Disabled)
+                {
+                    Program.AlertMessage("Tài khoản bị khóa");
+                    return;
+                }
+                if (rs == LoginResult.Invalid)
+                {
+                    Program.AlertMessage("Username hoặc mật khẩu sai");
+                    return;
+                }
+                Program.AlertMessage("Xin chào " + txtTDN.Texts.Trim(), MessageBoxIcon.Information);
                 ButtonLogin_Click(this, EventArgs.Empty); // đăng nhập thành công
 
             }

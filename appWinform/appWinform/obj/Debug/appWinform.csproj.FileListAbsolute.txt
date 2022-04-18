@@ -38,3 +38,7 @@ C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmMai
 D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmKhachHang.resources
 C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmQLTaiKhoan.resources
 C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmQLSP.resources
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmQLSP.resources
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmQLTaiKhoan.resources
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmThongTinKhachHang.resources
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\bin\Debug\FontAwesome.Sharp.dll
