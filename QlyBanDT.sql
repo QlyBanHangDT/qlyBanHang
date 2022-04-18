@@ -970,11 +970,15 @@ GO
 --------------------------------
 
 -- Bảng MANHINH
-INSERT MANHINH VALUES('SF001', N'Bán hàng')
-INSERT MANHINH VALUES('SF002', N'Quản lý nhân viên')
-INSERT MANHINH VALUES('SF003', N'Quản lý khách hàng')
-INSERT MANHINH VALUES('SF004', N'Quản lý sản phẩm')
-INSERT MANHINH VALUES('SF005', N'Phân tích độ ưu thích của khách hàng') --
+INSERT MANHINH VALUES('M1', N'Quản lý khách hàng')
+INSERT MANHINH VALUES('M2', N'Quản lý sản phẩm')
+INSERT MANHINH VALUES('M3', N'Quản lý tài khoản')
+INSERT MANHINH VALUES('M4', N'Quản lý nhân viên')
+INSERT MANHINH VALUES('M5', N'Nhập hàng')
+INSERT MANHINH VALUES('M6', N'Bán hàng')
+INSERT MANHINH VALUES('M7', N'Xem thông tin cá nhân')
+INSERT MANHINH VALUES('M8', N'Quản lý khách hàng')
+INSERT MANHINH VALUES('M9', N'Đăng xuất') 
 
 -- BẢNG TB_GRTK
 INSERT GRTK VALUES(N'ADMIN', '00')
