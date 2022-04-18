@@ -977,7 +977,7 @@ INSERT MANHINH VALUES('M4', N'Quản lý nhân viên')
 INSERT MANHINH VALUES('M5', N'Nhập hàng')
 INSERT MANHINH VALUES('M6', N'Bán hàng')
 INSERT MANHINH VALUES('M7', N'Xem thông tin cá nhân')
-INSERT MANHINH VALUES('M8', N'Quản lý khách hàng')
+INSERT MANHINH VALUES('M8', N'Kiểm tra tồn kho')
 INSERT MANHINH VALUES('M9', N'Đăng xuất') 
 
 -- BẢNG TB_GRTK
