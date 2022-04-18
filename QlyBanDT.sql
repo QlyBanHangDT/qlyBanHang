@@ -804,22 +804,24 @@ GO
 
 CREATE PROC sp_CKAcc
 @userName VARCHAR(50), -- THÔNG TIN TÀI KHOẢN
-@pw VARCHAR(50),
-@GRNAME NVARCHAR(50)
+@pw VARCHAR(50)
 AS
 	BEGIN TRY
-		DECLARE @IDGR INT
-		EXEC @IDGR = sp_getIDGR @GRNAME -- id gr
-
 		DECLARE @IDTK VARCHAR(15);
 		SELECT @IDTK = ID FROM TAIKHOAN WHERE USERNAME = @userName
 
 		DECLARE	@createPW VARBINARY(MAX) = SubString(DBO.fn_hash(@IDTK), 1, len(DBO.fn_hash(@IDTK))/2) + DBO.fn_hash(@pw + @IDTK)
 
-		IF NOT EXISTS(SELECT * FROM TAIKHOAN WHERE ID_GR = @IDGR AND USERNAME = @userName AND PW = @createPW)
-			THROW 51000, N'Thông tin đăng nhập không chính xác.', 1;
+		IF NOT EXISTS(SELECT * FROM TAIKHOAN WHERE USERNAME = @userName AND PW = @createPW)
+			THROW 51000, N'0', 1;
 
-		SELECT N'SUCCESS' 'Message'
+		DECLARE @TT BIT 
+		SELECT @TT = HOATDONG FROM TAIKHOAN WHERE USERNAME = @userName AND PW = @createPW
+		
+		IF (@TT <> 1)
+			SELECT N'2' 'Message'
+
+		SELECT N'1' 'Message'
 	END TRY
 	BEGIN CATCH
 		EXEC sp_GetErrorInfo;
@@ -851,6 +853,18 @@ GO
 -- 						WHERE ID_SP = SANPHAM.ID
 -- 						ORDER BY NGCAPNHAT DESC)
 -- GO
+
+CREATE PROC sp_ChiTietDonHang_kh
+@idKH varchar(10)
+as
+	select id_hd ID, TenSP, count(id_imei) SoLuong, cthd.DonGia Gia, hd.NGTAO, DBO.fn_ConvertFirstLetterinCapital(tttk.HoTen) NhanVien
+	from chitiethd cthd join hoadon hd 
+		on cthd.id_HD=hd.id join sanpham sp 
+		on sp.id=(select id_sp from IMEICODE where id=cthd.ID_IMEI) join thongtintaikhoan tttk
+		on tttk.id_taiKhoan = (select id_tk from nhanVien where id = hd.id_nv)
+	where id_Kh=@idKH
+	Group by id_hd, TenSP, cthd.DonGia, hd.NGTAO, tttk.HoTen
+go
 
 CREATE PROC sp_ChartSanPham
 @nam int
@@ -3170,5 +3184,5 @@ FROM SANPHAM SP JOIN IMEICODE
 WHERE TRANGTHAI = 1
 GROUP BY TENSP
 
-
+exec sp_chitietdonhang_kh 'kh003'
 */
