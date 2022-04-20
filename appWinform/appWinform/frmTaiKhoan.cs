@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace appWinform
 {
-    public partial class frmQLTaiKhoan : Form
+    public partial class frmTaiKhoan : Form
     {
-        public frmQLTaiKhoan()
+        public frmTaiKhoan()
         {
             InitializeComponent();
         }

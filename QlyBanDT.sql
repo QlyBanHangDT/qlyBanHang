@@ -24,8 +24,12 @@ CREATE TABLE TAIKHOAN (
     USERNAME VARCHAR(50), -- CHECK USERNAME THEO GROUP
     PW VARBINARY(50), -- MÃ HÓA + salt
 	HOATDONG BIT,
-    ID_GR INT REFERENCES GRTK(ID),
     CONSTRAINT PK_TK PRIMARY KEY (ID)
+)
+CREATE TABLE NHOMNGUOIDUNG (
+	ID_GR INT REFERENCES GRTK(ID),
+	ID_TK VARCHAR(15) REFERENCES TAIKHOAN(ID),
+	CONSTRAINT PK_NND PRIMARY KEY (ID_GR, ID_TK)
 )
 CREATE TABLE THONGTINTAIKHOAN (
     ID VARCHAR(20) NOT NULL, -- CREATE AUTO
@@ -241,29 +245,37 @@ BEGIN
 END
 GO
 
-CREATE FUNCTION fn_autoIDTK(@TENGR VARCHAR(50)) -- id TÀI KHOẢN
+CREATE FUNCTION fn_getIDTK(@username VARCHAR(50))
+RETURNS VARCHAR(15)
+AS
+BEGIN
+    DECLARE @id VARCHAR(15)
+    SELECT @id = ID FROM TAIKHOAN WHERE USERNAME = @username
+
+    RETURN @id
+END
+GO
+
+CREATE FUNCTION fn_autoIDTK(
+@ma char(2)
+) -- id TÀI KHOẢN
 RETURNS VARCHAR(15)
 AS
 BEGIN
 	DECLARE @ID VARCHAR(15)
-	DECLARE @maCodeGr CHAR(2)
-	DECLARE @IDGR INT
 
-    -- LẤY MÃ GR
-    SELECT @IDGR=ID, @maCodeGr = CODEGR FROM GRTK WHERE TEN = @TENGR
-
-	IF (SELECT COUNT(ID) FROM TAIKHOAN WHERE ID_GR = @IDGR) = 0
+	IF (SELECT COUNT(ID) FROM TAIKHOAN) = 0
 		SET @ID = '0'
 	ELSE
-		SELECT @ID = MAX(RIGHT(ID, 3)) FROM TAIKHOAN WHERE ID_GR = @IDGR
+		SELECT @ID = MAX(RIGHT(ID, 3)) FROM TAIKHOAN 
 
     DECLARE @ngayTao VARCHAR(8) = convert(VARCHAR, getdate(), 112) -- format yyyymmdd
     DECLARE @stt VARCHAR(5) = CONVERT(VARCHAR, CONVERT(INT, @ID) + 1)
 
 	SELECT @ID = CASE
-		WHEN @ID >= 99 THEN @ngayTao + @maCodeGr + @stt
-		WHEN @ID >=  9 THEN @ngayTao + @maCodeGr + '0' + @stt
-		WHEN @ID >=  0 and @ID < 9 THEN @ngayTao + @maCodeGr + '00' + @stt
+		WHEN @ID >= 99 THEN @ngayTao + @ma + @stt
+		WHEN @ID >=  9 THEN @ngayTao + @ma + '0' + @stt
+		WHEN @ID >=  0 and @ID < 9 THEN @ngayTao + @ma + '00' + @stt
 	END
 
 	RETURN @ID
@@ -648,46 +660,25 @@ GO
 CREATE PROC sp_AddAcc
 @userName VARCHAR(50), -- THÔNG TIN TÀI KHOẢN
 @pw VARCHAR(50),
-@GRNAME NVARCHAR(50),
 @hoTen NVARCHAR(50),
 @ngSinh DATE,
 @gioiTinh NVARCHAR(5),
 @email VARCHAR(50),
 @sdt VARCHAR(11),
-@dChi NVARCHAR(50)
+@dChi NVARCHAR(50),
+@cdGr CHAR(2)
 AS
 	BEGIN TRY
-		DECLARE @ID VARCHAR(15) = DBO.fn_autoIDTK(@GRNAME) -- id login
+		DECLARE @ID VARCHAR(15) = DBO.fn_autoIDTK('01') -- id login
 
 		DECLARE	@createPW VARBINARY(MAX) = SubString(DBO.fn_hash(@ID), 1, len(DBO.fn_hash(@ID))/2) + DBO.fn_hash(@pw + @ID)
 
-		DECLARE @IDGR INT
-		EXEC @IDGR = sp_getIDGR @GRNAME -- id gr
-
-        IF (UPPER(@GRNAME) = N'KHÁCH HÀNG')
-        BEGIN
-            SET @userName = NULL;
-            SET @createPW = NULL;
-        END
-
-		IF EXISTS(SELECT * FROM TAIKHOAN WHERE ID_GR = @IDGR AND USERNAME = @userName)
+		IF EXISTS(SELECT * FROM TAIKHOAN WHERE USERNAME = @userName)
 			THROW 51000, N'Username đã tồn tại.', 1;
 
 		-- tạo tài khoản
-		INSERT TAIKHOAN(ID, USERNAME, PW, ID_GR)
-		SELECT @ID, @userName, @createPW, @IDGR; 
-
-        IF (UPPER(@GRNAME) = N'NHÂN VIÊN')
-        BEGIN
-            INSERT NHANVIEN (ID_TK)
-            SELECT @ID
-        END
-
-        IF (UPPER(@GRNAME) = N'KHÁCH HÀNG')
-        BEGIN
-            INSERT KHACHHANG(ID_TK)
-            SELECT @ID
-        END
+		INSERT TAIKHOAN(ID, USERNAME, PW)
+		SELECT @ID, @userName, @createPW; 
 
         DECLARE @GTINH BIT = 0
         IF (UPPER(@gioiTinh) = N'NAM')
@@ -696,6 +687,41 @@ AS
         -- tạo thông tin người dùng
         INSERT THONGTINTAIKHOAN(ID, HOTEN, NGSINH, GTINH, EMAIL, SDT, DCHI, ID_TAIKHOAN)
         VALUES(DBO.fn_autoIDTTND(@ID), UPPER(@hoTen), @ngSinh, @GTINH, @email, @sdt, @dChi, @ID)
+
+		if (@cdGr = 'NV')
+			INSERT NHANVIEN (ID_TK) select @ID
+
+		SELECT N'SUCCESS' 'Message'
+	END TRY
+	BEGIN CATCH
+		EXEC sp_GetErrorInfo;
+	END CATCH
+GO
+
+CREATE PROC sp_AddAcc_KH
+@hoTen NVARCHAR(50),
+@ngSinh DATE,
+@gioiTinh NVARCHAR(5),
+@email VARCHAR(50),
+@sdt VARCHAR(11),
+@dChi NVARCHAR(50)
+AS
+	BEGIN TRY
+		DECLARE @ID VARCHAR(15) = DBO.fn_autoIDTK('02') -- id login
+
+		-- tạo tài khoản
+		INSERT TAIKHOAN(ID)
+		SELECT @ID; 
+
+        DECLARE @GTINH BIT = 0
+        IF (UPPER(@gioiTinh) = N'NAM')
+            SET @GTINH = 1;
+
+        -- tạo thông tin người dùng
+        INSERT THONGTINTAIKHOAN(ID, HOTEN, NGSINH, GTINH, EMAIL, SDT, DCHI, ID_TAIKHOAN)
+        VALUES(DBO.fn_autoIDTTND(@ID), UPPER(@hoTen), @ngSinh, @GTINH, @email, @sdt, @dChi, @ID)
+
+		INSERT KHACHHANG (ID_TK) SELECT @ID
 
 		SELECT N'SUCCESS' 'Message'
 	END TRY
@@ -707,19 +733,15 @@ GO
 -- thay đổi mật khẩu người dùng
 CREATE PROC sp_ChangeAcc
 @userName VARCHAR(50), -- THÔNG TIN TÀI KHOẢN
-@pw VARCHAR(50),
-@GRNAME NVARCHAR(50)
+@pw VARCHAR(50)
 AS
 	BEGIN TRY
-		DECLARE @IDGR INT
-		EXEC @IDGR = sp_getIDGR @GRNAME -- id gr
-
 		DECLARE @IDTK VARCHAR(15);
 		SELECT @IDTK = ID FROM TAIKHOAN WHERE USERNAME = @userName
 
 		DECLARE	@createPW VARBINARY(MAX) = SubString(DBO.fn_hash(@IDTK), 1, len(DBO.fn_hash(@IDTK))/2) + DBO.fn_hash(@pw + @IDTK)
 
-		UPDATE TAIKHOAN SET PW = @createPW WHERE ID = @IDTK AND ID_GR = @IDGR
+		UPDATE TAIKHOAN SET PW = @createPW WHERE ID = @IDTK
 
 		SELECT N'SUCCESS' 'Message'
 	END TRY
@@ -740,7 +762,7 @@ AS
 		DECLARE @IDTK VARCHAR(15);
 		SELECT @IDTK = ID FROM TAIKHOAN WHERE USERNAME = @userName
 
-		UPDATE TAIKHOAN SET PW = NULL, USERNAME = NULL WHERE ID = @IDTK AND ID_GR = @IDGR
+		UPDATE TAIKHOAN SET PW = NULL, USERNAME = NULL WHERE ID = @IDTK
 
 		UPDATE NHANVIEN SET TINHTRANG = N'Đã nghỉ' WHERE ID_TK = @IDTK
 
@@ -762,7 +784,7 @@ AS
 		DECLARE @IDTK VARCHAR(15);
 		SELECT @IDTK = ID FROM TAIKHOAN WHERE USERNAME = @userName
 
-		IF EXISTS(SELECT * FROM TAIKHOAN WHERE ID_GR = @IDGR AND USERNAME = @userName)
+		IF EXISTS(SELECT * FROM TAIKHOAN WHERE USERNAME = @userName)
 			THROW 51000, N'Username đã tồn tại.', 1;
 
 		SELECT N'ok' 'Message'
@@ -972,45 +994,60 @@ GO
 -- Bảng MANHINH
 INSERT MANHINH VALUES('M1', N'Quản lý khách hàng')
 INSERT MANHINH VALUES('M2', N'Quản lý sản phẩm')
-INSERT MANHINH VALUES('M3', N'Quản lý tài khoản')
+INSERT MANHINH VALUES('M3', N'Quản lý tài khoản - nhóm')
 INSERT MANHINH VALUES('M4', N'Quản lý nhân viên')
 INSERT MANHINH VALUES('M5', N'Nhập hàng')
 INSERT MANHINH VALUES('M6', N'Bán hàng')
 INSERT MANHINH VALUES('M7', N'Xem thông tin cá nhân')
 INSERT MANHINH VALUES('M8', N'Kiểm tra tồn kho')
-INSERT MANHINH VALUES('M9', N'Đăng xuất') 
+INSERT MANHINH VALUES('M9', N'Phân quyền') 
 
 -- BẢNG TB_GRTK
 INSERT GRTK VALUES(N'ADMIN', '00')
 INSERT GRTK VALUES(N'NHÂN VIÊN', '01')
-INSERT GRTK VALUES(N'KHÁCH HÀNG', '02')
 
 -- BẢNG TAIKHOAN
-EXEC sp_AddAcc 'admin', 'admin@123456789', N'ADMIN', N'Admin', '2-5-2001', N'nam', 'admin@gmail.com', '000000000', ''
+EXEC sp_AddAcc 'admin', 'admin@123456789', N'Admin', '2-5-2001', N'nam', 'admin@gmail.com', '000000000', '',''
 --nhân viên
-EXEC sp_AddAcc 'tuhueson', 'tuhueson@123456789', N'Nhân viên', N'Từ Huệ Sơn', '2-5-2001', N'nam', 'tuhueson@gmail.com', '000000000', ''
-EXEC sp_AddAcc 'leductai', 'leductai@123456789', N'Nhân viên', N'Lê Đức Tài', '12-4-2001', N'nam', 'leductai@gmail.com', '000000000', ''
-EXEC sp_AddAcc 'nguyenvanteo', 'nguyenvanteo@123456789', N'Nhân viên', N'Nguyễn văn Tèo', '12-5-2001', N'nam', 'nguyenvanteo@gmail.com', '000000000', ''
-EXEC sp_AddAcc 'trannhattrung', 'trannhattrung@123456789', N'Nhân viên', N'Trần Nhật Trung', '2-14-2001', N'nam', 'trannhattrung@gmail.com', '000000000', ''
-EXEC sp_AddAcc 'dogianguyen', 'dogianguyen@123456789', N'Nhân viên', N'Đỗ Gia Nguyên', '12-4-2001', N'nữ', 'dogianguyen@gmail.com', '000000000', ''
-EXEC sp_AddAcc 'lytuong', 'lytuong@123456789', N'Nhân viên', N'Lý Tường', '2-4-2001', N'nữ', 'lytuong@gmail.com', '000000000', ''
-EXEC sp_AddAcc 'tranvu', 'tranvu@123456789', N'Nhân viên', N'Trần Vũ', '2-15-2001', N'nam', 'tranvu@gmail.com', '000000000', ''
-EXEC sp_AddAcc 'doquyen', 'doquyen@123456789', N'Nhân viên', N'Đỗ Quyên', '3-15-2001', N'nữ', 'doquyen@gmail.com', '000000000', ''
-EXEC sp_AddAcc 'daokimhue', 'daokimhue@123456789', N'Nhân viên', N'Đào kim huệ', '3-15-2001', N'nữ', 'daokimhue@gmail.com', '000000000', ''
-EXEC sp_AddAcc 'hogiacat', 'hogiacat@123456789', N'Nhân viên', N'hồ gia cát', '5-15-2001', N'nam', 'hogiacat@gmail.com', '000000000', ''
-EXEC sp_AddAcc 'vuthanhlong', 'vuthanhlong@123456789', N'Nhân viên', N'vũ thanh long', '3-15-2001', N'nam', 'vuthanhlong@gmail.com', '000000000', ''
+EXEC sp_AddAcc 'tuhueson', 'tuhueson@123456789', N'Từ Huệ Sơn', '2-5-2001', N'nam', 'tuhueson@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'leductai', 'leductai@123456789', N'Lê Đức Tài', '12-4-2001', N'nam', 'leductai@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'nguyenvanteo', 'nguyenvanteo@123456789', N'Nguyễn văn Tèo', '12-5-2001', N'nam', 'nguyenvanteo@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'trannhattrung', 'trannhattrung@123456789', N'Trần Nhật Trung', '2-14-2001', N'nam', 'trannhattrung@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'dogianguyen', 'dogianguyen@123456789', N'Đỗ Gia Nguyên', '12-4-2001', N'nữ', 'dogianguyen@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'lytuong', 'lytuong@123456789', N'Lý Tường', '2-4-2001', N'nữ', 'lytuong@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'tranvu', 'tranvu@123456789', N'Trần Vũ', '2-15-2001', N'nam', 'tranvu@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'doquyen', 'doquyen@123456789', N'Đỗ Quyên', '3-15-2001', N'nữ', 'doquyen@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'daokimhue', 'daokimhue@123456789', N'Đào kim huệ', '3-15-2001', N'nữ', 'daokimhue@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'hogiacat', 'hogiacat@123456789', N'hồ gia cát', '5-15-2001', N'nam', 'hogiacat@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'vuthanhlong', 'vuthanhlong@123456789', N'vũ thanh long', '3-15-2001', N'nam', 'vuthanhlong@gmail.com', '000000000', '','NV'
 -- khách hàng
-EXEC sp_AddAcc '', '', N'Khách hàng', N'Lê Thị Linh', '12-4-2001', N'nữ', 'lethilinh@gmail.com', '0938252524', ''
-EXEC sp_AddAcc '', '', N'Khách hàng', N'Hồ Minh Ngọc', '12-3-2001', N'nam', 'hominhngoc@gmail.com', '0935252528', ''
-EXEC sp_AddAcc '', '', N'Khách hàng', N'Lý Gia Huy', '2-13-2001', N'nam', 'lygiahuy@gmail.com', '0937151518', ''
-EXEC sp_AddAcc '', '', N'Khách hàng', N'Nguyễn Thị Thương', '4-13-2001', N'Nữ', 'thuongnguyen@gmail.com', '0935262628', ''
-EXEC sp_AddAcc '', '', N'Khách hàng', N'Trần Ngọc Sang', '3-30-2001', N'nam', 'sangtran@gmail.com', '0915236268', ''
-EXEC sp_AddAcc '', '', N'Khách hàng', N'Huỳnh Ái Linh', '7-24-2001', N'Nữ', 'linh247@gmail.com', '0926352528', ''
-EXEC sp_AddAcc '', '', N'Khách hàng', N'Đỗ Ái Vy', '11-4-2001', N'nữ', 'vydo@gmail.com', '0925362624', ''
-EXEC sp_AddAcc '', '', N'Khách hàng', N'Cao Gia Vinh', '12-3-2001', N'nữ', 'vinh123@gmail.com', '0932562315', ''
-EXEC sp_AddAcc '', '', N'Khách hàng', N'Lê Hồng Đào', '2-13-2001', N'Nữ', 'daole132@gmail.com', '0925216358', ''
-EXEC sp_AddAcc '', '', N'Khách hàng', N'Nguyễn Văn Cao', '4-13-2001', N'nam', 'caonguyen134@gmail.com', '0935626248', ''
-EXEC sp_AddAcc '', '', N'Khách hàng', N'Từ Huệ Sơn', '2-5-2001', N'nam', 'tuhueson@gmail.com', '0938252793', ''
+EXEC sp_AddAcc_KH N'Lê Thị Linh', '12-4-2001', N'nữ', 'lethilinh@gmail.com', '0938252524', ''
+EXEC sp_AddAcc_KH N'Hồ Minh Ngọc', '12-3-2001', N'nam', 'hominhngoc@gmail.com', '0935252528', ''
+EXEC sp_AddAcc_KH N'Lý Gia Huy', '2-13-2001', N'nam', 'lygiahuy@gmail.com', '0937151518', ''
+EXEC sp_AddAcc_KH N'Nguyễn Thị Thương', '4-13-2001', N'Nữ', 'thuongnguyen@gmail.com', '0935262628', ''
+EXEC sp_AddAcc_KH N'Trần Ngọc Sang', '3-30-2001', N'nam', 'sangtran@gmail.com', '0915236268', ''
+EXEC sp_AddAcc_KH N'Huỳnh Ái Linh', '7-24-2001', N'Nữ', 'linh247@gmail.com', '0926352528', ''
+EXEC sp_AddAcc_KH N'Đỗ Ái Vy', '11-4-2001', N'nữ', 'vydo@gmail.com', '0925362624', ''
+EXEC sp_AddAcc_KH N'Cao Gia Vinh', '12-3-2001', N'nữ', 'vinh123@gmail.com', '0932562315', ''
+EXEC sp_AddAcc_KH N'Lê Hồng Đào', '2-13-2001', N'Nữ', 'daole132@gmail.com', '0925216358', ''
+EXEC sp_AddAcc_KH N'Nguyễn Văn Cao', '4-13-2001', N'nam', 'caonguyen134@gmail.com', '0935626248', ''
+EXEC sp_AddAcc_KH N'Từ Huệ Sơn', '2-5-2001', N'nam', 'tuhueson@gmail.com', '0938252793', ''
+
+-- bảng nhóm người dùng
+INSERT NHOMNGUOIDUNG SELECT 1, DBO.fn_getIDTK('admin')
+
+-- bảng phân quyền
+-- phân quyền cho admin (mặc định)
+INSERT QL_PHANQUYEN VALUES 
+(1, 'M1', 1),
+(1, 'M2', 1),
+(1, 'M3', 1),
+(1, 'M4', 1),
+(1, 'M5', 1),
+(1, 'M6', 1),
+(1, 'M7', 1),
+(1, 'M8', 1),
+(1, 'M9', 0)
 
 -- BẢNG DANH MỤC
 INSERT DANHMUC SELECT N'Điện Thoại'

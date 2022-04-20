@@ -23,5 +23,10 @@ namespace GUI
         {
             MessageBox.Show(pMessage, "Thông báo", MessageBoxButtons.OK, icon, MessageBoxDefaultButton.Button1);
         }
+
+        public static DialogResult ConfirmMessage(string pMessage, MessageBoxIcon icon = MessageBoxIcon.Question)
+        {
+            return MessageBox.Show(pMessage, "Thông báo", MessageBoxButtons.YesNo, icon, MessageBoxDefaultButton.Button1);
+        }
     }
 }

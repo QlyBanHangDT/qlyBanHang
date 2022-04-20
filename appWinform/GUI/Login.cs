@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
 using DTO;
+using DAL;
 
 namespace GUI
 {
@@ -61,7 +62,7 @@ namespace GUI
                     return;
                 }
                 Program.AlertMessage("Xin chào " + txtTDN.Texts.Trim(), MessageBoxIcon.Information);
-                ButtonLogin_Click(this, EventArgs.Empty); // đăng nhập thành công
+                ButtonLogin_Click(txtTDN.Texts.Trim(), EventArgs.Empty); // đăng nhập thành công
 
             }
             catch (Exception err)
@@ -85,7 +86,7 @@ namespace GUI
         protected virtual void ButtonLogin_Click(object sender, EventArgs e)
         {
             if (this.ButtonLogin != null)
-                this.ButtonLogin(this, e);
+                this.ButtonLogin(sender, e);
         }
     }
 }

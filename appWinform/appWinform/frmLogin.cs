@@ -13,14 +13,18 @@ namespace appWinform
 {
     public partial class frmLogin : Form
     {
+        public static string USERNAME;
+
         public frmLogin()
         {
+            USERNAME = string.Empty;
             InitializeComponent();
         }
 
         private void login1_ButtonLogin(object sender, EventArgs e)
         {
             // đăng nhập thành công => chuyển trang
+            USERNAME = sender as string; // gán Username
             Thread t = new Thread(new ThreadStart(ThreadLogin));
             t.SetApartmentState(ApartmentState.STA);
             t.Start();
