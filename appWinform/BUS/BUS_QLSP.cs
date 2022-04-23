@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL.DAL_DataSetTableAdapters;
 using System.Data.SqlClient;
 using System.Data;
+using DAL;
 
 namespace BUS
 {
     public class BUS_QLSP
     {
-        private DataTable_SPTableAdapter db = new DataTable_SPTableAdapter();
+        DAL_QLSP dal_qlsp = new DAL_QLSP();
 
         public DataTable getDSSP()
         {
-            return db.GetDataSP();
+            return dal_qlsp.getDSSP();
         }
     }
 }

@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DAL
+namespace DTO
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -93,7 +93,7 @@ namespace DAL
     #endregion
 		
 		public QlyBanHangDataContext() : 
-				base(global::DAL.Properties.Settings.Default.QLDT_LKConnectionString, mappingSource)
+				base(global::DTO.Properties.Settings.Default.QLDT_LKConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -308,6 +308,12 @@ namespace DAL
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userName, pw);
 			return ((ISingleResult<sp_ChangeAccResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.fn_PhanQuyen", IsComposable=true)]
+		public IQueryable<fn_PhanQuyenResult> fn_PhanQuyen([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idGR)
+		{
+			return this.CreateMethodCallQuery<fn_PhanQuyenResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idGR);
 		}
 	}
 	
@@ -4440,6 +4446,68 @@ namespace DAL
 				if ((this._Message != value))
 				{
 					this._Message = value;
+				}
+			}
+		}
+	}
+	
+	public partial class fn_PhanQuyenResult
+	{
+		
+		private string _ID;
+		
+		private string _TENMH;
+		
+		private System.Nullable<bool> _COQUYEN;
+		
+		public fn_PhanQuyenResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="VarChar(15) NOT NULL", CanBeNull=false)]
+		public string ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this._ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENMH", DbType="NVarChar(50)")]
+		public string TENMH
+		{
+			get
+			{
+				return this._TENMH;
+			}
+			set
+			{
+				if ((this._TENMH != value))
+				{
+					this._TENMH = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_COQUYEN", DbType="Bit")]
+		public System.Nullable<bool> COQUYEN
+		{
+			get
+			{
+				return this._COQUYEN;
+			}
+			set
+			{
+				if ((this._COQUYEN != value))
+				{
+					this._COQUYEN = value;
 				}
 			}
 		}

@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DTO;
 using BUS;
-using DAL;
 
 namespace GUI
 {
@@ -47,8 +46,8 @@ namespace GUI
                 c.DefaultCellStyle.Font = new Font("Arial", 14.5f, GraphicsUnit.Pixel);
             }
 
-            //drvLSMuaHang.Columns["clTDG"].DefaultCellStyle.Format = "#,## VNĐ";
-            //drvLSMuaHang.Columns["clTDG"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            drvLSMuaHang.Columns["Gia"].DefaultCellStyle.Format = "#,## VNĐ";
+            drvLSMuaHang.Columns["Gia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             drvLSMuaHang.DefaultCellStyle.NullValue = "no entry";
 
@@ -175,6 +174,7 @@ namespace GUI
             else Program.AlertMessage("Đã xãy ra lỗi\nVui lòng thử lại sau", MessageBoxIcon.Error);
             
         }
+
 
     }
 }

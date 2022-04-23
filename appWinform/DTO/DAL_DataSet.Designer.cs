@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace DAL {
+namespace DTO {
     
     
     /// <summary>
@@ -3882,9 +3882,15 @@ namespace DAL {
             
             private global::System.Data.DataColumn columnGIA;
             
-            private global::System.Data.DataColumn columnNGCAPNHAT;
-            
             private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnSOLUONG;
+            
+            private global::System.Data.DataColumn columnTENHANG;
+            
+            private global::System.Data.DataColumn columnTENLOAI;
+            
+            private global::System.Data.DataColumn columnTENDANHMUC;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -3937,17 +3943,41 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NGCAPNHATColumn {
+            public global::System.Data.DataColumn IDColumn {
                 get {
-                    return this.columnNGCAPNHAT;
+                    return this.columnID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
+            public global::System.Data.DataColumn SOLUONGColumn {
                 get {
-                    return this.columnID;
+                    return this.columnSOLUONG;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TENHANGColumn {
+                get {
+                    return this.columnTENHANG;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TENLOAIColumn {
+                get {
+                    return this.columnTENLOAI;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TENDANHMUCColumn {
+                get {
+                    return this.columnTENDANHMUC;
                 }
             }
             
@@ -3988,13 +4018,16 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTable_SPRow AddDataTable_SPRow(string TENSP, double GIA, System.DateTime NGCAPNHAT, string ID) {
+            public DataTable_SPRow AddDataTable_SPRow(string TENSP, double GIA, string ID, int SOLUONG, string TENHANG, string TENLOAI, string TENDANHMUC) {
                 DataTable_SPRow rowDataTable_SPRow = ((DataTable_SPRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         TENSP,
                         GIA,
-                        NGCAPNHAT,
-                        ID};
+                        ID,
+                        SOLUONG,
+                        TENHANG,
+                        TENLOAI,
+                        TENDANHMUC};
                 rowDataTable_SPRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTable_SPRow);
                 return rowDataTable_SPRow;
@@ -4026,8 +4059,11 @@ namespace DAL {
             internal void InitVars() {
                 this.columnTENSP = base.Columns["TENSP"];
                 this.columnGIA = base.Columns["GIA"];
-                this.columnNGCAPNHAT = base.Columns["NGCAPNHAT"];
                 this.columnID = base.Columns["ID"];
+                this.columnSOLUONG = base.Columns["SOLUONG"];
+                this.columnTENHANG = base.Columns["TENHANG"];
+                this.columnTENLOAI = base.Columns["TENLOAI"];
+                this.columnTENDANHMUC = base.Columns["TENDANHMUC"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4037,16 +4073,26 @@ namespace DAL {
                 base.Columns.Add(this.columnTENSP);
                 this.columnGIA = new global::System.Data.DataColumn("GIA", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGIA);
-                this.columnNGCAPNHAT = new global::System.Data.DataColumn("NGCAPNHAT", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNGCAPNHAT);
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
+                this.columnSOLUONG = new global::System.Data.DataColumn("SOLUONG", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSOLUONG);
+                this.columnTENHANG = new global::System.Data.DataColumn("TENHANG", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTENHANG);
+                this.columnTENLOAI = new global::System.Data.DataColumn("TENLOAI", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTENLOAI);
+                this.columnTENDANHMUC = new global::System.Data.DataColumn("TENDANHMUC", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTENDANHMUC);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnTENSP.MaxLength = 2147483647;
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnID.MaxLength = 5;
+                this.columnSOLUONG.ReadOnly = true;
+                this.columnTENHANG.MaxLength = 20;
+                this.columnTENLOAI.MaxLength = 50;
+                this.columnTENDANHMUC.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5731,28 +5777,76 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime NGCAPNHAT {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableDataTable_SP.NGCAPNHATColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NGCAPNHAT\' in table \'DataTable_SP\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable_SP.NGCAPNHATColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string ID {
                 get {
                     return ((string)(this[this.tableDataTable_SP.IDColumn]));
                 }
                 set {
                     this[this.tableDataTable_SP.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int SOLUONG {
+                get {
+                    try {
+                        return ((int)(this[this.tableDataTable_SP.SOLUONGColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SOLUONG\' in table \'DataTable_SP\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable_SP.SOLUONGColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TENHANG {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable_SP.TENHANGColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TENHANG\' in table \'DataTable_SP\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable_SP.TENHANGColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TENLOAI {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable_SP.TENLOAIColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TENLOAI\' in table \'DataTable_SP\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable_SP.TENLOAIColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TENDANHMUC {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable_SP.TENDANHMUCColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TENDANHMUC\' in table \'DataTable_SP\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable_SP.TENDANHMUCColumn] = value;
                 }
             }
             
@@ -5782,14 +5876,50 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNGCAPNHATNull() {
-                return this.IsNull(this.tableDataTable_SP.NGCAPNHATColumn);
+            public bool IsSOLUONGNull() {
+                return this.IsNull(this.tableDataTable_SP.SOLUONGColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNGCAPNHATNull() {
-                this[this.tableDataTable_SP.NGCAPNHATColumn] = global::System.Convert.DBNull;
+            public void SetSOLUONGNull() {
+                this[this.tableDataTable_SP.SOLUONGColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTENHANGNull() {
+                return this.IsNull(this.tableDataTable_SP.TENHANGColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTENHANGNull() {
+                this[this.tableDataTable_SP.TENHANGColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTENLOAINull() {
+                return this.IsNull(this.tableDataTable_SP.TENLOAIColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTENLOAINull() {
+                this[this.tableDataTable_SP.TENLOAIColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTENDANHMUCNull() {
+                return this.IsNull(this.tableDataTable_SP.TENDANHMUCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTENDANHMUCNull() {
+                this[this.tableDataTable_SP.TENDANHMUCColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -6168,7 +6298,7 @@ namespace DAL {
         }
     }
 }
-namespace DAL.DAL_DataSetTableAdapters {
+namespace DTO.DAL_DataSetTableAdapters {
     
     
     /// <summary>
@@ -6334,7 +6464,7 @@ SELECT ID, ID_TK, DIEMTICHLUY FROM KHACHHANG WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DAL.Properties.Settings.Default.QLDT_LKConnectionString;
+            this._connection.ConnectionString = global::DTO.Properties.Settings.Default.QLDT_LKConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6755,7 +6885,7 @@ SELECT ID, HOTEN, NGSINH, GTINH, NGTAO, EMAIL, SDT, DCHI, ID_TAIKHOAN FROM THONG
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DAL.Properties.Settings.Default.QLDT_LKConnectionString;
+            this._connection.ConnectionString = global::DTO.Properties.Settings.Default.QLDT_LKConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7353,7 +7483,7 @@ SELECT ID, NGTAO, DONGIA, ID_KH, ID_NV FROM HOADON WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DAL.Properties.Settings.Default.QLDT_LKConnectionString;
+            this._connection.ConnectionString = global::DTO.Properties.Settings.Default.QLDT_LKConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7793,7 +7923,7 @@ SELECT ID, ID_HD, ID_IMEI, DONGIA FROM CHITIETHD WHERE (ID = @ID) AND (ID_HD = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DAL.Properties.Settings.Default.QLDT_LKConnectionString;
+            this._connection.ConnectionString = global::DTO.Properties.Settings.Default.QLDT_LKConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8182,7 +8312,7 @@ SELECT ID, MA, TRANGTHAI, ID_SP FROM IMEICODE WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DAL.Properties.Settings.Default.QLDT_LKConnectionString;
+            this._connection.ConnectionString = global::DTO.Properties.Settings.Default.QLDT_LKConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8541,7 +8671,7 @@ SELECT ID, MA, TRANGTHAI, ID_SP FROM IMEICODE WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DAL.Properties.Settings.Default.QLDT_LKConnectionString;
+            this._connection.ConnectionString = global::DTO.Properties.Settings.Default.QLDT_LKConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8851,7 +8981,7 @@ SELECT ID, TENSP, NSX, HINHANH, ID_LOAI, ID_HANG FROM SANPHAM WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DAL.Properties.Settings.Default.QLDT_LKConnectionString;
+            this._connection.ConnectionString = global::DTO.Properties.Settings.Default.QLDT_LKConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9306,7 +9436,7 @@ SELECT ID, USERNAME, PW, ID_GR FROM TAIKHOAN WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DAL.Properties.Settings.Default.QLDT_LKConnectionString;
+            this._connection.ConnectionString = global::DTO.Properties.Settings.Default.QLDT_LKConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9715,7 +9845,7 @@ SELECT ID, USERNAME, PW FROM TAIKHOAN WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DAL.Properties.Settings.Default.QLDT_LKConnectionString;
+            this._connection.ConnectionString = global::DTO.Properties.Settings.Default.QLDT_LKConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10102,7 +10232,7 @@ SELECT ID, ID_SP, GIA, NGCAPNHAT FROM DONGIA WHERE (ID = @ID) AND (ID_SP = @ID_S
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DAL.Properties.Settings.Default.QLDT_LKConnectionString;
+            this._connection.ConnectionString = global::DTO.Properties.Settings.Default.QLDT_LKConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10446,8 +10576,11 @@ SELECT ID, ID_SP, GIA, NGCAPNHAT FROM DONGIA WHERE (ID = @ID) AND (ID_SP = @ID_S
             tableMapping.DataSetTable = "DataTable_SP";
             tableMapping.ColumnMappings.Add("TENSP", "TENSP");
             tableMapping.ColumnMappings.Add("GIA", "GIA");
-            tableMapping.ColumnMappings.Add("NGCAPNHAT", "NGCAPNHAT");
             tableMapping.ColumnMappings.Add("ID", "ID");
+            tableMapping.ColumnMappings.Add("SOLUONG", "SOLUONG");
+            tableMapping.ColumnMappings.Add("TENHANG", "TENHANG");
+            tableMapping.ColumnMappings.Add("TENLOAI", "TENLOAI");
+            tableMapping.ColumnMappings.Add("TENDANHMUC", "TENDANHMUC");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -10455,7 +10588,7 @@ SELECT ID, ID_SP, GIA, NGCAPNHAT FROM DONGIA WHERE (ID = @ID) AND (ID_SP = @ID_S
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::DAL.Properties.Settings.Default.QLDT_LKConnectionString;
+            this._connection.ConnectionString = global::DTO.Properties.Settings.Default.QLDT_LKConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10464,8 +10597,14 @@ SELECT ID, ID_SP, GIA, NGCAPNHAT FROM DONGIA WHERE (ID = @ID) AND (ID_SP = @ID_S
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT SANPHAM.ID, SANPHAM.TENSP, DONGIA.GIA, DONGIA.NGCAPNHAT\r\nFROM     SANPHAM " +
-                "INNER JOIN\r\n                  DONGIA ON SANPHAM.ID = DONGIA.ID_SP";
+            this._commandCollection[0].CommandText = @"SELECT SANPHAM.ID, SANPHAM.TENSP, COUNT(IMEICODE.ID) AS SOLUONG, dbo.fn_giaSP(SANPHAM.ID) AS GIA, HANG.TENHANG, LOAISP.TENLOAI, DANHMUC.TENDANHMUC
+FROM     SANPHAM INNER JOIN
+                  IMEICODE ON SANPHAM.ID = IMEICODE.ID_SP INNER JOIN
+                  HANG ON SANPHAM.ID_HANG = HANG.ID INNER JOIN
+                  LOAISP ON SANPHAM.ID_LOAI = LOAISP.ID INNER JOIN
+                  DANHMUC ON LOAISP.IDDM = DANHMUC.ID
+WHERE  (IMEICODE.TRANGTHAI = 1)
+GROUP BY SANPHAM.ID, SANPHAM.TENSP, HANG.TENHANG, LOAISP.TENLOAI, DANHMUC.TENDANHMUC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

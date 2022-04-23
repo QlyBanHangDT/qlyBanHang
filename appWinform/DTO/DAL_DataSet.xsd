@@ -4,7 +4,7 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="QLDT_LKConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QLDT_LKConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DAL.Properties.Settings.GlobalReference.Default.QLDT_LKConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="QLDT_LKConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QLDT_LKConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DTO.Properties.Settings.GlobalReference.Default.QLDT_LKConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="KHACHHANGTableAdapter" GeneratorDataComponentClassName="KHACHHANGTableAdapter" Name="KHACHHANG" UserDataComponentName="KHACHHANGTableAdapter">
@@ -678,9 +678,14 @@ SELECT ID, ID_SP, GIA, NGCAPNHAT FROM DONGIA WHERE (ID = @ID) AND (ID_SP = @ID_S
               <DbSource ConnectionRef="QLDT_LKConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillSP" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetDataSP" GeneratorSourceName="FillSP" GetMethodModifier="Public" GetMethodName="GetDataSP" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDataSP" UserSourceName="FillSP">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT SANPHAM.ID, SANPHAM.TENSP, DONGIA.GIA, DONGIA.NGCAPNHAT
+                    <CommandText>SELECT SANPHAM.ID, SANPHAM.TENSP, COUNT(IMEICODE.ID) AS SOLUONG, dbo.fn_giaSP(SANPHAM.ID) AS GIA, HANG.TENHANG, LOAISP.TENLOAI, DANHMUC.TENDANHMUC
 FROM     SANPHAM INNER JOIN
-                  DONGIA ON SANPHAM.ID = DONGIA.ID_SP</CommandText>
+                  IMEICODE ON SANPHAM.ID = IMEICODE.ID_SP INNER JOIN
+                  HANG ON SANPHAM.ID_HANG = HANG.ID INNER JOIN
+                  LOAISP ON SANPHAM.ID_LOAI = LOAISP.ID INNER JOIN
+                  DANHMUC ON LOAISP.IDDM = DANHMUC.ID
+WHERE  (IMEICODE.TRANGTHAI = 1)
+GROUP BY SANPHAM.ID, SANPHAM.TENSP, HANG.TENHANG, LOAISP.TENLOAI, DANHMUC.TENDANHMUC</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -689,8 +694,11 @@ FROM     SANPHAM INNER JOIN
             <Mappings>
               <Mapping SourceColumn="TENSP" DataSetColumn="TENSP" />
               <Mapping SourceColumn="GIA" DataSetColumn="GIA" />
-              <Mapping SourceColumn="NGCAPNHAT" DataSetColumn="NGCAPNHAT" />
               <Mapping SourceColumn="ID" DataSetColumn="ID" />
+              <Mapping SourceColumn="SOLUONG" DataSetColumn="SOLUONG" />
+              <Mapping SourceColumn="TENHANG" DataSetColumn="TENHANG" />
+              <Mapping SourceColumn="TENLOAI" DataSetColumn="TENLOAI" />
+              <Mapping SourceColumn="TENDANHMUC" DataSetColumn="TENDANHMUC" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -989,11 +997,32 @@ FROM     SANPHAM INNER JOIN
                 </xs:simpleType>
               </xs:element>
               <xs:element name="GIA" msprop:Generator_ColumnVarNameInTable="columnGIA" msprop:Generator_ColumnPropNameInRow="GIA" msprop:Generator_ColumnPropNameInTable="GIAColumn" msprop:Generator_UserColumnName="GIA" type="xs:double" minOccurs="0" />
-              <xs:element name="NGCAPNHAT" msprop:Generator_ColumnVarNameInTable="columnNGCAPNHAT" msprop:Generator_ColumnPropNameInRow="NGCAPNHAT" msprop:Generator_ColumnPropNameInTable="NGCAPNHATColumn" msprop:Generator_UserColumnName="NGCAPNHAT" type="xs:dateTime" minOccurs="0" />
               <xs:element name="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SOLUONG" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSOLUONG" msprop:Generator_ColumnPropNameInRow="SOLUONG" msprop:Generator_ColumnPropNameInTable="SOLUONGColumn" msprop:Generator_UserColumnName="SOLUONG" type="xs:int" minOccurs="0" />
+              <xs:element name="TENHANG" msprop:Generator_ColumnVarNameInTable="columnTENHANG" msprop:Generator_ColumnPropNameInRow="TENHANG" msprop:Generator_ColumnPropNameInTable="TENHANGColumn" msprop:Generator_UserColumnName="TENHANG" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TENLOAI" msprop:Generator_ColumnVarNameInTable="columnTENLOAI" msprop:Generator_ColumnPropNameInRow="TENLOAI" msprop:Generator_ColumnPropNameInTable="TENLOAIColumn" msprop:Generator_UserColumnName="TENLOAI" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TENDANHMUC" msprop:Generator_ColumnVarNameInTable="columnTENDANHMUC" msprop:Generator_ColumnPropNameInRow="TENDANHMUC" msprop:Generator_ColumnPropNameInTable="TENDANHMUCColumn" msprop:Generator_UserColumnName="TENDANHMUC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

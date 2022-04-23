@@ -19,6 +19,9 @@ namespace GUI
             InitializeComponent();
 
             dataGridView_TaiKhoan.DataSource = bus_qltk.getDSTK();
+
+            dataGridView_TaiKhoan.RowsDefaultCellStyle.BackColor = Color.FromArgb(226, 239, 217);
+            dataGridView_TaiKhoan.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
         }
 
         private void dataGridView_TaiKhoan_CellClick(object sender, DataGridViewCellEventArgs e)

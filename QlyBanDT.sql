@@ -167,6 +167,30 @@ GO
 ----------------------------------------------------------
 
 -- function
+
+CREATE FUNCTION fn_giaSP(@maSP VARCHAR(5))
+RETURNS FLOAT
+AS
+	BEGIN
+		DECLARE @donGia FLOAT -- đơn giá của sản phẩm x
+
+		SELECT TOP 1 @donGia = GIA
+		FROM DONGIA
+		WHERE ID_SP = @maSP
+		ORDER BY NGCAPNHAT DESC
+
+		RETURN @donGia
+	END
+GO
+
+CREATE FUNCTION fn_PhanQuyen(@idGR INT)
+RETURNS TABLE
+AS
+	RETURN SELECT ID, TENMH, COQUYEN
+	FROM MANHINH MH LEFT JOIN QL_PHANQUYEN PQ
+		ON MH.ID = PQ.ID_MH AND ID_GRTK = @idGR
+GO
+
 CREATE FUNCTION fn_hash(@text VARCHAR(50))
 RETURNS VARBINARY(MAX)
 AS
@@ -689,7 +713,11 @@ AS
         VALUES(DBO.fn_autoIDTTND(@ID), UPPER(@hoTen), @ngSinh, @GTINH, @email, @sdt, @dChi, @ID)
 
 		if (@cdGr = 'NV')
+		begin
 			INSERT NHANVIEN (ID_TK) select @ID
+
+			INSERT NHOMNGUOIDUNG SELECT 2, @ID -- thêm tài khoản vào group user
+		end
 
 		SELECT N'SUCCESS' 'Message'
 	END TRY
@@ -994,17 +1022,45 @@ GO
 -- Bảng MANHINH
 INSERT MANHINH VALUES('M1', N'Quản lý khách hàng')
 INSERT MANHINH VALUES('M2', N'Quản lý sản phẩm')
-INSERT MANHINH VALUES('M3', N'Quản lý tài khoản - nhóm')
-INSERT MANHINH VALUES('M4', N'Quản lý nhân viên')
+INSERT MANHINH VALUES('M3', N'Quản lý tài khoản')
 INSERT MANHINH VALUES('M5', N'Nhập hàng')
 INSERT MANHINH VALUES('M6', N'Bán hàng')
 INSERT MANHINH VALUES('M7', N'Xem thông tin cá nhân')
 INSERT MANHINH VALUES('M8', N'Kiểm tra tồn kho')
 INSERT MANHINH VALUES('M9', N'Phân quyền') 
+INSERT MANHINH VALUES('M10', N'Quản lý nhóm người dùng') 
+INSERT MANHINH VALUES('M11', N'Thêm người dùng vào nhóm')
 
 -- BẢNG TB_GRTK
 INSERT GRTK VALUES(N'ADMIN', '00')
-INSERT GRTK VALUES(N'NHÂN VIÊN', '01')
+INSERT GRTK VALUES(N'USER', '01')
+
+-- bảng phân quyền
+-- phân quyền cho admin
+INSERT QL_PHANQUYEN VALUES 
+(1, 'M1', 1),
+(1, 'M2', 1),
+(1, 'M3', 1),
+(1, 'M4', 1),
+(1, 'M5', 1),
+(1, 'M6', 1),
+(1, 'M7', 1),
+(1, 'M8', 1),
+(1, 'M9', 1),
+(1, 'M10', 1)
+
+-- phân quyền cho user (mặc định)
+INSERT QL_PHANQUYEN VALUES 
+(2, 'M1', 0),
+(2, 'M2', 0),
+(2, 'M3', 0),
+(2, 'M4', 0),
+(2, 'M5', 0),
+(2, 'M6', 0),
+(2, 'M7', 1),
+(2, 'M8', 0),
+(2, 'M9', 0),
+(2, 'M10', 0)
 
 -- BẢNG TAIKHOAN
 EXEC sp_AddAcc 'admin', 'admin@123456789', N'Admin', '2-5-2001', N'nam', 'admin@gmail.com', '000000000', '',''
@@ -1035,19 +1091,6 @@ EXEC sp_AddAcc_KH N'Từ Huệ Sơn', '2-5-2001', N'nam', 'tuhueson@gmail.com', 
 
 -- bảng nhóm người dùng
 INSERT NHOMNGUOIDUNG SELECT 1, DBO.fn_getIDTK('admin')
-
--- bảng phân quyền
--- phân quyền cho admin (mặc định)
-INSERT QL_PHANQUYEN VALUES 
-(1, 'M1', 1),
-(1, 'M2', 1),
-(1, 'M3', 1),
-(1, 'M4', 1),
-(1, 'M5', 1),
-(1, 'M6', 1),
-(1, 'M7', 1),
-(1, 'M8', 1),
-(1, 'M9', 0)
 
 -- BẢNG DANH MỤC
 INSERT DANHMUC SELECT N'Điện Thoại'

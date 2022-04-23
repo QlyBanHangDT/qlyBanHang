@@ -8,3 +8,4 @@ D:\github\project_net_ad\qlyBanHang\appWinform\DTO\bin\Debug\DTO.pdb
 D:\github\project_net_ad\qlyBanHang\appWinform\DTO\obj\Debug\DTO.dll
 D:\github\project_net_ad\qlyBanHang\appWinform\DTO\obj\Debug\DTO.pdb
 D:\github\project_net_ad\qlyBanHang\appWinform\DTO\obj\Debug\DTO.csprojResolveAssemblyReference.cache
+D:\github\project_net_ad\qlyBanHang\appWinform\DTO\bin\Debug\DTO.dll.config

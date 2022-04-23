@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLDT_LK" Class="QlyBanHangDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=MSI-PC;Initial Catalog=QLDT_LK;User ID=sa" SettingsObjectName="DAL.Properties.Settings" SettingsPropertyName="QLDT_LKConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=MSI-PC;Initial Catalog=QLDT_LK;User ID=sa" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="QLDT_LKConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CAUHINH" Member="CAUHINHs">
     <Type Name="CAUHINH">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -236,6 +236,14 @@
     <Parameter Name="pw" Type="System.String" DbType="VarChar(50)" />
     <ElementType Name="sp_ChangeAccResult">
       <Column Name="Message" Type="System.String" DbType="NVarChar(7) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_PhanQuyen" Method="fn_PhanQuyen" IsComposable="true">
+    <Parameter Name="idGR" Type="System.Int32" DbType="Int" />
+    <ElementType Name="fn_PhanQuyenResult">
+      <Column Name="ID" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="TENMH" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="COQUYEN" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

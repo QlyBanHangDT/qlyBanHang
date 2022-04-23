@@ -35,7 +35,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.cmenuTrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.chỉnhSửaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSua = new FontAwesome.Sharp.IconMenuItem();
             this.btnLuuTen = new FontAwesome.Sharp.IconButton();
             this.label6 = new System.Windows.Forms.Label();
             this.txtEmail = new GUI.textBoxCustom();
@@ -53,6 +53,12 @@
             this.txtTongBan = new GUI.textBoxCustom();
             this.label4 = new System.Windows.Forms.Label();
             this.drvLSMuaHang = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenSp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NGTao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NhanVien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.cmenuTrip.SuspendLayout();
@@ -133,16 +139,22 @@
             // cmenuTrip
             // 
             this.cmenuTrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.chỉnhSửaToolStripMenuItem});
+            this.btnSua});
             this.cmenuTrip.Name = "cmenuTrip";
-            this.cmenuTrip.Size = new System.Drawing.Size(143, 28);
+            this.cmenuTrip.Size = new System.Drawing.Size(152, 36);
             // 
-            // chỉnhSửaToolStripMenuItem
+            // btnSua
             // 
-            this.chỉnhSửaToolStripMenuItem.Name = "chỉnhSửaToolStripMenuItem";
-            this.chỉnhSửaToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
-            this.chỉnhSửaToolStripMenuItem.Text = "Chỉnh sửa";
-            this.chỉnhSửaToolStripMenuItem.Click += new System.EventHandler(this.chỉnhSửaToolStripMenuItem_Click);
+            this.btnSua.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnSua.IconChar = FontAwesome.Sharp.IconChar.Edit;
+            this.btnSua.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnSua.IconSize = 25;
+            this.btnSua.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Rotation = 0D;
+            this.btnSua.Size = new System.Drawing.Size(151, 32);
+            this.btnSua.Text = "Chỉnh sửa";
+            this.btnSua.Click += new System.EventHandler(this.chỉnhSửaToolStripMenuItem_Click);
             // 
             // btnLuuTen
             // 
@@ -404,6 +416,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.drvLSMuaHang.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.drvLSMuaHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.drvLSMuaHang.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.TenSp,
+            this.SoLuong,
+            this.Gia,
+            this.NGTao,
+            this.NhanVien});
             this.drvLSMuaHang.Location = new System.Drawing.Point(0, 315);
             this.drvLSMuaHang.Name = "drvLSMuaHang";
             this.drvLSMuaHang.ReadOnly = true;
@@ -411,6 +430,48 @@
             this.drvLSMuaHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.drvLSMuaHang.Size = new System.Drawing.Size(793, 365);
             this.drvLSMuaHang.TabIndex = 4;
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // TenSp
+            // 
+            this.TenSp.DataPropertyName = "TenSP";
+            this.TenSp.HeaderText = "Sản phẩm";
+            this.TenSp.Name = "TenSp";
+            this.TenSp.ReadOnly = true;
+            // 
+            // SoLuong
+            // 
+            this.SoLuong.DataPropertyName = "SoLuong";
+            this.SoLuong.HeaderText = "Số lượng";
+            this.SoLuong.Name = "SoLuong";
+            this.SoLuong.ReadOnly = true;
+            // 
+            // Gia
+            // 
+            this.Gia.DataPropertyName = "Gia";
+            this.Gia.HeaderText = "Giá";
+            this.Gia.Name = "Gia";
+            this.Gia.ReadOnly = true;
+            // 
+            // NGTao
+            // 
+            this.NGTao.DataPropertyName = "NGTAO";
+            this.NGTao.HeaderText = "Ngày tạo";
+            this.NGTao.Name = "NGTao";
+            this.NGTao.ReadOnly = true;
+            // 
+            // NhanVien
+            // 
+            this.NhanVien.DataPropertyName = "NhanVien";
+            this.NhanVien.HeaderText = "Nhân viên";
+            this.NhanVien.Name = "NhanVien";
+            this.NhanVien.ReadOnly = true;
             // 
             // ThongTinKH
             // 
@@ -447,7 +508,6 @@
         private textBoxCustom txtTongBan;
         private FontAwesome.Sharp.IconButton btnLuuTen;
         private System.Windows.Forms.ContextMenuStrip cmenuTrip;
-        private System.Windows.Forms.ToolStripMenuItem chỉnhSửaToolStripMenuItem;
         private System.Windows.Forms.DataGridView drvLSMuaHang;
         private textBoxCustom txtID;
         private System.Windows.Forms.Label label5;
@@ -457,5 +517,12 @@
         private textBoxCustom txtGioiTinh;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private FontAwesome.Sharp.IconMenuItem btnSua;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenSp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NGTao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NhanVien;
     }
 }

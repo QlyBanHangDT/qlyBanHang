@@ -28,7 +28,7 @@ namespace DTO
             set { ten = value; }
         }
 
-        public int Id
+        public int IdGr
         {
             get { return _id; }
             set { _id = value; }

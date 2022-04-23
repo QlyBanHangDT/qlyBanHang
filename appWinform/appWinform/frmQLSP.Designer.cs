@@ -33,9 +33,10 @@
             // 
             // frmQL_SP1
             // 
-            this.frmQL_SP1.Location = new System.Drawing.Point(-9, -3);
+            this.frmQL_SP1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frmQL_SP1.Location = new System.Drawing.Point(0, 0);
             this.frmQL_SP1.Name = "frmQL_SP1";
-            this.frmQL_SP1.Size = new System.Drawing.Size(822, 457);
+            this.frmQL_SP1.Size = new System.Drawing.Size(813, 464);
             this.frmQL_SP1.TabIndex = 0;
             // 
             // frmQLSP

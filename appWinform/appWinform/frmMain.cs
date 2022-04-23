@@ -30,6 +30,8 @@ namespace appWinform
                 else if (string.Equals(pScreenName, mnu.Tag))
                 {
                     mnu.Enabled = pEnable;
+                    if (pEnable)
+                        mnu.Tag = pEnable; // gán màn hình đã được chọn
                     mnu.Visible = pEnable; // ẩn màn hình chức năng
                 }
             }
@@ -55,7 +57,7 @@ namespace appWinform
 
             foreach (var item in lstND)
             {
-                var dsQuyen = bus_qltk.lstManHinh(item.Id); // lấy các màn hình chức năng đã được phân quyền
+                var dsQuyen = bus_qltk.lstManHinh(item.IdGr); // lấy các màn hình chức năng đã được phân quyền
                 foreach (var mh in dsQuyen)
                 {
                     FindMenuPhanQuyen(this.menuStrip1.Items, mh.IdMH, mh.CoQuyen);
@@ -88,6 +90,40 @@ namespace appWinform
         private void quảnLýKháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmKhachHang frm = new frmKhachHang();
+            frm.MdiParent = this;
+
+            frm.Show();
+        }
+
+        private void quảnLýNhómNgườiDùngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmNhomNguoiDung frm = new frmNhomNguoiDung();
+            frm.MdiParent = this;
+
+            frm.Show(); 
+        }
+        
+        private void quảnLýSảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void xemThôngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void quảnLýNhómNgườiDùngToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmThemNguoiDung frm = new frmThemNguoiDung();
+            frm.MdiParent = this;
+
+            frm.Show();
+        }
+
+        private void phânQuyềnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPhanQuyen frm = new frmPhanQuyen();
             frm.MdiParent = this;
 
             frm.Show();

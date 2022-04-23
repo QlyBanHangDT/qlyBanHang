@@ -28,32 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.frmQL_TK2 = new GUI.frmQL_TK();
-            this.frmQL_TK3 = new GUI.frmQL_TK();
+            this.frmQL_TK = new GUI.frmQL_TK();
             this.SuspendLayout();
             // 
-            // frmQL_TK2
+            // frmQL_TK
             // 
-            this.frmQL_TK2.BackColor = System.Drawing.Color.White;
-            this.frmQL_TK2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.frmQL_TK2.Location = new System.Drawing.Point(0, 0);
-            this.frmQL_TK2.Name = "frmQL_TK2";
-            this.frmQL_TK2.Size = new System.Drawing.Size(868, 486);
-            this.frmQL_TK2.TabIndex = 0;
-            // 
-            // frmQL_TK3
-            // 
-            this.frmQL_TK3.BackColor = System.Drawing.Color.White;
-            this.frmQL_TK3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.frmQL_TK3.Location = new System.Drawing.Point(0, 0);
-            this.frmQL_TK3.Name = "frmQL_TK3";
-            this.frmQL_TK3.Size = new System.Drawing.Size(1043, 544);
-            this.frmQL_TK3.TabIndex = 0;
+            this.frmQL_TK.BackColor = System.Drawing.Color.White;
+            this.frmQL_TK.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frmQL_TK.Location = new System.Drawing.Point(0, 0);
+            this.frmQL_TK.Name = "frmQL_TK";
+            this.frmQL_TK.Size = new System.Drawing.Size(894, 483);
+            this.frmQL_TK.TabIndex = 0;
             // 
             // frmTaiKhoan
             // 
-            this.ClientSize = new System.Drawing.Size(1043, 544);
-            this.Controls.Add(this.frmQL_TK3);
+            this.ClientSize = new System.Drawing.Size(894, 483);
+            this.Controls.Add(this.frmQL_TK);
             this.Name = "frmTaiKhoan";
             this.ResumeLayout(false);
 
@@ -61,8 +51,6 @@
 
         #endregion
 
-        private GUI.frmQL_TK frmQL_TK1;
-        private GUI.frmQL_TK frmQL_TK2;
-        private GUI.frmQL_TK frmQL_TK3;
+        private GUI.frmQL_TK frmQL_TK;
     }
 }
