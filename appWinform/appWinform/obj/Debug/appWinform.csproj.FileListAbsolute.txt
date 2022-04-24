@@ -36,7 +36,6 @@ C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\bin\Debug\DTO.pdb
 C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmKhachHang.resources
 C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmMain.resources
 D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmKhachHang.resources
-C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmQLTaiKhoan.resources
 C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmQLSP.resources
 D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmQLSP.resources
 D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmThongTinKhachHang.resources
@@ -47,3 +46,12 @@ D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.f
 D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmThongTinNhanVien.resources
 D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmThongTinNhom.resources
 D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmPhanQuyen.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmNhomNguoiDung.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmPhanQuyen.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmThemNguoiDung.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmTaiKhoan.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmThongTinKhachHang.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmThongTinNhanVien.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmThongTinNhom.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmManHinh.resources

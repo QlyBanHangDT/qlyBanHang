@@ -7,7 +7,6 @@ C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.csproj.GenerateResou
 C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.dll
 C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.pdb
 C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.csprojResolveAssemblyReference.cache
-C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\QlyBanDT.RJControls.textBoxCustom.resources
 C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\bin\Debug\BUS.dll
 C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\bin\Debug\DTO.dll
 C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\bin\Debug\DAL.dll
@@ -40,3 +39,6 @@ D:\github\project_net_ad\qlyBanHang\appWinform\GUI\obj\Debug\GUI.ThongTinKH.reso
 D:\github\project_net_ad\qlyBanHang\appWinform\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
 D:\github\project_net_ad\qlyBanHang\appWinform\GUI\obj\Debug\GUI.dll
 D:\github\project_net_ad\qlyBanHang\appWinform\GUI\obj\Debug\GUI.pdb
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.textBoxCustom.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.ThongTinKH.resources
