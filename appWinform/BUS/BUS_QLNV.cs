@@ -15,5 +15,10 @@ namespace BUS
         {
             return dal_nv.getNV(username);
         }
+
+        public bool capNhatNV(THONGTINTAIKHOAN nv, string username)
+        {
+            return dal_nv.capNhatThongTinNV(nv, username);
+        }
     }
 }

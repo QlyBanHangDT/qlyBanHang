@@ -14,5 +14,25 @@ namespace BUS
         {
             return dal_mh.getMH();
         }
+
+        public bool themManHinh(string pMaMH, string pTenMH)
+        {
+           return dal_mh.themMH(pMaMH,pTenMH);
+        }
+
+        public bool xoaManHinh(string pMaMH)
+        {
+            return dal_mh.xoaMH(pMaMH);
+        }
+
+        public bool suaManHinh(string pMaMH, string pTenMH)
+        {
+            return dal_mh.suaMH(pMaMH, pTenMH);
+        }
+
+        public bool kt_KhoaManHinh(string pMaMH)
+        {
+            return dal_mh.kt_KhoaMH(pMaMH);
+        }
     }
 }

@@ -28,57 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtIDMH = new GUI.textBoxCustom();
-            this.txtTenMH = new GUI.textBoxCustom();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvManHinh = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnLuu = new FontAwesome.Sharp.IconButton();
+            this.btnThem = new FontAwesome.Sharp.IconButton();
+            this.btnXoa = new FontAwesome.Sharp.IconButton();
+            this.btnSua = new FontAwesome.Sharp.IconButton();
+            this.txtTenMH = new GUI.textBoxCustom();
+            this.txtIDMH = new GUI.textBoxCustom();
             ((System.ComponentModel.ISupportInitialize)(this.dgvManHinh)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtIDMH
-            // 
-            this.txtIDMH.BackColor = System.Drawing.SystemColors.Control;
-            this.txtIDMH.BorderColor = System.Drawing.Color.Gray;
-            this.txtIDMH.BorderFocusColor = System.Drawing.Color.Blue;
-            this.txtIDMH.BorderSize = 2;
-            this.txtIDMH.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIDMH.ForeColor = System.Drawing.Color.Black;
-            this.txtIDMH.Location = new System.Drawing.Point(126, 363);
-            this.txtIDMH.Margin = new System.Windows.Forms.Padding(4);
-            this.txtIDMH.Multiline = false;
-            this.txtIDMH.Name = "txtIDMH";
-            this.txtIDMH.Padding = new System.Windows.Forms.Padding(7);
-            this.txtIDMH.PasswordChar = false;
-            this.txtIDMH.Size = new System.Drawing.Size(248, 35);
-            this.txtIDMH.TabIndex = 7;
-            this.txtIDMH.TabStop = false;
-            this.txtIDMH.Texts = "";
-            this.txtIDMH.UnderlinedStyle = true;
-            // 
-            // txtTenMH
-            // 
-            this.txtTenMH.BackColor = System.Drawing.SystemColors.Control;
-            this.txtTenMH.BorderColor = System.Drawing.Color.Gray;
-            this.txtTenMH.BorderFocusColor = System.Drawing.Color.Blue;
-            this.txtTenMH.BorderSize = 2;
-            this.txtTenMH.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenMH.ForeColor = System.Drawing.Color.Black;
-            this.txtTenMH.Location = new System.Drawing.Point(126, 406);
-            this.txtTenMH.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTenMH.Multiline = false;
-            this.txtTenMH.Name = "txtTenMH";
-            this.txtTenMH.Padding = new System.Windows.Forms.Padding(7);
-            this.txtTenMH.PasswordChar = false;
-            this.txtTenMH.Size = new System.Drawing.Size(248, 35);
-            this.txtTenMH.TabIndex = 8;
-            this.txtTenMH.TabStop = false;
-            this.txtTenMH.Texts = "";
-            this.txtTenMH.UnderlinedStyle = true;
             // 
             // label1
             // 
@@ -135,31 +97,131 @@
             this.Column2.Name = "Column2";
             this.Column2.Width = 300;
             // 
-            // btnLuu
+            // btnThem
             // 
-            this.btnLuu.BackColor = System.Drawing.Color.LightGreen;
-            this.btnLuu.FlatAppearance.BorderSize = 0;
-            this.btnLuu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLuu.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnLuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLuu.IconChar = FontAwesome.Sharp.IconChar.Save;
-            this.btnLuu.IconColor = System.Drawing.Color.Black;
-            this.btnLuu.IconSize = 26;
-            this.btnLuu.Location = new System.Drawing.Point(393, 460);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Rotation = 0D;
-            this.btnLuu.Size = new System.Drawing.Size(109, 39);
-            this.btnLuu.TabIndex = 19;
-            this.btnLuu.Text = "Lưu";
-            this.btnLuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLuu.UseVisualStyleBackColor = false;
+            this.btnThem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnThem.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnThem.FlatAppearance.BorderSize = 0;
+            this.btnThem.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnThem.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnThem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThem.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.ForeColor = System.Drawing.Color.White;
+            this.btnThem.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
+            this.btnThem.IconColor = System.Drawing.Color.White;
+            this.btnThem.IconSize = 25;
+            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnThem.Location = new System.Drawing.Point(183, 460);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Rotation = 0D;
+            this.btnThem.Size = new System.Drawing.Size(103, 39);
+            this.btnThem.TabIndex = 13;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnThem.UseVisualStyleBackColor = false;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnXoa.Enabled = false;
+            this.btnXoa.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnXoa.FlatAppearance.BorderSize = 0;
+            this.btnXoa.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnXoa.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnXoa.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.ForeColor = System.Drawing.Color.White;
+            this.btnXoa.IconChar = FontAwesome.Sharp.IconChar.MinusCircle;
+            this.btnXoa.IconColor = System.Drawing.Color.White;
+            this.btnXoa.IconSize = 25;
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnXoa.Location = new System.Drawing.Point(292, 460);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Rotation = 0D;
+            this.btnXoa.Size = new System.Drawing.Size(103, 39);
+            this.btnXoa.TabIndex = 14;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnSua
+            // 
+            this.btnSua.AutoSize = true;
+            this.btnSua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnSua.Enabled = false;
+            this.btnSua.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnSua.FlatAppearance.BorderSize = 0;
+            this.btnSua.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btnSua.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.btnSua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSua.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSua.ForeColor = System.Drawing.Color.White;
+            this.btnSua.IconChar = FontAwesome.Sharp.IconChar.Edit;
+            this.btnSua.IconColor = System.Drawing.Color.White;
+            this.btnSua.IconSize = 25;
+            this.btnSua.Location = new System.Drawing.Point(401, 460);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Rotation = 0D;
+            this.btnSua.Size = new System.Drawing.Size(103, 39);
+            this.btnSua.TabIndex = 15;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSua.UseVisualStyleBackColor = false;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // txtTenMH
+            // 
+            this.txtTenMH.BackColor = System.Drawing.SystemColors.Control;
+            this.txtTenMH.BorderColor = System.Drawing.Color.Gray;
+            this.txtTenMH.BorderFocusColor = System.Drawing.Color.Blue;
+            this.txtTenMH.BorderSize = 2;
+            this.txtTenMH.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenMH.ForeColor = System.Drawing.Color.Black;
+            this.txtTenMH.Location = new System.Drawing.Point(126, 406);
+            this.txtTenMH.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTenMH.Multiline = false;
+            this.txtTenMH.Name = "txtTenMH";
+            this.txtTenMH.Padding = new System.Windows.Forms.Padding(7);
+            this.txtTenMH.PasswordChar = false;
+            this.txtTenMH.Size = new System.Drawing.Size(248, 35);
+            this.txtTenMH.TabIndex = 8;
+            this.txtTenMH.TabStop = false;
+            this.txtTenMH.Texts = "";
+            this.txtTenMH.UnderlinedStyle = true;
+            // 
+            // txtIDMH
+            // 
+            this.txtIDMH.BackColor = System.Drawing.SystemColors.Control;
+            this.txtIDMH.BorderColor = System.Drawing.Color.Gray;
+            this.txtIDMH.BorderFocusColor = System.Drawing.Color.Blue;
+            this.txtIDMH.BorderSize = 2;
+            this.txtIDMH.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIDMH.ForeColor = System.Drawing.Color.Black;
+            this.txtIDMH.Location = new System.Drawing.Point(126, 363);
+            this.txtIDMH.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIDMH.Multiline = false;
+            this.txtIDMH.Name = "txtIDMH";
+            this.txtIDMH.Padding = new System.Windows.Forms.Padding(7);
+            this.txtIDMH.PasswordChar = false;
+            this.txtIDMH.Size = new System.Drawing.Size(248, 35);
+            this.txtIDMH.TabIndex = 7;
+            this.txtIDMH.TabStop = false;
+            this.txtIDMH.Texts = "";
+            this.txtIDMH.UnderlinedStyle = true;
             // 
             // frmManHinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(515, 511);
-            this.Controls.Add(this.btnLuu);
+            this.Controls.Add(this.btnThem);
+            this.Controls.Add(this.btnXoa);
+            this.Controls.Add(this.btnSua);
             this.Controls.Add(this.dgvManHinh);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -185,6 +247,8 @@
         private System.Windows.Forms.DataGridView dgvManHinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private FontAwesome.Sharp.IconButton btnLuu;
+        private FontAwesome.Sharp.IconButton btnThem;
+        private FontAwesome.Sharp.IconButton btnXoa;
+        private FontAwesome.Sharp.IconButton btnSua;
     }
 }
