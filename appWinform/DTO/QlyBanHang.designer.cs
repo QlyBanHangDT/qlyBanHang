@@ -315,6 +315,26 @@ namespace DTO
 		{
 			return this.CreateMethodCallQuery<fn_PhanQuyenResult>(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), idGR);
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_AddCauHinh")]
+		public ISingleResult<sp_AddCauHinhResult> sp_AddCauHinh([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string tenSP, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(30)")] string tenCH, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(100)")] string noiDungCH)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), tenSP, tenCH, noiDungCH);
+			return ((ISingleResult<sp_AddCauHinhResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_AddSP")]
+		public ISingleResult<sp_AddSPResult> sp_AddSP([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string tenSP, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(20)")] string tenHang, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Float")] System.Nullable<double> gia, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(30)")] string nxs, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string urlImage, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string tenLSP)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), tenSP, tenHang, gia, nxs, urlImage, tenLSP);
+			return ((ISingleResult<sp_AddSPResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.fn_autoIDSP", IsComposable=true)]
+		public string fn_autoIDSP()
+		{
+			return ((string)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod()))).ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CAUHINH")]
@@ -3897,7 +3917,7 @@ namespace DTO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PW", DbType="VarBinary(50)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PW", DbType="VarBinary(50)", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary PW
 		{
 			get
@@ -4508,6 +4528,148 @@ namespace DTO
 				if ((this._COQUYEN != value))
 				{
 					this._COQUYEN = value;
+				}
+			}
+		}
+	}
+	
+	public partial class sp_AddCauHinhResult
+	{
+		
+		private System.Nullable<int> _ErrorNumber;
+		
+		private System.Nullable<int> _ErrorSeverity;
+		
+		private System.Nullable<int> _ErrorState;
+		
+		private string _ErrorProcedure;
+		
+		private System.Nullable<int> _ErrorLine;
+		
+		private string _Message;
+		
+		public sp_AddCauHinhResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorNumber", DbType="Int")]
+		public System.Nullable<int> ErrorNumber
+		{
+			get
+			{
+				return this._ErrorNumber;
+			}
+			set
+			{
+				if ((this._ErrorNumber != value))
+				{
+					this._ErrorNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorSeverity", DbType="Int")]
+		public System.Nullable<int> ErrorSeverity
+		{
+			get
+			{
+				return this._ErrorSeverity;
+			}
+			set
+			{
+				if ((this._ErrorSeverity != value))
+				{
+					this._ErrorSeverity = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorState", DbType="Int")]
+		public System.Nullable<int> ErrorState
+		{
+			get
+			{
+				return this._ErrorState;
+			}
+			set
+			{
+				if ((this._ErrorState != value))
+				{
+					this._ErrorState = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorProcedure", DbType="NVarChar(128)")]
+		public string ErrorProcedure
+		{
+			get
+			{
+				return this._ErrorProcedure;
+			}
+			set
+			{
+				if ((this._ErrorProcedure != value))
+				{
+					this._ErrorProcedure = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorLine", DbType="Int")]
+		public System.Nullable<int> ErrorLine
+		{
+			get
+			{
+				return this._ErrorLine;
+			}
+			set
+			{
+				if ((this._ErrorLine != value))
+				{
+					this._ErrorLine = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(4000)")]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
+				}
+			}
+		}
+	}
+	
+	public partial class sp_AddSPResult
+	{
+		
+		private string _Message;
+		
+		public sp_AddSPResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(7) NOT NULL", CanBeNull=false)]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
 				}
 			}
 		}

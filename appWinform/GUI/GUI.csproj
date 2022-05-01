@@ -83,6 +83,18 @@
     <Compile Include="frmQL_TK.Designer.cs">
       <DependentUpon>frmQL_TK.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCapNhatSP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCapNhatSP.Designer.cs">
+      <DependentUpon>frmCapNhatSP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmThemSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThemSanPham.Designer.cs">
+      <DependentUpon>frmThemSanPham.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -120,6 +132,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmQL_TK.resx">
       <DependentUpon>frmQL_TK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCapNhatSP.resx">
+      <DependentUpon>frmCapNhatSP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThemSanPham.resx">
+      <DependentUpon>frmThemSanPham.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

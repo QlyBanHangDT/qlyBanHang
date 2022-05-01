@@ -105,12 +105,18 @@ namespace appWinform
         
         private void quảnLýSảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            frmQLSP frm = new frmQLSP();
+            frm.MdiParent = this;
 
+            frm.Show(); 
         }
 
         private void xemThôngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            frmThongTinNhanVien frm = new frmThongTinNhanVien();
+            frm.MdiParent = this;
 
+            frm.Show();
         }
 
         private void quảnLýNhómNgườiDùngToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -127,6 +133,15 @@ namespace appWinform
             frm.MdiParent = this;
 
             frm.Show();
+        }
+
+        private void quảnLýMànHìnhToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmManHinh frm = new frmManHinh();
+            frm.MdiParent = this;
+
+            frm.Show();
+
         }
     }
 }

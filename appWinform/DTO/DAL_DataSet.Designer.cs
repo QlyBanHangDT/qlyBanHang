@@ -10598,12 +10598,12 @@ SELECT ID, ID_SP, GIA, NGCAPNHAT FROM DONGIA WHERE (ID = @ID) AND (ID_SP = @ID_S
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT SANPHAM.ID, SANPHAM.TENSP, COUNT(IMEICODE.ID) AS SOLUONG, dbo.fn_giaSP(SANPHAM.ID) AS GIA, HANG.TENHANG, LOAISP.TENLOAI, DANHMUC.TENDANHMUC
-FROM     SANPHAM INNER JOIN
-                  IMEICODE ON SANPHAM.ID = IMEICODE.ID_SP INNER JOIN
-                  HANG ON SANPHAM.ID_HANG = HANG.ID INNER JOIN
-                  LOAISP ON SANPHAM.ID_LOAI = LOAISP.ID INNER JOIN
+FROM     SANPHAM LEFT JOIN
+                  IMEICODE ON SANPHAM.ID = IMEICODE.ID_SP LEFT JOIN
+                  HANG ON SANPHAM.ID_HANG = HANG.ID LEFT JOIN
+                  LOAISP ON SANPHAM.ID_LOAI = LOAISP.ID LEFT JOIN
                   DANHMUC ON LOAISP.IDDM = DANHMUC.ID
-WHERE  (IMEICODE.TRANGTHAI = 1)
+WHERE IMEICODE.TRANGTHAI=1 OR IMEICODE.TRANGTHAI IS NULL
 GROUP BY SANPHAM.ID, SANPHAM.TENSP, HANG.TENHANG, LOAISP.TENLOAI, DANHMUC.TENDANHMUC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }

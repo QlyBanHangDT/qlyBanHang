@@ -248,7 +248,7 @@
         <classShapeMoniker Id="84cee189-573e-420e-9fef-d1a93b44d0f5" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.5 : 12.625); (4.5 : 12.375); (11.2916666666667 : 12.375 : JumpStart); (11.4583333333333 : 12.375 : JumpEnd); (11.5 : 12.375); (11.5 : 13.0112939453125); (13.875 : 13.0112939453125); (13.875 : 13.0060717428385); (14.0416666666667 : 13.0060717428385 : JumpStart); (14.2083333333333 : 13.0060717428385 : JumpEnd); (14.5 : 13.0060717428385)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(4.5 : 12.625); (4.5 : 12.375); (11.5 : 12.375); (11.5 : 13.0112939453125); (13.875 : 13.0112939453125); (13.875 : 13.0060717428385); (14.0416666666667 : 13.0060717428385 : JumpStart); (14.2083333333333 : 13.0060717428385 : JumpEnd); (14.5 : 13.0060717428385)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/QlyBanHangDataContext/TAIKHOAN/TAIKHOAN_NHOMNGUOIDUNG" />
       <nodes>
         <classShapeMoniker Id="91330f9c-41a3-4c70-b51e-5c79a90e3d74" />

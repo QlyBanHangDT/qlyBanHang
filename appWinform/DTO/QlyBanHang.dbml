@@ -246,4 +246,31 @@
       <Column Name="COQUYEN" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.sp_AddCauHinh" Method="sp_AddCauHinh">
+    <Parameter Name="tenSP" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="tenCH" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="noiDungCH" Type="System.String" DbType="NVarChar(100)" />
+    <ElementType Name="sp_AddCauHinhResult">
+      <Column Name="ErrorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorSeverity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorState" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorProcedure" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="ErrorLine" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_AddSP" Method="sp_AddSP">
+    <Parameter Name="tenSP" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="tenHang" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="gia" Type="System.Double" DbType="Float" />
+    <Parameter Name="nxs" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="urlImage" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="tenLSP" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="sp_AddSPResult">
+      <Column Name="Message" Type="System.String" DbType="NVarChar(7) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.fn_autoIDSP" Method="fn_autoIDSP" IsComposable="true">
+    <Return Type="System.String" />
+  </Function>
 </Database>

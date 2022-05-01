@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.frmQL_TK = new GUI.frmQL_TK();
+            this.frmQL_TK1 = new GUI.frmQL_TK();
             this.SuspendLayout();
             // 
-            // frmQL_TK
+            // frmQL_TK1
             // 
-            this.frmQL_TK.BackColor = System.Drawing.Color.White;
-            this.frmQL_TK.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.frmQL_TK.Location = new System.Drawing.Point(0, 0);
-            this.frmQL_TK.Name = "frmQL_TK";
-            this.frmQL_TK.Size = new System.Drawing.Size(894, 483);
-            this.frmQL_TK.TabIndex = 0;
+            this.frmQL_TK1.BackColor = System.Drawing.Color.White;
+            this.frmQL_TK1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.frmQL_TK1.Location = new System.Drawing.Point(0, 0);
+            this.frmQL_TK1.Name = "frmQL_TK1";
+            this.frmQL_TK1.Size = new System.Drawing.Size(822, 469);
+            this.frmQL_TK1.TabIndex = 0;
             // 
             // frmTaiKhoan
             // 
-            this.ClientSize = new System.Drawing.Size(894, 483);
-            this.Controls.Add(this.frmQL_TK);
+            this.ClientSize = new System.Drawing.Size(822, 469);
+            this.Controls.Add(this.frmQL_TK1);
             this.Name = "frmTaiKhoan";
             this.ResumeLayout(false);
 
@@ -52,5 +52,6 @@
         #endregion
 
         private GUI.frmQL_TK frmQL_TK;
+        private GUI.frmQL_TK frmQL_TK1;
     }
 }

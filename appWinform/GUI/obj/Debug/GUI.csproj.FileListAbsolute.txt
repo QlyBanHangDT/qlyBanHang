@@ -42,3 +42,5 @@ D:\github\project_net_ad\qlyBanHang\appWinform\GUI\obj\Debug\GUI.pdb
 C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\bin\Debug\FontAwesome.Sharp.dll
 C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.textBoxCustom.resources
 C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.ThongTinKH.resources
+D:\github\project_net_ad\qlyBanHang\appWinform\GUI\obj\Debug\GUI.frmCapNhatSP.resources
+D:\github\project_net_ad\qlyBanHang\appWinform\GUI\obj\Debug\GUI.frmThemSanPham.resources

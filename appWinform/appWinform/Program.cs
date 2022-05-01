@@ -23,7 +23,7 @@ namespace appWinform
             }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmThongTinNhanVien());
+            Application.Run(new frmLogin());
         }
     }
 }

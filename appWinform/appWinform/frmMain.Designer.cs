@@ -43,6 +43,7 @@
             this.quảnLýNhómNgườiDùngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quảnLýNhómNgườiDùngToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.thoátToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quảnLýMànHìnhToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,7 +116,8 @@
             this.toolStripSeparator1,
             this.quảnLýNhânViênToolStripMenuItem1,
             this.quảnLýNhómNgườiDùngToolStripMenuItem,
-            this.quảnLýNhómNgườiDùngToolStripMenuItem1});
+            this.quảnLýNhómNgườiDùngToolStripMenuItem1,
+            this.quảnLýMànHìnhToolStripMenuItem});
             this.quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
             this.quảnLýToolStripMenuItem.Size = new System.Drawing.Size(71, 24);
             this.quảnLýToolStripMenuItem.Text = "Quản lý";
@@ -173,6 +175,14 @@
             this.thoátToolStripMenuItem.Text = "Đăng xuất";
             this.thoátToolStripMenuItem.Click += new System.EventHandler(this.thoátToolStripMenuItem_Click);
             // 
+            // quảnLýMànHìnhToolStripMenuItem
+            // 
+            this.quảnLýMànHìnhToolStripMenuItem.Name = "quảnLýMànHìnhToolStripMenuItem";
+            this.quảnLýMànHìnhToolStripMenuItem.Size = new System.Drawing.Size(266, 24);
+            this.quảnLýMànHìnhToolStripMenuItem.Tag = "MMH";
+            this.quảnLýMànHìnhToolStripMenuItem.Text = "Quản lý màn hình";
+            this.quảnLýMànHìnhToolStripMenuItem.Click += new System.EventHandler(this.quảnLýMànHìnhToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -210,5 +220,6 @@
         private System.Windows.Forms.ToolStripMenuItem quảnLýNhómNgườiDùngToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem quảnLýNhómNgườiDùngToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem quảnLýMànHìnhToolStripMenuItem;
     }
 }

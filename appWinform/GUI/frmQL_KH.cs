@@ -31,7 +31,7 @@ namespace GUI
                 c.DefaultCellStyle.Font = new Font("Arial", 14.5f, GraphicsUnit.Pixel);
             }
 
-            dgrvKH.Columns["clTDG"].DefaultCellStyle.Format = "#,## VNĐ";
+            dgrvKH.Columns["clTDG"].DefaultCellStyle.Format = "#,##0";
             dgrvKH.Columns["clTDG"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             dgrvKH.DefaultCellStyle.NullValue = "no entry";
