@@ -49,6 +49,7 @@
     <Compile Include="BUS_QLSP.cs" />
     <Compile Include="BUS_QLTK.cs" />
     <Compile Include="BUS_QLNND.cs" />
+    <Compile Include="BUS_TTSP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

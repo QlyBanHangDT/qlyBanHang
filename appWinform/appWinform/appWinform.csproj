@@ -123,6 +123,12 @@
     <Compile Include="frmThongTinNhom.Designer.cs">
       <DependentUpon>frmThongTinNhom.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmThongTinSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThongTinSanPham.Designer.cs">
+      <DependentUpon>frmThongTinSanPham.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmKhachHang.resx">
@@ -160,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmThongTinNhom.resx">
       <DependentUpon>frmThongTinNhom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThongTinSanPham.resx">
+      <DependentUpon>frmThongTinSanPham.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

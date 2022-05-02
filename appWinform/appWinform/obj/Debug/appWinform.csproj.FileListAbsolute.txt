@@ -56,3 +56,4 @@ C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmTho
 C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmThongTinNhom.resources
 C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmManHinh.resources
 D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmManHinh.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmThongTinSanPham.resources

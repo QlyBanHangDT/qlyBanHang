@@ -44,3 +44,5 @@ C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.textBoxCustom.resour
 C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.ThongTinKH.resources
 D:\github\project_net_ad\qlyBanHang\appWinform\GUI\obj\Debug\GUI.frmCapNhatSP.resources
 D:\github\project_net_ad\qlyBanHang\appWinform\GUI\obj\Debug\GUI.frmThemSanPham.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.frmCapNhatSP.resources
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\obj\Debug\GUI.frmThemSanPham.resources
