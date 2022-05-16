@@ -32,6 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="FontAwesome.Sharp">
       <HintPath>..\packages\FontAwesome.Sharp.5.8.3\lib\net40\FontAwesome.Sharp.dll</HintPath>
     </Reference>
@@ -39,6 +44,8 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,8 +56,17 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
+    <Reference Include="Zen.Barcode.Core">
+      <HintPath>..\packages\Zen.Barcode.Core.Code128.3.1.0\lib\net45\Zen.Barcode.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmBanHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBanHang.Designer.cs">
+      <DependentUpon>frmBanHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +91,12 @@
     <Compile Include="frmManHinh.Designer.cs">
       <DependentUpon>frmManHinh.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNhapHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNhapHang.Designer.cs">
+      <DependentUpon>frmNhapHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmNhomNguoiDung.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +108,18 @@
     </Compile>
     <Compile Include="frmPhanQuyen.Designer.cs">
       <DependentUpon>frmPhanQuyen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportBill.Designer.cs">
+      <DependentUpon>frmReportBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmThemIMEI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmThemIMEI.Designer.cs">
+      <DependentUpon>frmThemIMEI.cs</DependentUpon>
     </Compile>
     <Compile Include="frmThemNguoiDung.cs">
       <SubType>Form</SubType>
@@ -131,6 +165,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThongTinKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongTinKhachHang.Designer.cs">
+      <DependentUpon>ThongTinKhachHang.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmBanHang.resx">
+      <DependentUpon>frmBanHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmKhachHang.resx">
       <DependentUpon>frmKhachHang.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,11 +186,20 @@
     <EmbeddedResource Include="frmManHinh.resx">
       <DependentUpon>frmManHinh.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmNhapHang.resx">
+      <DependentUpon>frmNhapHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmNhomNguoiDung.resx">
       <DependentUpon>frmNhomNguoiDung.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPhanQuyen.resx">
       <DependentUpon>frmPhanQuyen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportBill.resx">
+      <DependentUpon>frmReportBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThemIMEI.resx">
+      <DependentUpon>frmThemIMEI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmThemNguoiDung.resx">
       <DependentUpon>frmThemNguoiDung.cs</DependentUpon>
@@ -179,6 +231,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ThongTinKhachHang.resx">
+      <DependentUpon>ThongTinKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -16,5 +16,12 @@ namespace appWinform
         {
             InitializeComponent();
         }
+
+        private void frmQL_SP1_SelectedRow(object sender, EventArgs e)
+        {
+            frmThongTinSanPham frm = new frmThongTinSanPham();
+            frm.masp = sender.ToString();
+            frm.ShowDialog();
+        }
     }
 }

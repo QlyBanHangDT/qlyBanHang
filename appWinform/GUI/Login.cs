@@ -87,5 +87,11 @@ namespace GUI
             if (this.ButtonLogin != null)
                 this.ButtonLogin(sender, e);
         }
+
+        private void txtTDN_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == KPress.ENTER_KEY)
+                btnDangNhap.PerformClick();
+        }
     }
 }

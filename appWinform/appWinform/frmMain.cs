@@ -25,7 +25,7 @@ namespace appWinform
                 if (mnu is ToolStripMenuItem && (mnu as ToolStripMenuItem).DropDownItems.Count > 0)
                 {
                     FindMenuPhanQuyen((mnu as ToolStripMenuItem).DropDownItems, pScreenName, pEnable);
-                    mnu.Enabled = CheckAllMenuChildVisible((mnu as ToolStripMenuItem).DropDownItems);
+                    mnu.Enabled = mnu.Visible = CheckAllMenuChildVisible((mnu as ToolStripMenuItem).DropDownItems);
                 }
                 else if (string.Equals(pScreenName, mnu.Tag))
                 {
@@ -141,6 +141,19 @@ namespace appWinform
             frm.MdiParent = this;
 
             frm.Show();
+
+        }
+
+        private void bánHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBanHang frm = new frmBanHang();
+            frm.MdiParent = this;
+
+            frm.Show();
+        }
+
+        private void nhậpHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
         }
     }

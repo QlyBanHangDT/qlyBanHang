@@ -11,8 +11,12 @@ D:\github\project_net_ad\qlyBanHang\appWinform\BUS\bin\Debug\BUS.dll
 D:\github\project_net_ad\qlyBanHang\appWinform\BUS\bin\Debug\BUS.pdb
 D:\github\project_net_ad\qlyBanHang\appWinform\BUS\bin\Debug\DAL.dll
 D:\github\project_net_ad\qlyBanHang\appWinform\BUS\bin\Debug\DTO.dll
+D:\github\project_net_ad\qlyBanHang\appWinform\BUS\bin\Debug\Syncfusion.Compression.Base.dll
+D:\github\project_net_ad\qlyBanHang\appWinform\BUS\bin\Debug\Syncfusion.DocIO.Base.dll
+D:\github\project_net_ad\qlyBanHang\appWinform\BUS\bin\Debug\Syncfusion.XlsIO.Base.dll
 D:\github\project_net_ad\qlyBanHang\appWinform\BUS\bin\Debug\DAL.pdb
 D:\github\project_net_ad\qlyBanHang\appWinform\BUS\bin\Debug\DTO.pdb
 D:\github\project_net_ad\qlyBanHang\appWinform\BUS\obj\Debug\BUS.csprojResolveAssemblyReference.cache
 D:\github\project_net_ad\qlyBanHang\appWinform\BUS\obj\Debug\BUS.dll
 D:\github\project_net_ad\qlyBanHang\appWinform\BUS\obj\Debug\BUS.pdb
+D:\github\project_net_ad\qlyBanHang\appWinform\BUS\bin\Debug\Zen.Barcode.Core.dll

@@ -26,9 +26,9 @@ namespace DAL
             return qlbh.LOAISPs.Where(loai => loai.ID == id_loai).Select(t => t.TENLOAI).FirstOrDefault();
         }
 
-        public double? getGiaBan(string pMaSP)
+        public double getGiaBan(string pMaSP)
         {
-            return qlbh.DONGIAs.Where(dg => dg.ID_SP == pMaSP).Select(t => t.GIA).FirstOrDefault();
+            return qlbh.DONGIAs.Where(dg => dg.ID_SP == pMaSP).OrderByDescending(dg => dg.NGCAPNHAT).Select(dg => dg.GIA).FirstOrDefault() ?? 0;
         }
 
         public List<CauHinh> getCauHinh(string pMaSP)

@@ -95,6 +95,8 @@ namespace GUI
         private void dataGridView_QLSP_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // xem thông tin sản phẩm
+            string masp = dataGridView_QLSP.CurrentRow.Cells["ID"].Value.ToString();
+            SelectedRow_Click(masp, EventArgs.Empty);
         }
 
         private void btnTimSP_Click(object sender, EventArgs e)
@@ -123,6 +125,19 @@ namespace GUI
             {
                 btnTimSP.PerformClick();
             }
+        }
+
+
+        [Browsable(true)]
+        [Category("Action")]
+        [Description("after click a row in data grid view")]
+        public event EventHandler SelectedRow;
+
+        // sự kiện clik datagrid view
+        protected virtual void SelectedRow_Click(object sender, EventArgs e)
+        {
+            if (this.SelectedRow != null)
+                this.SelectedRow(sender, e);
         }
     }
 }

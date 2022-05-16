@@ -121,6 +121,7 @@
             this.txtPw.TabIndex = 10;
             this.txtPw.Texts = "";
             this.txtPw.UnderlinedStyle = false;
+            this.txtPw.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTDN_KeyPress);
             // 
             // txtTDN
             // 
@@ -142,6 +143,7 @@
             this.txtTDN.TabIndex = 7;
             this.txtTDN.Texts = "";
             this.txtTDN.UnderlinedStyle = false;
+            this.txtTDN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTDN_KeyPress);
             // 
             // btnDangNhap
             // 

@@ -8,7 +8,13 @@ namespace DTO
 {
     public class TaiKhoan : GrTaiKhoan
     {
-        string _idTK, _username;
+        string _idTK, _username, _pw;
+
+        public string Pw
+        {
+            get { return _pw; }
+            set { _pw = value; }
+        }
 
         public TaiKhoan()
         {

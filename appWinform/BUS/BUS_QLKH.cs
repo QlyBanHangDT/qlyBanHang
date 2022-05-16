@@ -42,9 +42,17 @@ namespace BUS
         {
             return dal_qlkh.getKhachHang(pID);
         }
+        public KhachHang getKhachHang_sdt(string pSDT)
+        {
+            return dal_qlkh.getKhachHang_sdt(pSDT);
+        }
         public object getChiTietHoaDon(string pIDKH)
         {
             return dal_qlkh.getChiTietHoaDon(pIDKH);
+        }
+        public bool themKhachHang(KhachHang kh)
+        {
+            return dal_qlkh.themKhachHang(kh);
         }
     }
 }

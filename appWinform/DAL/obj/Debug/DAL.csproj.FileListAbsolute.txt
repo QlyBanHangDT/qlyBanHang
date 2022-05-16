@@ -18,3 +18,4 @@ D:\github\project_net_ad\qlyBanHang\appWinform\DAL\obj\Debug\DAL.Properties.Reso
 D:\github\project_net_ad\qlyBanHang\appWinform\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache
 D:\github\project_net_ad\qlyBanHang\appWinform\DAL\obj\Debug\DAL.dll
 D:\github\project_net_ad\qlyBanHang\appWinform\DAL\obj\Debug\DAL.pdb
+D:\github\project_net_ad\qlyBanHang\appWinform\DAL\bin\Debug\Zen.Barcode.Core.dll

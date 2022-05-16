@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class KhachHang
+    public class KhachHang : TaiKhoan
     {
-        string _sdt, _email, _id, _ten, _gioiTinh, _ngaySinh, _ngayTao;
+        string _sdt, _email, _id, _ten, _gioiTinh, _ngaySinh, _ngayTao, _diaChi;
 
-       
+        public string DiaChi
+        {
+            get { return _diaChi; }
+            set { _diaChi = value; }
+        }
 
         public KhachHang() { }
 

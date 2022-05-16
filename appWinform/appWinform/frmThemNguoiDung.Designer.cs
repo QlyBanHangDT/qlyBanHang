@@ -30,24 +30,26 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.drvTK = new System.Windows.Forms.DataGridView();
-            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdGr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.drvNhom = new System.Windows.Forms.DataGridView();
-            this.No_grA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDTK_grA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Username_grA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten_grA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id_grA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbNhoms = new System.Windows.Forms.ComboBox();
             this.btnAddOne = new FontAwesome.Sharp.IconButton();
             this.btnAddAll = new FontAwesome.Sharp.IconButton();
             this.btnDelAll = new FontAwesome.Sharp.IconButton();
             this.btnDelOne = new FontAwesome.Sharp.IconButton();
             this.btnRefesh = new FontAwesome.Sharp.IconButton();
+            this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdGr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pw = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.No_grA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDTK_grA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Username_grA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_grA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id_grA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pw_nnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.drvTK)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -73,7 +75,8 @@
             this.ID,
             this.Username,
             this.Ten,
-            this.IdGr});
+            this.IdGr,
+            this.pw});
             this.drvTK.Location = new System.Drawing.Point(6, 21);
             this.drvTK.Name = "drvTK";
             this.drvTK.ReadOnly = true;
@@ -82,42 +85,6 @@
             this.drvTK.Size = new System.Drawing.Size(405, 429);
             this.drvTK.TabIndex = 0;
             this.drvTK.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.drvTK_RowPostPaint);
-            // 
-            // No
-            // 
-            this.No.HeaderText = "No";
-            this.No.Name = "No";
-            this.No.ReadOnly = true;
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "IdTK";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Username
-            // 
-            this.Username.DataPropertyName = "Username";
-            this.Username.HeaderText = "Username";
-            this.Username.Name = "Username";
-            this.Username.ReadOnly = true;
-            // 
-            // Ten
-            // 
-            this.Ten.DataPropertyName = "Ten";
-            this.Ten.HeaderText = "Ten";
-            this.Ten.Name = "Ten";
-            this.Ten.ReadOnly = true;
-            this.Ten.Visible = false;
-            // 
-            // IdGr
-            // 
-            this.IdGr.DataPropertyName = "IdGr";
-            this.IdGr.HeaderText = "IdGr";
-            this.IdGr.Name = "IdGr";
-            this.IdGr.ReadOnly = true;
-            this.IdGr.Visible = false;
             // 
             // groupBox2
             // 
@@ -139,7 +106,8 @@
             this.IDTK_grA,
             this.Username_grA,
             this.Ten_grA,
-            this.Id_grA});
+            this.Id_grA,
+            this.Pw_nnd});
             this.drvNhom.Location = new System.Drawing.Point(6, 21);
             this.drvNhom.Name = "drvNhom";
             this.drvNhom.ReadOnly = true;
@@ -148,42 +116,6 @@
             this.drvNhom.Size = new System.Drawing.Size(405, 429);
             this.drvNhom.TabIndex = 1;
             this.drvNhom.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.drvNhom_RowPostPaint);
-            // 
-            // No_grA
-            // 
-            this.No_grA.HeaderText = "No";
-            this.No_grA.Name = "No_grA";
-            this.No_grA.ReadOnly = true;
-            // 
-            // IDTK_grA
-            // 
-            this.IDTK_grA.DataPropertyName = "IdTK";
-            this.IDTK_grA.HeaderText = "ID";
-            this.IDTK_grA.Name = "IDTK_grA";
-            this.IDTK_grA.ReadOnly = true;
-            // 
-            // Username_grA
-            // 
-            this.Username_grA.DataPropertyName = "Username";
-            this.Username_grA.HeaderText = "Username";
-            this.Username_grA.Name = "Username_grA";
-            this.Username_grA.ReadOnly = true;
-            // 
-            // Ten_grA
-            // 
-            this.Ten_grA.DataPropertyName = "Ten";
-            this.Ten_grA.HeaderText = "Ten";
-            this.Ten_grA.Name = "Ten_grA";
-            this.Ten_grA.ReadOnly = true;
-            this.Ten_grA.Visible = false;
-            // 
-            // Id_grA
-            // 
-            this.Id_grA.DataPropertyName = "IdGr";
-            this.Id_grA.HeaderText = "IDGR";
-            this.Id_grA.Name = "Id_grA";
-            this.Id_grA.ReadOnly = true;
-            this.Id_grA.Visible = false;
             // 
             // cbNhoms
             // 
@@ -269,6 +201,94 @@
             this.btnRefesh.UseVisualStyleBackColor = true;
             this.btnRefesh.Click += new System.EventHandler(this.btnRefesh_Click);
             // 
+            // No
+            // 
+            this.No.HeaderText = "No";
+            this.No.Name = "No";
+            this.No.ReadOnly = true;
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "IdTK";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Username
+            // 
+            this.Username.DataPropertyName = "Username";
+            this.Username.HeaderText = "Username";
+            this.Username.Name = "Username";
+            this.Username.ReadOnly = true;
+            // 
+            // Ten
+            // 
+            this.Ten.DataPropertyName = "Ten";
+            this.Ten.HeaderText = "Ten";
+            this.Ten.Name = "Ten";
+            this.Ten.ReadOnly = true;
+            this.Ten.Visible = false;
+            // 
+            // IdGr
+            // 
+            this.IdGr.DataPropertyName = "IdGr";
+            this.IdGr.HeaderText = "IdGr";
+            this.IdGr.Name = "IdGr";
+            this.IdGr.ReadOnly = true;
+            this.IdGr.Visible = false;
+            // 
+            // pw
+            // 
+            this.pw.DataPropertyName = "Pw";
+            this.pw.HeaderText = "Pw";
+            this.pw.Name = "pw";
+            this.pw.ReadOnly = true;
+            this.pw.Visible = false;
+            // 
+            // No_grA
+            // 
+            this.No_grA.HeaderText = "No";
+            this.No_grA.Name = "No_grA";
+            this.No_grA.ReadOnly = true;
+            // 
+            // IDTK_grA
+            // 
+            this.IDTK_grA.DataPropertyName = "IdTK";
+            this.IDTK_grA.HeaderText = "ID";
+            this.IDTK_grA.Name = "IDTK_grA";
+            this.IDTK_grA.ReadOnly = true;
+            // 
+            // Username_grA
+            // 
+            this.Username_grA.DataPropertyName = "Username";
+            this.Username_grA.HeaderText = "Username";
+            this.Username_grA.Name = "Username_grA";
+            this.Username_grA.ReadOnly = true;
+            // 
+            // Ten_grA
+            // 
+            this.Ten_grA.DataPropertyName = "Ten";
+            this.Ten_grA.HeaderText = "Ten";
+            this.Ten_grA.Name = "Ten_grA";
+            this.Ten_grA.ReadOnly = true;
+            this.Ten_grA.Visible = false;
+            // 
+            // Id_grA
+            // 
+            this.Id_grA.DataPropertyName = "IdGr";
+            this.Id_grA.HeaderText = "IDGR";
+            this.Id_grA.Name = "Id_grA";
+            this.Id_grA.ReadOnly = true;
+            this.Id_grA.Visible = false;
+            // 
+            // Pw_nnd
+            // 
+            this.Pw_nnd.DataPropertyName = "Pw";
+            this.Pw_nnd.HeaderText = "Pw";
+            this.Pw_nnd.Name = "Pw_nnd";
+            this.Pw_nnd.ReadOnly = true;
+            this.Pw_nnd.Visible = false;
+            // 
             // frmThemNguoiDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -304,16 +324,18 @@
         private FontAwesome.Sharp.IconButton btnAddAll;
         private FontAwesome.Sharp.IconButton btnDelAll;
         private FontAwesome.Sharp.IconButton btnDelOne;
+        private FontAwesome.Sharp.IconButton btnRefesh;
         private System.Windows.Forms.DataGridViewTextBoxColumn No;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Username;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ten;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdGr;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pw;
         private System.Windows.Forms.DataGridViewTextBoxColumn No_grA;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDTK_grA;
         private System.Windows.Forms.DataGridViewTextBoxColumn Username_grA;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ten_grA;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id_grA;
-        private FontAwesome.Sharp.IconButton btnRefesh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pw_nnd;
     }
 }

@@ -51,7 +51,15 @@ namespace GUI
                 this.Invalidate();
             }
         }
-
+        [Category("CustomTextBox")]
+        public HorizontalAlignment TextAlign
+        {
+            get { return textBox1.TextAlign; }
+            set
+            {
+                textBox1.TextAlign = value;
+            }
+        }
         [Category("CustomTextBox")]
         public bool UnderlinedStyle
         {

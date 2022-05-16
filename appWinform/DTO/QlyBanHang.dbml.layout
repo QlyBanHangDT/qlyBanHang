@@ -192,7 +192,7 @@
         <classShapeMoniker Id="e78e63bc-f0e9-430d-8bc2-9f86b3dddc1a" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(7.25 : 6.375); (7.25 : 3.78929768880208); (9 : 3.78929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(7.90625 : 6.375); (7.90625 : 3.93656880696615); (9 : 3.93656880696615)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/QlyBanHangDataContext/SANPHAM/SANPHAM_CAUHINH" />
       <nodes>
         <classShapeMoniker Id="ab24dfe2-d0ff-40bc-a285-152e32cc95be" />
@@ -248,7 +248,7 @@
         <classShapeMoniker Id="84cee189-573e-420e-9fef-d1a93b44d0f5" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(4.5 : 12.625); (4.5 : 12.375); (11.5 : 12.375); (11.5 : 13.0112939453125); (13.875 : 13.0112939453125); (13.875 : 13.0060717428385); (14.0416666666667 : 13.0060717428385 : JumpStart); (14.2083333333333 : 13.0060717428385 : JumpEnd); (14.5 : 13.0060717428385)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(4.5 : 12.625); (4.5 : 12.375); (11.2916666666667 : 12.375 : JumpStart); (11.4583333333333 : 12.375 : JumpEnd); (11.5 : 12.375); (11.5 : 13.0112939453125); (13.875 : 13.0112939453125); (13.875 : 13.0060717428385); (14.0416666666667 : 13.0060717428385 : JumpStart); (14.2083333333333 : 13.0060717428385 : JumpEnd); (14.5 : 13.0060717428385)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/QlyBanHangDataContext/TAIKHOAN/TAIKHOAN_NHOMNGUOIDUNG" />
       <nodes>
         <classShapeMoniker Id="91330f9c-41a3-4c70-b51e-5c79a90e3d74" />
@@ -262,5 +262,11 @@
         <classShapeMoniker Id="9e7f555c-0317-4567-8a0e-8b3a4fa424be" />
       </nodes>
     </associationConnector>
+    <classShape Id="f8a80521-99eb-42b5-b7e0-d9518372367c" absoluteBounds="5.5, 2.25, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/QlyBanHangDataContext/NCC" />
+      <nestedChildShapes>
+        <elementListCompartment Id="31f65d4b-f66a-47ca-b62b-1d6526c126cb" absoluteBounds="5.515, 2.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

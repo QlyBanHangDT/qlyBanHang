@@ -14,6 +14,36 @@ namespace DAL
         private DataTable_SPTableAdapter db = new DataTable_SPTableAdapter();
         private QlyBanHangDataContext dbLq = new QlyBanHangDataContext();
 
+        private NhanVien _nv;
+        private KhachHang _kh;
+        private string _maHD;
+
+        public string MaHD
+        {
+            get { return _maHD; }
+            set { _maHD = value; }
+        }
+
+        public KhachHang Kh
+        {
+            get {
+                if (_kh == null)
+                    _kh = new KhachHang();
+                return _kh; 
+            }
+            set { _kh = value; }
+        }
+
+        public NhanVien Nv
+        {
+            get {
+                if (_nv == null)
+                    _nv = new NhanVien();
+                return _nv; 
+            }
+            set { _nv = value; }
+        }
+
         public DataTable getDSSP()
         {
             return db.GetDataSP();
@@ -110,9 +140,43 @@ namespace DAL
             return dbLq.SANPHAMs.Where(sp => sp.TENSP == TenSP).Count() > 0;
         }
 
+        public bool isCodeExists(string pImeiCode)
+        {
+            return dbLq.IMEICODEs.Where(sp => sp.MA == pImeiCode).Count() > 0;
+        }
+        public bool isCodeDaBan(string pImeiCode)
+        {
+            return dbLq.IMEICODEs.Where(sp => sp.MA == pImeiCode && !(sp.TRANGTHAI ?? false)).Count() > 0;
+        }
         public string getID()
         {
             return dbLq.fn_autoIDSP();
+        }
+        public string getID(string pImeiCode)
+        {
+            return dbLq.IMEICODEs.Where(sp => sp.MA == pImeiCode).First().ID_SP;
+        }
+        public string getID_name(string pName)
+        {
+            return dbLq.SANPHAMs.Where(sp => sp.TENSP.Equals(pName)).First().ID;
+        }
+        public List<IMEICODE> getCode(string pId)
+        {
+            return dbLq.IMEICODEs.Where(code => code.ID_SP == pId && (code.TRANGTHAI ?? false)).ToList();
+        }
+        public sp_AddHDResult thanhToan(string pImeiCode)
+        {
+            return dbLq.sp_AddHD(_maHD, Kh.Ten, Nv.Ten, pImeiCode).Single();
+        }
+        public string getMaHD()
+        {
+            string maHD = string.Empty;
+            dbLq.sp_GetMaHD(ref maHD);
+            return maHD;
+        }
+        public List<string> getNames()
+        {
+            return dbLq.SANPHAMs.Select(sp => sp.TENSP).ToList(); 
         }
     }
 }

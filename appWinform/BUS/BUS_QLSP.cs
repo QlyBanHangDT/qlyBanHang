@@ -88,9 +88,47 @@ namespace BUS
         {
             return dal_qlsp.isExists(pTenSP);
         }
+        public bool isCodeExists(string pImeiCode)
+        {
+            return dal_qlsp.isCodeExists(pImeiCode);
+        }
+        public bool isCodeDaBan(string pImeiCode)
+        {
+            return dal_qlsp.isCodeDaBan(pImeiCode);
+        }
         public string getID()
         {
             return dal_qlsp.getID();
+        }
+        public string getID(string pImeiCode)
+        {
+            return dal_qlsp.getID(pImeiCode);
+        }
+        public List<IMEICODE> getCode(string pId)
+        {
+            return dal_qlsp.getCode(pId);
+        }
+        public string thanhToan(string pMaHD, string pTenKhachHang, string pTenNhanVien, string pImeiCode)
+        {
+            dal_qlsp.Kh.Ten = pTenKhachHang;
+            dal_qlsp.Nv.Ten = pTenNhanVien;
+            dal_qlsp.MaHD = pMaHD;
+
+            string mes = dal_qlsp.thanhToan(pImeiCode).Message;
+
+            return mes;
+        }
+        public string getMaHD()
+        {
+            return dal_qlsp.getMaHD();
+        }
+        public List<string> getNames()
+        {
+            return dal_qlsp.getNames();
+        }
+        public string getID_name(string pName)
+        {
+            return dal_qlsp.getID_name(pName);
         }
     }
 }

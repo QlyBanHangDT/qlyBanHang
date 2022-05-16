@@ -90,6 +90,9 @@ namespace DTO
     partial void InsertTHONGKECMT(THONGKECMT instance);
     partial void UpdateTHONGKECMT(THONGKECMT instance);
     partial void DeleteTHONGKECMT(THONGKECMT instance);
+    partial void InsertNCC(NCC instance);
+    partial void UpdateNCC(NCC instance);
+    partial void DeleteNCC(NCC instance);
     #endregion
 		
 		public QlyBanHangDataContext() : 
@@ -282,6 +285,14 @@ namespace DTO
 			}
 		}
 		
+		public System.Data.Linq.Table<NCC> NCCs
+		{
+			get
+			{
+				return this.GetTable<NCC>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_ChiTietDonHang_kh")]
 		public ISingleResult<sp_ChiTietDonHang_khResult> sp_ChiTietDonHang_kh([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string idKH)
 		{
@@ -334,6 +345,28 @@ namespace DTO
 		public string fn_autoIDSP()
 		{
 			return ((string)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod()))).ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_AddHD")]
+		public ISingleResult<sp_AddHDResult> sp_AddHD([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string maHD, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string tenKH, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string tenNV, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(16)")] string soIMEI)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), maHD, tenKH, tenNV, soIMEI);
+			return ((ISingleResult<sp_AddHDResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetMaHD")]
+		public int sp_GetMaHD([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] ref string maHD)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), maHD);
+			maHD = ((string)(result.GetParameterValue(0)));
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_AddPN")]
+		public ISingleResult<sp_AddPNResult> sp_AddPN([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string maPN, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(60)")] string tenNCC, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string tenNV, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(16)")] string soIMEI)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), maPN, tenNCC, tenNV, soIMEI);
+			return ((ISingleResult<sp_AddPNResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -3917,7 +3950,7 @@ namespace DTO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PW", DbType="VarBinary(50)", CanBeNull=true, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PW", DbType="VarBinary(50)", UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary PW
 		{
 			get
@@ -4252,6 +4285,92 @@ namespace DTO
 						this._ID_SP = default(string);
 					}
 					this.SendPropertyChanged("SANPHAM");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.NCC")]
+	public partial class NCC : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _TENNCC;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnTENNCCChanging(string value);
+    partial void OnTENNCCChanged();
+    #endregion
+		
+		public NCC()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENNCC", DbType="NVarChar(60)")]
+		public string TENNCC
+		{
+			get
+			{
+				return this._TENNCC;
+			}
+			set
+			{
+				if ((this._TENNCC != value))
+				{
+					this.OnTENNCCChanging(value);
+					this.SendPropertyChanging();
+					this._TENNCC = value;
+					this.SendPropertyChanged("TENNCC");
+					this.OnTENNCCChanged();
 				}
 			}
 		}
@@ -4659,6 +4778,58 @@ namespace DTO
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(7) NOT NULL", CanBeNull=false)]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
+				}
+			}
+		}
+	}
+	
+	public partial class sp_AddHDResult
+	{
+		
+		private string _Message;
+		
+		public sp_AddHDResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(7) NOT NULL", CanBeNull=false)]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this._Message = value;
+				}
+			}
+		}
+	}
+	
+	public partial class sp_AddPNResult
+	{
+		
+		private string _Message;
+		
+		public sp_AddPNResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(16)")]
 		public string Message
 		{
 			get

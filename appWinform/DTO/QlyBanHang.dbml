@@ -195,6 +195,12 @@
       <Association Name="SANPHAM_THONGKECMT" Member="SANPHAM" ThisKey="ID_SP" OtherKey="ID" Type="SANPHAM" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.NCC" Member="NCCs">
+    <Type Name="NCC">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TENNCC" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.sp_ChiTietDonHang_kh" Method="sp_ChiTietDonHang_kh">
     <Parameter Name="idKH" Type="System.String" DbType="VarChar(10)" />
     <ElementType Name="sp_ChiTietDonHang_khResult">
@@ -272,5 +278,27 @@
   </Function>
   <Function Name="dbo.fn_autoIDSP" Method="fn_autoIDSP" IsComposable="true">
     <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.sp_AddHD" Method="sp_AddHD">
+    <Parameter Name="maHD" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="tenKH" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="tenNV" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="soIMEI" Type="System.String" DbType="VarChar(16)" />
+    <ElementType Name="sp_AddHDResult">
+      <Column Name="Message" Type="System.String" DbType="NVarChar(7) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_GetMaHD" Method="sp_GetMaHD">
+    <Parameter Name="maHD" Type="System.String" DbType="VarChar(10)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_AddPN" Method="sp_AddPN">
+    <Parameter Name="maPN" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="tenNCC" Type="System.String" DbType="NVarChar(60)" />
+    <Parameter Name="tenNV" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="soIMEI" Type="System.String" DbType="VarChar(16)" />
+    <ElementType Name="sp_AddPNResult">
+      <Column Name="Message" Type="System.String" DbType="VarChar(16)" CanBeNull="true" />
+    </ElementType>
   </Function>
 </Database>

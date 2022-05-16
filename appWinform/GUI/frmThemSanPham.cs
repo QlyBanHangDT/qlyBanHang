@@ -106,8 +106,9 @@ namespace GUI
                 {
                     foreach (DataGridViewRow row in drvCauHinh.Rows)
                     {
-                        if (row.Cells["TenCauHinh"].ToString() != string.Empty && row.Cells["NoiDung"].ToString() != string.Empty)
-                            bus_qlsp.themCauHinh(txtTen.Text.Trim(), row.Cells["TenCauHinh"].ToString(), row.Cells["NoiDung"].ToString());
+                        if (row.Cells["TenCauHinh"].Value == null || row.Cells["NoiDung"].Value == null) break;
+                        if (row.Cells["TenCauHinh"].Value.ToString() != string.Empty && row.Cells["NoiDung"].Value.ToString() != string.Empty)
+                            bus_qlsp.themCauHinh(txtTen.Text.Trim(), row.Cells["TenCauHinh"].Value.ToString(), row.Cells["NoiDung"].Value.ToString());
                     }
                 }
             }

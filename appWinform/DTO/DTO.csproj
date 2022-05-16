@@ -33,14 +33,20 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Zen.Barcode.Core">
+      <HintPath>..\packages\Zen.Barcode.Core.Code128.3.1.0\lib\net45\Zen.Barcode.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CauHinh.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="DAL_DataSet.cs">
       <DependentUpon>DAL_DataSet.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -51,6 +57,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="GrTaiKhoan.cs" />
+    <Compile Include="ImeiCode.cs" />
     <Compile Include="KPress.cs" />
     <Compile Include="LoginResult.cs" />
     <Compile Include="KhachHang.cs" />
@@ -83,6 +90,7 @@
     <None Include="DAL_DataSet.xss">
       <DependentUpon>DAL_DataSet.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

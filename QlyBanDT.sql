@@ -130,10 +130,17 @@ CREATE TABLE CHITIETHD (
 	DONGIA FLOAT, -- ĐƠN GIÁ CỦA 1 SP TẠI THỜI ĐIỂM MUA
     CONSTRAINT PK_CTHD PRIMARY KEY (ID, ID_HD) 
 )
+CREATE TABLE NCC (
+	ID INT IDENTITY NOT NULL,
+	TENNCC NVARCHAR(60),
+	CONSTRAINT PK_NCC PRIMARY KEY (ID)
+)
 CREATE TABLE PHIEUNHAP (
     ID VARCHAR(10) NOT NULL, -- CREATE AUTO
     NGTAO DATE, -- NGÀY TẠO PHIẾU NHẬP
     DONGIA FLOAT, -- TỔNG (SỐ LƯỢNG * ĐƠN GIÁ)
+    ID_NV VARCHAR(10) REFERENCES NHANVIEN(ID),
+	ID_NCC INT REFERENCES NCC(ID),
     CONSTRAINT PK_PN PRIMARY KEY (ID)
 )
 CREATE TABLE CHITIETPN (
@@ -533,6 +540,53 @@ AS
 
 		-- cập nhật trạng thái số imei
 		UPDATE IMEICODE SET TRANGTHAI = 0 WHERE MA = @soIMEI -- SẢN PHẨM ĐÃ BÁN
+
+		SELECT @soIMEI 'Message'
+	END TRY
+	BEGIN CATCH
+		EXEC sp_GetErrorInfo;
+	END CATCH
+GO
+CREATE PROC sp_AddPN
+@maPN VARCHAR(10),
+@tenNCC NVARCHAR(60),
+@tenNV NVARCHAR(50),
+@soIMEI VARCHAR(16)
+AS
+	BEGIN TRY
+		DECLARE @maSP VARCHAR(5), @idIMEI INT, @maNV varchar(10), @maNCC int
+
+		IF NOT EXISTS (SELECT * FROM PHIEUNHAP WHERE ID = @maPN)
+		BEGIN
+			INSERT PHIEUNHAP(ID) SELECT @maPN
+
+			-- LẤY MÃ NHÂN VIÊN
+			SELECT @maNV = NHANVIEN.ID FROM NHANVIEN JOIN THONGTINTAIKHOAN on THONGTINTAIKHOAN.ID_TAIKHOAN = NHANVIEN.ID_TK WHERE HOTEN = @tenNV
+			-- LẤY MÃ KHÁCH HÀNG
+			SELECT @maNCC = NCC.ID FROM NCC WHERE TENNCC = @tenNCC
+
+			-- ADD MÃ KHÁCH HÀNG VÀ NHÂN VIÊN VÀO HÓA ĐƠN
+			UPDATE PHIEUNHAP SET ID_NCC = @maNCC, ID_NV = @maNV WHERE ID = @maPN
+		END
+
+		-- LẤY ID IMEI & và mã sản phẩm
+		SELECT @idIMEI = ID, @maSP = ID_SP FROM IMEICODE WHERE MA = @soIMEI
+
+		-- CẬP NHẬT ĐƠN GIÁ ---------------------- kiểm tra ngày mới nhất trong đơn giá
+		DECLARE @donGia FLOAT -- đơn giá của sản phẩm x
+
+		SELECT TOP 1 @donGia = GIA
+		FROM DONGIA
+		WHERE ID_SP = @maSP
+		ORDER BY NGCAPNHAT DESC
+
+		-- THÊM THÔNG TIN CHO phiêu nhập
+		INSERT CHITIETPN(ID_PN, ID_IMEI, DONGIA) SELECT @maPN, @idIMEI, @donGia
+
+		-- cập nhật phiếu nhập	
+		UPDATE PHIEUNHAP SET DONGIA = DONGIA + @donGia WHERE ID = @maPN
+
+		SELECT @soIMEI 'Message'
 	END TRY
 	BEGIN CATCH
 		EXEC sp_GetErrorInfo;
@@ -600,62 +654,6 @@ AS
 		EXEC sp_GetErrorInfo;
 	END CATCH
 GO
-
-
---ID VARCHAR(10) NOT NULL, -- CREATE AUTO
---NGTAO DATE, -- NGÀY TẠO HÓA ĐƠN
---DONGIA FLOAT, -- TỔNG (SỐ LƯỢNG * ĐƠN GIÁ)
-
---ID INT IDENTITY NOT NULL,
---ID_HD VARCHAR(10) REFERENCES HOADON(ID),
---ID_SP VARCHAR(5) REFERENCES SANPHAM(ID),
---SOLUONG INT, -- SỐ LƯỢNG > 0, số lượng bán
-
--- CREATE PROC sp_AddPN
--- @maPN VARCHAR(10),
--- @tenSP NVARCHAR(MAX),
--- @soLuong INT,
--- @gia FLOAT,
--- @hinhAnh VARCHAR(50)
--- AS
--- 	BEGIN TRY
--- 		DECLARE @maSP VARCHAR(5)
-
--- 		IF NOT EXISTS (SELECT * FROM PHIEUNHAP WHERE ID = @maPN)
--- 		BEGIN
--- 			INSERT PHIEUNHAP(ID) SELECT @maPN
--- 		END
-
--- 		IF NOT EXISTS(SELECT * FROM SANPHAM WHERE TENSP = @tenSP)
--- 		BEGIN
--- 			EXEC sp_AddSP @tenSP, N'', 0, @gia, '', @hinhAnh, N'', N''
--- 			-- GO
--- 		END
--- 		-- LẤY MÃ SẢN PHẨM 
--- 		SELECT @maSP = ID FROM SANPHAM WHERE TENSP = @tenSP
-
--- 		-- THÊM THÔNG TIN CHO HÓA ĐƠN
--- 		INSERT CHITIETPN(ID_PN, ID_SP, SOLUONG) SELECT @maPN, @maSP, @soLuong
-
-
--- 		-- cập nhật lại số lượng sản phẩm
--- 		UPDATE SANPHAM SET SOLUONG = SOLUONG + @soLuong WHERE ID = @maSP
-
--- 		-- CẬP NHẬT ĐƠN GIÁ ---------------------- kiểm tra ngày mới nhất trong đơn giá
--- 		DECLARE @donGia FLOAT -- đơn giá của sản phẩm x
-
--- 		SELECT TOP 1 @donGia = SUM(@soLuong * GIA)
--- 		FROM DONGIA
--- 		WHERE ID_SP = @maSP
--- 		GROUP BY NGCAPNHAT
--- 		ORDER BY NGCAPNHAT DESC
-		
--- 		UPDATE PHIEUNHAP SET DONGIA = DONGIA + @donGia WHERE ID = @maPN
--- 	END TRY
--- 	BEGIN CATCH
--- 		EXEC sp_GetErrorInfo;
--- 	END CATCH
--- GO
 
 CREATE PROC sp_AddCauHinh
 @tenSP NVARCHAR(Max),
@@ -887,22 +885,19 @@ AS
 		WHERE YEAR(NGTAO) = @nam
 GO
 
--- CREATE PROC sp_ReportBill
--- @idHD VARCHAR(10),
--- @tienKH float
--- AS
--- 	SELECT HOADON.ID, CONVERT(varchar,NGTAO,103) NGTAO, DONGIA, (@tienKH - DONGIA) TIENTHUA, DBO.fn_Ten(NHANVIEN.ID_TK) TENNV, DBO.fn_Ten(KHACHHANG.ID_TK) TENKH, TENSP, CHITIETHD.SOLUONG, GIA GIASP FROM HOADON JOIN NHANVIEN 
--- 		ON HOADON.ID_NV=NHANVIEN.ID JOIN KHACHHANG
--- 		ON KHACHHANG.ID=HOADON.ID_KH JOIN CHITIETHD
--- 		ON CHITIETHD.ID_HD = HOADON.ID JOIN SANPHAM
--- 		ON SANPHAM.ID = CHITIETHD.ID_SP JOIN DONGIA DG
--- 		ON DG.ID_SP = SANPHAM.ID
--- 	WHERE HOADON.ID = @idHD AND
--- 		  DG.ID = (SELECT TOP 1 DONGIA.ID
--- 						FROM DONGIA
--- 						WHERE ID_SP = SANPHAM.ID
--- 						ORDER BY NGCAPNHAT DESC)
--- GO
+CREATE PROC sp_ReportBill
+@idHD VARCHAR(10)
+AS
+	SELECT DBO.fn_Ten(KH.ID_TK) KHACHHANG, DBO.fn_Ten(NV.ID_TK) NHANVIEN, SP.TENSP, COUNT(IMEICODE.ID) SOLUONG, (CTHD.DONGIA * COUNT(IMEICODE.ID)) DONGIA
+	FROM CHITIETHD CTHD JOIN HOADON HD
+		ON CTHD.ID_HD = HD.ID JOIN NHANVIEN NV
+		ON NV.ID = HD.ID_NV JOIN KHACHHANG KH
+		ON KH.ID = HD.ID_KH JOIN IMEICODE
+		ON IMEICODE.ID = CTHD.ID_IMEI JOIN SANPHAM SP
+		ON SP.ID = IMEICODE.ID_SP
+	WHERE HD.ID = @idHD
+	GROUP BY HD.DONGIA, KH.ID_TK, NV.ID_TK, SP.TENSP, CTHD.DONGIA
+GO
 
 CREATE PROC sp_ChiTietDonHang_kh
 @idKH varchar(10)
@@ -1030,6 +1025,7 @@ INSERT MANHINH VALUES('M8', N'Kiểm tra tồn kho')
 INSERT MANHINH VALUES('M9', N'Phân quyền') 
 INSERT MANHINH VALUES('M10', N'Quản lý nhóm người dùng') 
 INSERT MANHINH VALUES('M11', N'Thêm người dùng vào nhóm')
+INSERT MANHINH VALUES('MMH', N'Quản lý màn hình')
 
 -- BẢNG TB_GRTK
 INSERT GRTK VALUES(N'ADMIN', '00')
@@ -1041,26 +1037,28 @@ INSERT QL_PHANQUYEN VALUES
 (1, 'M1', 1),
 (1, 'M2', 1),
 (1, 'M3', 1),
-(1, 'M4', 1),
+(1, 'M11', 1),
 (1, 'M5', 1),
 (1, 'M6', 1),
 (1, 'M7', 1),
 (1, 'M8', 1),
 (1, 'M9', 1),
-(1, 'M10', 1)
+(1, 'M10', 1),
+(1, 'MMH', 1)
 
 -- phân quyền cho user (mặc định)
 INSERT QL_PHANQUYEN VALUES 
 (2, 'M1', 0),
 (2, 'M2', 0),
 (2, 'M3', 0),
-(2, 'M4', 0),
 (2, 'M5', 0),
 (2, 'M6', 0),
 (2, 'M7', 1),
 (2, 'M8', 0),
 (2, 'M9', 0),
-(2, 'M10', 0)
+(2, 'M11', 0),
+(2, 'M10', 0),
+(2, 'MMH', 0)
 
 -- BẢNG TAIKHOAN
 EXEC sp_AddAcc 'admin', 'admin@123456789', N'Admin', '2-5-2001', N'nam', 'admin@gmail.com', '000000000', '',''
@@ -3269,4 +3267,7 @@ WHERE TRANGTHAI = 1
 GROUP BY TENSP
 
 exec sp_chitietdonhang_kh 'kh003'
+
+
+select * from IMEICODE
 */
