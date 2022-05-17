@@ -18,6 +18,21 @@ namespace DAL
         private KhachHang _kh;
         private string _maHD;
 
+        private string _maPN;
+        private string _tenNCC;
+
+        public string MaPN
+        {
+            get { return _maPN; }
+            set { _maPN = value; }
+        }
+
+        public string TenNCC
+        {
+            get { return _tenNCC; }
+            set { _tenNCC = value; }
+        }
+
         public string MaHD
         {
             get { return _maHD; }
@@ -156,6 +171,25 @@ namespace DAL
         {
             return dbLq.IMEICODEs.Where(sp => sp.MA == pImeiCode).First().ID_SP;
         }
+        public bool themSP(string pTenSan, string pImeiCode)
+        {
+            string maSp = dbLq.SANPHAMs.Where(sp => sp.TENSP == pTenSan).Single().ID;
+
+            try
+            {
+                dbLq.IMEICODEs.InsertOnSubmit(new IMEICODE{
+                    ID_SP = maSp,
+                    MA = pImeiCode,
+                    TRANGTHAI= true
+                });
+                dbLq.SubmitChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
         public string getID_name(string pName)
         {
             return dbLq.SANPHAMs.Where(sp => sp.TENSP.Equals(pName)).First().ID;
@@ -174,9 +208,21 @@ namespace DAL
             dbLq.sp_GetMaHD(ref maHD);
             return maHD;
         }
+
         public List<string> getNames()
         {
             return dbLq.SANPHAMs.Select(sp => sp.TENSP).ToList(); 
+        }
+
+        public sp_AddPNResult nhapHang(string pImeiCode)
+        {
+            return dbLq.sp_AddPN(MaPN, TenNCC, Nv.Ten, pImeiCode).Single();
+        }
+        public string getMaPN()
+        {
+            string maPN = string.Empty;
+            dbLq.sp_GetMaPN(ref maPN);
+            return maPN;
         }
     }
 }

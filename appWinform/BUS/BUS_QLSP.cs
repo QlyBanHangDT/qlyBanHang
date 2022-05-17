@@ -130,5 +130,24 @@ namespace BUS
         {
             return dal_qlsp.getID_name(pName);
         }
+
+        public string nhapHang(string pMaPN, string pTenNCC, string pTenNhanVien, string pImeiCode)
+        {
+            dal_qlsp.TenNCC = pTenNCC;
+            dal_qlsp.Nv.Ten = pTenNhanVien;
+            dal_qlsp.MaPN = pMaPN;
+
+            string mes = dal_qlsp.nhapHang(pImeiCode).Message;
+
+            return mes;
+        }
+        public string getMaPN()
+        {
+            return dal_qlsp.getMaPN();
+        }
+        public bool themSP(string pTenSan, string pImeiCode)
+        {
+            return dal_qlsp.themSP(pTenSan, pImeiCode);
+        }
     }
 }

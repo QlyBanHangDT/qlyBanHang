@@ -368,6 +368,14 @@ namespace DTO
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), maPN, tenNCC, tenNV, soIMEI);
 			return ((ISingleResult<sp_AddPNResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_GetMaPN")]
+		public int sp_GetMaPN([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] ref string maPN)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), maPN);
+			maPN = ((string)(result.GetParameterValue(0)));
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CAUHINH")]

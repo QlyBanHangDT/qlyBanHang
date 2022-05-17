@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
+using DTO;
 namespace appWinform
 {
     public partial class frmNhapHang : Form
@@ -15,6 +16,8 @@ namespace appWinform
         BUS_QLSP bus_qlsp = new BUS_QLSP();
         BUS_TTSP bus_ttsp = new BUS_TTSP();
         DataTable tbSanPham = new DataTable();
+        BUS_NCC bus_ncc = new BUS_NCC();
+        BUS_QLNV bus_nv = new BUS_QLNV();
 
         public frmNhapHang()
         {
@@ -28,16 +31,47 @@ namespace appWinform
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            // xác nhận nhập hàng // line 543 sql
+            string maPN = bus_qlsp.getMaPN();
+            NhanVien nv = bus_nv.getNhanVien(frmLogin.USERNAME);
+
+            foreach (DataGridViewRow r in dataGridView_pn.Rows)
+            {
+                var lstImei = r.Cells["imeicode"].Value.ToString().Split(',').ToList();
+
+                // thêm vào bảng imei
+                lstImei.ForEach(imei =>
+                {
+                    bus_qlsp.themSP(r.Cells["TenSP"].Value.ToString().Trim(), imei);
+
+                    // xác nhận nhập hàng // line 543 sql
+                    bus_qlsp.nhapHang(maPN, cboNCC.Text, nv.Ten, imei);
+                });
+            }
+
+            // clear view 
+            txtTongTien.Clear();
+            tbSanPham.Clear();
+            cboNCC.Text = string.Empty;
+            btnThanhToan.Enabled = false;
+            MessageBox.Show("Nhập hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            
         }
 
         private void frmNhapHang_Load(object sender, EventArgs e)
         {
+            loadNCC();
+
             cboSearch.DataSource = bus_qlsp.getNames();
             cboSearch.Text = string.Empty;
 
             dataGridView_pn.DataSource = tbSanPham;
             cboSearch.Focus();
+        }
+
+        private void loadNCC()
+        {
+            cboNCC.DataSource = bus_ncc.getNCCs();
+            cboNCC.DisplayMember = "TENNCC";
         }
 
         private void cboSearch_KeyPress(object sender, KeyPressEventArgs e)
@@ -122,6 +156,15 @@ namespace appWinform
             // cập nhật thông tin nhập
             dataGridView_pn.CurrentRow.Cells["imeicode"].Value = frm.dataImei;
             dataGridView_pn.CurrentRow.Cells["SoLuong"].Value = string.IsNullOrEmpty(frm.dataImei.Trim()) ? 0 : frm.dataImei.Trim().Split(',').Count();
+        }
+
+        private void btnThemNCC_Click(object sender, EventArgs e)
+        {
+            frmNhapNCC frm = new frmNhapNCC();
+
+            frm.ShowDialog();
+
+            loadNCC();
         }
     }
 }

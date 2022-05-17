@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="DAL_Login.cs" />
     <Compile Include="DAL_ManHinh.cs" />
+    <Compile Include="DAL_NCC.cs" />
     <Compile Include="DAL_PhanQuyen.cs" />
     <Compile Include="DAL_QLKH.cs" />
     <Compile Include="DAL_QLNND.cs" />

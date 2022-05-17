@@ -384,7 +384,29 @@ BEGIN
 	RETURN @ID
 END
 GO
+CREATE FUNCTION fn_autoIDPN() -- id Phiếu nhập
+RETURNS VARCHAR(10)
+AS
+BEGIN
+	DECLARE @ID VARCHAR(10)
 
+	IF (SELECT COUNT(ID) FROM PHIEUNHAP) = 0
+		SET @ID = '0'
+	ELSE
+		SELECT @ID = MAX(RIGHT(ID, 3)) FROM PHIEUNHAP
+
+    DECLARE @stt VARCHAR(5) = CONVERT(VARCHAR, CONVERT(INT, @ID) + 1)
+    DECLARE @maCode CHAR(2) = 'PN'
+
+	SELECT @ID = CASE
+		WHEN @ID >= 99 THEN @maCode + @stt
+		WHEN @ID >=  9 THEN @maCode + '0' + @stt
+		WHEN @ID >=  0 and @ID < 9 THEN @maCode + '00' + @stt
+	END
+
+	RETURN @ID
+END
+GO
 CREATE FUNCTION fn_autoIDLSP() -- id LOẠI SP 
 RETURNS VARCHAR(6)
 AS
@@ -488,6 +510,11 @@ CREATE PROC sp_GetMaHD
 @maHD VARCHAR(10) OUTPUT
 AS
 	SELECT @maHD = DBO.fn_autoIDHD()
+GO
+CREATE PROC sp_GetMaPN
+@maPN VARCHAR(10) OUTPUT
+AS
+	SELECT @maPN = DBO.fn_autoIDPN()
 GO
 --ID VARCHAR(10) NOT NULL, -- CREATE AUTO
 --NGTAO DATE, -- NGÀY TẠO HÓA ĐƠN
@@ -996,6 +1023,10 @@ ADD CONSTRAINT DF_NGTAO_HD DEFAULT GETDATE() FOR NGTAO,
     CONSTRAINT DF_ID DEFAULT DBO.fn_autoIDHD() FOR ID,
 	CONSTRAINT DF_DONGIA DEFAULT 0 FOR DONGIA
 
+ALTER TABLE PHIEUNHAP 
+ADD CONSTRAINT DF_NGTAO_PN DEFAULT GETDATE() FOR NGTAO,
+	CONSTRAINT DF_DONGIA_PN DEFAULT 0 FOR DONGIA
+
 ALTER TABLE IMEICODE
 ADD CONSTRAINT DF_TRANGTHAI DEFAULT 1 FOR TRANGTHAI
 
@@ -1013,6 +1044,10 @@ GO
 -- | |) | / _` | |  _| / _` | --
 -- |___/  \__,_|  \__| \__,_| --
 --------------------------------
+
+-- bảng ncc
+insert NCC select N'Nhà cung cấp A'
+insert NCC select N'Nhà cung cấp B'
 
 -- Bảng MANHINH
 INSERT MANHINH VALUES('M1', N'Quản lý khách hàng')
@@ -3268,6 +3303,7 @@ GROUP BY TENSP
 
 exec sp_chitietdonhang_kh 'kh003'
 
+select * from phieunhap
 
 select * from IMEICODE
 */

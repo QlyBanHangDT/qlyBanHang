@@ -62,6 +62,7 @@
     <Compile Include="BUS_db.cs" />
     <Compile Include="BUS_Login.cs" />
     <Compile Include="BUS_ManHinh.cs" />
+    <Compile Include="BUS_NCC.cs" />
     <Compile Include="BUS_PhanQuyen.cs" />
     <Compile Include="BUS_QLKH.cs" />
     <Compile Include="BUS_QLNV.cs" />

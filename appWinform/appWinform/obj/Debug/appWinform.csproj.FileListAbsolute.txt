@@ -66,3 +66,4 @@ D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.T
 D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmReportBill.resources
 D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmNhapHang.resources
 D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmThemIMEI.resources
+D:\github\project_net_ad\qlyBanHang\appWinform\appWinform\obj\Debug\appWinform.frmNhapNCC.resources

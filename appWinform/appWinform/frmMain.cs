@@ -154,7 +154,10 @@ namespace appWinform
 
         private void nhậpHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            frmNhapHang frm = new frmNhapHang();
+            frm.MdiParent = this;
 
+            frm.Show();
         }
     }
 }
