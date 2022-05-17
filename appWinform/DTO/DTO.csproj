@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CauHinh.cs" />
+    <Compile Include="ChiTietPhieuKiemKho.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="DAL_DataSet.cs">

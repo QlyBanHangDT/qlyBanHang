@@ -53,6 +53,7 @@
     <Compile Include="DAL_ManHinh.cs" />
     <Compile Include="DAL_NCC.cs" />
     <Compile Include="DAL_PhanQuyen.cs" />
+    <Compile Include="DAL_PhieuKiemKho.cs" />
     <Compile Include="DAL_QLKH.cs" />
     <Compile Include="DAL_QLNND.cs" />
     <Compile Include="DAL_QLNV.cs" />

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLDT_LK" Class="QlyBanHangDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=MSI-PC;Initial Catalog=QLDT_LK;User ID=sa" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="QLDT_LKConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-7RNKS49\SQLEXPRESS;Initial Catalog=QLDT_LK;User ID=sa" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="QLDT_LKConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CAUHINH" Member="CAUHINHs">
     <Type Name="CAUHINH">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -169,6 +169,7 @@
       <Association Name="SANPHAM_DONGIA" Member="DONGIAs" ThisKey="ID" OtherKey="ID_SP" Type="DONGIA" />
       <Association Name="SANPHAM_IMEICODE" Member="IMEICODEs" ThisKey="ID" OtherKey="ID_SP" Type="IMEICODE" />
       <Association Name="SANPHAM_THONGKECMT" Member="THONGKECMTs" ThisKey="ID" OtherKey="ID_SP" Type="THONGKECMT" />
+      <Association Name="SANPHAM_CT_PHIEUKIEMKHO" Member="CT_PHIEUKIEMKHOs" ThisKey="ID" OtherKey="ID_SP" Type="CT_PHIEUKIEMKHO" />
       <Association Name="HANG_SANPHAM" Member="HANG" ThisKey="ID_HANG" OtherKey="ID" Type="HANG" IsForeignKey="true" />
       <Association Name="LOAISP_SANPHAM" Member="LOAISP" ThisKey="ID_LOAI" OtherKey="ID" Type="LOAISP" IsForeignKey="true" />
     </Type>
@@ -199,6 +200,27 @@
     <Type Name="NCC">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="TENNCC" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CT_PHIEUKIEMKHO" Member="CT_PHIEUKIEMKHOs">
+    <Type Name="CT_PHIEUKIEMKHO">
+      <Column Name="ID_SP" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_PKK" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SL_TONKHO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SL_THUCTE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SL_LECH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GIATRILECH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="SANPHAM_CT_PHIEUKIEMKHO" Member="SANPHAM" ThisKey="ID_SP" OtherKey="ID" Type="SANPHAM" IsForeignKey="true" />
+      <Association Name="PHIEUKIEMKHO_CT_PHIEUKIEMKHO" Member="PHIEUKIEMKHO" ThisKey="ID_PKK" OtherKey="ID" Type="PHIEUKIEMKHO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PHIEUKIEMKHO" Member="PHIEUKIEMKHOs">
+    <Type Name="PHIEUKIEMKHO">
+      <Column Name="ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NGLAP" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="THOIGIANLAP" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="TONGSLLECH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PHIEUKIEMKHO_CT_PHIEUKIEMKHO" Member="CT_PHIEUKIEMKHOs" ThisKey="ID" OtherKey="ID_PKK" Type="CT_PHIEUKIEMKHO" />
     </Type>
   </Table>
   <Function Name="dbo.sp_ChiTietDonHang_kh" Method="sp_ChiTietDonHang_kh">

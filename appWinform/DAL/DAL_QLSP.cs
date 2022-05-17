@@ -155,6 +155,11 @@ namespace DAL
             return dbLq.SANPHAMs.Where(sp => sp.TENSP == TenSP).Count() > 0;
         }
 
+        public int isExists_MaSP(string pMaSP)
+        {
+            return dbLq.SANPHAMs.Where(sp => sp.ID == pMaSP).Count();
+        }
+
         public bool isCodeExists(string pImeiCode)
         {
             return dbLq.IMEICODEs.Where(sp => sp.MA == pImeiCode).Count() > 0;

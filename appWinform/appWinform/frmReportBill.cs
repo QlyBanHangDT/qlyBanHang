@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
 using BUS.Reporting;
-
 namespace appWinform
 {
     public partial class frmReportBill : Form
