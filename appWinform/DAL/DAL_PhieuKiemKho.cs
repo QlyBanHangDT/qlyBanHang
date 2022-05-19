@@ -9,9 +9,9 @@ namespace DAL
     public class DAL_PhieuKiemKho
     {
         QlyBanHangDataContext qlbh = new QlyBanHangDataContext();
-        public List<string> getPhieuKiemKho()
+        public List<string> getPhieuKiemKho(string id_nv)
         {
-            return qlbh.PHIEUKIEMKHOs.Select(k=>k.ID).ToList();
+            return qlbh.PHIEUKIEMKHOs.Where(t=>t.ID_NV == id_nv).Select(k=>k.ID).ToList();
         }
 
         public int? getTongSoLuongLech(string pMaPKK)
@@ -21,8 +21,8 @@ namespace DAL
 
         public List<ChiTietPhieuKiemKho> getCT_PKK(string pMa)
         {
-            return qlbh.CT_PHIEUKIEMKHOs.Where(k => k.ID_PKK == pMa).Select(t => new ChiTietPhieuKiemKho{
-                ID_SP = t.ID_SP,
+            return qlbh.CT_PHIEUKIEMKHOs.Where(k=>k.ID_PKK == pMa).Join(qlbh.SANPHAMs,t=>t.ID_SP,a=>a.ID,(t,a) => new ChiTietPhieuKiemKho{
+                TenSP = a.TENSP,
                 SL_LECH = t.SL_LECH,
                 SL_THUCTE = t.SL_THUCTE,
                 SL_TON = t.SL_TONKHO,
@@ -30,7 +30,7 @@ namespace DAL
             }).ToList();
         }
 
-        //Cập nhật phiếu kiểm kho và chi tiết phiếu kiểm kho
+        //Cập nhật chi tiết phiếu kiểm kho
         public bool capNhatPhieuKiemKho(string pMa, string pMa_SP, int sl_tt, int sl_tk)
         {
             try
@@ -45,13 +45,10 @@ namespace DAL
                 ct.GIATRILECH = sl_lech * giaBan;
                 qlbh.SubmitChanges();
 
-                //Cập nhật phiếu kierm kho
                 PHIEUKIEMKHO pkk = qlbh.PHIEUKIEMKHOs.Where(pk => pk.ID == pMa).FirstOrDefault();
-                pkk.TONGSLLECH = qlbh.CT_PHIEUKIEMKHOs.Where(k => k.ID_PKK == pMa).Sum(t=>t.SL_LECH);
-                DateTime dt = DateTime.Now;
-                pkk.THOIGIANLAP = dt.TimeOfDay;
-                pkk.NGLAP = DateTime.Today;
+                pkk.TONGSLLECH = qlbh.CT_PHIEUKIEMKHOs.Where(k => k.ID_PKK == pMa).Sum(t => t.SL_LECH);
                 qlbh.SubmitChanges();
+
                 return true;
             }
             catch (Exception e)
@@ -71,7 +68,7 @@ namespace DAL
             return qlbh.CT_PHIEUKIEMKHOs.Where(t => t.ID_PKK == pMa).Count();
         }
 
-        public bool themPhieuKiemKho(string pMa)
+        public bool themPhieuKiemKho(string pMa, string pMaNV)
         {
             try
             {
@@ -79,9 +76,12 @@ namespace DAL
                 PHIEUKIEMKHO pk = new PHIEUKIEMKHO
                 {
                     ID = pMa,
+                    ID_NV = pMaNV,
                     NGLAP = DateTime.Today,
                     THOIGIANLAP = DateTime.Now.TimeOfDay,
+                    NGHOANTHANH = null,
                     TONGSLLECH = null,
+                    TRANGTHAI = false
                 };
                 qlbh.PHIEUKIEMKHOs.InsertOnSubmit(pk);
                 qlbh.SubmitChanges();
@@ -149,5 +149,32 @@ namespace DAL
             }
 
         }
+        public bool? getTinhTrang_PKK(string pMa)
+        {
+            return qlbh.PHIEUKIEMKHOs.Where(t => t.ID == pMa).Select(t => t.TRANGTHAI).FirstOrDefault();
+        }
+
+        public int kt_TrangThaiPhieuKK(string pMa)
+        {
+            return qlbh.CT_PHIEUKIEMKHOs.Where(t => t.ID_PKK == pMa && t.SL_THUCTE == null).Count();
+        }
+
+        public bool capNhatHoanThanh_PKK(string pMa)
+        {
+            try
+            {
+                PHIEUKIEMKHO pk = qlbh.PHIEUKIEMKHOs.Where(t => t.ID == pMa).FirstOrDefault();
+                pk.TRANGTHAI = true;
+                pk.THOIGIANLAP = DateTime.Now.TimeOfDay;
+                pk.NGHOANTHANH = DateTime.Today;
+                qlbh.SubmitChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }

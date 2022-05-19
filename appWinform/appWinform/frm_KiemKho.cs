@@ -14,6 +14,8 @@ namespace appWinform
     public partial class frm_KiemKho : Form
     {
         BUS_PhieuKiemKho pkk = new BUS_PhieuKiemKho();
+        BUS_QLNV nv = new BUS_QLNV();
+        BUS_QLTK tk = new BUS_QLTK();
         BUS_QLSP sp = new BUS_QLSP();
         public frm_KiemKho()
         {
@@ -22,23 +24,36 @@ namespace appWinform
 
         public void loadMaPhieuKiem()
         {
-            cbo_PKK.DataSource = pkk.loadPhieuKK();
+            string idTK = tk.getID_name(frmLogin.USERNAME);
+            string id_nv = nv.getID(idTK);
+            cbo_PKK.DataSource = pkk.loadPhieuKK(id_nv);
             cbo_PKK.DisplayMember = "ID";
         }
 
         private void frm_KiemKho_Load(object sender, EventArgs e)
         {
+            btnHoanThanh.Enabled = false;
+            btnLuu.Visible = false;
+            cboTenSP.Enabled = false;
             loadMaPhieuKiem();
             btnCapNhat.Enabled = false;
-            btnLuu.Enabled = false;
             btnXoa.Enabled = false;
             txtSL_ThucTe.Enabled = false;
             txtSL_Ton.Enabled = false;
+            if (pkk.getTrangThai_PKK(cbo_PKK.Text) == true)
+            {
+                btnThemChiTiet.Enabled = false;
+                btnXoaPhieu.Enabled = false;
+            }
+            cboTenSP.DataSource = sp.getNames();
+            cboTenSP.Text = String.Empty;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             string ma = cbo_PKK.SelectedValue.ToString();
+            btnCapNhat.Enabled = false;
+            btnXoa.Enabled = false;
             //Kiểm tra tổng số lượng tồn kho
             //Nếu null thì chưa cập nhật
             //Nếu co thì hiển thị số lượng
@@ -48,11 +63,34 @@ namespace appWinform
             else
                 label1.Text = sl.ToString();
             dgv_CTPKK.DataSource = pkk.loadCT_PhieuKK(ma);
+            if (pkk.getTrangThai_PKK(ma) == false)
+            {
+                label12.Text = "Chưa hoàn thành";
+                btnThemChiTiet.Enabled = true;
+                btnXoaPhieu.Enabled = true;
+                label12.ForeColor = Color.Red;
+            }
+            else 
+            {
+                txtSL_ThucTe.BorderColor = Color.Gray;
+                txtSL_Ton.BorderColor = Color.Gray;
+                txtSL_Ton.Enabled = false;
+                txtSL_ThucTe.Enabled = false;
+                btnThemChiTiet.Enabled = false;
+                btnXoaPhieu.Enabled = false;
+                label12.Text = "Đã hoàn thành";
+                label12.ForeColor = Color.Green;
+            }
+
+            if (pkk.kt_TrangThai(ma) > 0)
+            {
+                btnHoanThanh.Enabled = false;
+            }
         }
 
         private void dgv_CTPKK_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtIMaSP.Texts = dgv_CTPKK.CurrentRow.Cells["ID_SP"].Value.ToString();
+            cboTenSP.Text = dgv_CTPKK.CurrentRow.Cells["ID_SP"].Value.ToString();
             txtSL_Ton.Texts = dgv_CTPKK.CurrentRow.Cells["SL_TONKHO"].Value.ToString();
             var sl_tt = dgv_CTPKK.CurrentRow.Cells["SL_THUCTE"].Value;
             txtSL_ThucTe.Texts = String.Format("{0}",sl_tt);
@@ -63,6 +101,8 @@ namespace appWinform
             var gt = dgv_CTPKK.CurrentRow.Cells["GIATRILECH"].Value;
             txtGiaTri.Texts = String.Format("{0}", gt);
 
+            if (pkk.getTrangThai_PKK(cbo_PKK.Text) == true)
+                return;
             txtSL_ThucTe.Enabled = true;
             txtSL_Ton.Enabled = true;
             txtSL_ThucTe.BorderColor = Color.BlueViolet;
@@ -101,7 +141,7 @@ namespace appWinform
                 return;
             }
 
-            string ma_sp = txtIMaSP.Texts;
+            string ma_sp = sp.getID_name(cboTenSP.Text);
             string ma = cbo_PKK.Text;
             int sl_tt = int.Parse(txtSL_ThucTe.Texts);
             int sl_tk = int.Parse(txtSL_Ton.Texts);
@@ -115,11 +155,18 @@ namespace appWinform
                     label1.Text = sl.ToString();
                 btnCapNhat.Enabled = false;
                 txtSL_ThucTe.Enabled = false;
+                btnXoa.Enabled = false;
                 txtSL_Ton.Enabled = false;
                 txtSL_ThucTe.BorderColor = Color.Gray;
                 txtSL_Ton.BorderColor = Color.Gray;
-                txtIMaSP.Texts = txtSL_Lech.Texts = txtSL_ThucTe.Texts = txtSL_Ton.Texts = txtGiaTri.Texts = String.Empty;
+                cboTenSP.Text = txtSL_Lech.Texts = txtSL_ThucTe.Texts = txtSL_Ton.Texts = txtGiaTri.Texts = String.Empty;
                 MessageBox.Show("Cập nhật thành công !", "Thông báo");
+
+                if (pkk.kt_TrangThai(ma) == 0)
+                {
+                    btnHoanThanh.Enabled = true;
+                }
+
             }
             else
                 MessageBox.Show("Đã xảy ra lỗi","Lỗi");
@@ -137,6 +184,7 @@ namespace appWinform
             frmThemPhieuKiemKho frm = new frmThemPhieuKiemKho();
             frm.ShowDialog();
             loadMaPhieuKiem();
+            cboTenSP.Text = txtSL_Lech.Texts = txtSL_ThucTe.Texts = txtSL_Ton.Texts = txtGiaTri.Texts = String.Empty;
         }
 
         private void btnXoaPhieu_Click(object sender, EventArgs e)
@@ -183,17 +231,17 @@ namespace appWinform
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            btnLuu.Enabled = true;
-            txtIMaSP.Enabled = true;
+            dgv_CTPKK.Enabled = false;
+            cboTenSP.Enabled = true;
+            btnLuu.Visible = true;
             txtSL_Ton.Enabled = true;
             txtSL_ThucTe.Enabled = false;
             btnCapNhat.Enabled = false;
             btnXoa.Enabled = false;
-            txtIMaSP.Texts = txtSL_Lech.Texts = txtSL_ThucTe.Texts = txtSL_Ton.Texts = txtGiaTri.Texts = String.Empty;
-            txtIMaSP.BorderColor = Color.BlueViolet;
+            cboTenSP.Text = txtSL_Lech.Texts = txtSL_ThucTe.Texts = txtSL_Ton.Texts = txtGiaTri.Texts = String.Empty;
             txtSL_Ton.BorderColor = Color.BlueViolet;
             txtSL_ThucTe.BorderColor = Color.Gray;
-            txtIMaSP.Focus();
+            cboTenSP.Focus();
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -204,12 +252,11 @@ namespace appWinform
                 cbo_PKK.Focus();
                 return;
             }
-
             //Người dùng không nhập mã sản phẩm
-            if (String.IsNullOrEmpty(txtIMaSP.Texts.Trim()))
+            if (String.IsNullOrEmpty(cboTenSP.Text.Trim()))
             {
-                MessageBox.Show("Vui lòng nhập mã sản phẩm", "Thông báo");
-                txtIMaSP.Focus();
+                MessageBox.Show("Vui lòng nhập tên sản phẩm", "Thông báo");
+                cboTenSP.Focus();
                 return;
             }
 
@@ -227,36 +274,34 @@ namespace appWinform
                 cbo_PKK.Focus();
                 return;
             }
-
            //Kiểm tra mã sản phẩm có tồn tại
-            if (sp.isExists_MaSP(txtIMaSP.Texts.Trim()) == 0)
+            if (sp.isExists_TenSP(cboTenSP.Text.Trim()) == 0)
             {
-                MessageBox.Show("Mã sản phẩm không tồn tại", "Thông báo");
-                txtIMaSP.Focus();
+                MessageBox.Show("Tên sản phẩm không tồn tại", "Thông báo");
+                cboTenSP.Focus();
                 return;
             }
-
+            string maSP = sp.getID_name(cboTenSP.Text.Trim());
             //Kiểm tra khoa của chi tiết phiếu tồn kho
-            if (pkk.kt_CTPKK(cbo_PKK.Text.Trim(), txtIMaSP.Texts.Trim()) > 0)
+            if (pkk.kt_CTPKK(cbo_PKK.Text.Trim(), maSP) > 0)
             {
                 MessageBox.Show("Mã chi tiết phiếu đã tồn tại", "Thông báo");
-                txtIMaSP.Focus();
+                cboTenSP.Focus();
                 return;
             }
 
 
             //Thêm dữ liệu
-            string ma = cbo_PKK.Text;
-            string maSP= txtIMaSP.Texts;
+            string ma= cbo_PKK.Text;
             int sl_tk = int.Parse(txtSL_Ton.Texts);
             if (pkk.them_CTPKK(maSP, ma, sl_tk))
             {
-                txtIMaSP.Enabled = false;
+                dgv_CTPKK.Enabled = true;
+                cboTenSP.Enabled = false;
                 txtSL_Ton.Enabled = false;
-                btnLuu.Enabled = false;
-                txtIMaSP.BorderColor = Color.Gray;
+                btnLuu.Visible = false;
                 txtSL_Ton.BorderColor = Color.Gray;
-                txtIMaSP.Texts = txtSL_Ton.Texts = String.Empty;
+                cboTenSP.Text = txtSL_Ton.Texts = String.Empty;
                 dgv_CTPKK.DataSource = pkk.loadCT_PhieuKK(ma);
                 MessageBox.Show("Thêm chi tiết thành công !", "Thông báo");
             }
@@ -284,20 +329,63 @@ namespace appWinform
             }
 
             string ma = cbo_PKK.Text;
-            string maSP = dgv_CTPKK.CurrentRow.Cells["ID_SP"].Value.ToString();
-
+            string ten = dgv_CTPKK.CurrentRow.Cells["ID_SP"].Value.ToString();
+            string maSP = sp.getID_name(ten);
             if (pkk.xoa_CTPKK(maSP, ma))
             {
                 btnXoa.Enabled = false;
+                btnCapNhat.Enabled = false;
+                cboTenSP.Enabled = false;
                 txtSL_ThucTe.BorderColor = Color.Gray;
                 txtSL_Ton.BorderColor = Color.Gray;
-                txtIMaSP.Texts = txtSL_Lech.Texts = txtSL_ThucTe.Texts = txtSL_Ton.Texts = txtGiaTri.Texts = String.Empty;
+                cboTenSP.Text = txtSL_Lech.Texts = txtSL_ThucTe.Texts = txtSL_Ton.Texts = txtGiaTri.Texts = String.Empty;
                 dgv_CTPKK.DataSource = pkk.loadCT_PhieuKK(ma);
                 MessageBox.Show("Xóa chi tiết thành công !", "Thông báo");
             }
             else
             {
                 MessageBox.Show("Đã xảy ra lỗi", "Thông báo");
+            }
+        }
+
+        private void cboTenSP_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cboTenSP.DroppedDown = true;
+        }
+
+        private void cbo_PKK_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cbo_PKK.DroppedDown = true;
+        }
+
+        private void btnHoanThanh_Click(object sender, EventArgs e)
+        {
+            DialogResult r;
+            r = MessageBox.Show("Xác nhận để hoàn thành phiếu?", "Cập nhật",
+
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+            MessageBoxDefaultButton.Button1);
+
+            if (r == DialogResult.Yes)
+            {
+                if (pkk.capNhatPhieuKK(cbo_PKK.Text) && pkk.kt_TrangThai(cbo_PKK.Text) == 0)
+                {
+                    btnXoaPhieu.Enabled = true;
+                    btnHoanThanh.Enabled = false;
+                    btnThemChiTiet.Enabled = false;
+                    MessageBox.Show("Cập nhật thành công", "Cập nhật");
+                    if (pkk.getTrangThai_PKK(cbo_PKK.Text) == false)
+                    {
+                        label12.Text = "Chưa hoàn thành";
+                        label12.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        label12.Text = "Đã hoàn thành";
+                        label12.ForeColor = Color.Green;
+                    }
+                    return;
+                }
             }
         }
     }

@@ -133,5 +133,9 @@ namespace DAL
                 return false;
             }
         }
+        public string getID_name(string pName)
+        {
+            return db.TAIKHOANs.Where(tk => tk.USERNAME.Equals(pName)).First().ID;
+        } 
     }
 }

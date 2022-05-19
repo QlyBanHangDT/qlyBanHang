@@ -10,9 +10,9 @@ namespace BUS
     public class BUS_PhieuKiemKho
     {
         DAL_PhieuKiemKho pkk = new DAL_PhieuKiemKho();
-        public List<string> loadPhieuKK()
+        public List<string> loadPhieuKK(string idnv)
         {
-            return pkk.getPhieuKiemKho();
+            return pkk.getPhieuKiemKho(idnv);
         }
         public int? loadSL_Lech(string pMa)
         {
@@ -37,9 +37,9 @@ namespace BUS
             return pkk.kt_CT_MaPhieuKiemKho(pMa);
         }
 
-        public bool them_PKK(string pMa)
+        public bool them_PKK(string pMa, string pMaNV)
         {
-            return pkk.themPhieuKiemKho(pMa);
+            return pkk.themPhieuKiemKho(pMa,pMaNV);
         }
         public bool xoa_PKK(string pMa)
         {
@@ -58,6 +58,21 @@ namespace BUS
         public bool xoa_CTPKK(string id_sp, string id_pkk)
         {
             return pkk.xoa_CTPKK(id_pkk,id_sp);
+        }
+
+        public bool? getTrangThai_PKK(string id_pkk)
+        {
+            return pkk.getTinhTrang_PKK(id_pkk);
+        }
+
+        public int kt_TrangThai(string pMa)
+        {
+            return pkk.kt_TrangThaiPhieuKK(pMa);
+        }
+
+        public bool capNhatPhieuKK(string pMa)
+        {
+            return pkk.capNhatHoanThanh_PKK(pMa);
         }
     }
 }

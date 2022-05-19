@@ -150,9 +150,9 @@ namespace BUS
             return dal_qlsp.themSP(pTenSan, pImeiCode);
         }
 
-        public int isExists_MaSP(string pMaSP)
+        public int isExists_TenSP(string pTenSP)
         {
-            return dal_qlsp.isExists_MaSP(pMaSP);
+            return dal_qlsp.isExists_TenSP(pTenSP);
         }
     }
 }

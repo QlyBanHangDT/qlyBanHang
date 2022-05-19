@@ -2856,6 +2856,8 @@ namespace DTO
 		
 		private EntitySet<HOADON> _HOADONs;
 		
+		private EntitySet<PHIEUKIEMKHO> _PHIEUKIEMKHOs;
+		
 		private EntityRef<TAIKHOAN> _TAIKHOAN;
 		
     #region Extensibility Method Definitions
@@ -2873,6 +2875,7 @@ namespace DTO
 		public NHANVIEN()
 		{
 			this._HOADONs = new EntitySet<HOADON>(new Action<HOADON>(this.attach_HOADONs), new Action<HOADON>(this.detach_HOADONs));
+			this._PHIEUKIEMKHOs = new EntitySet<PHIEUKIEMKHO>(new Action<PHIEUKIEMKHO>(this.attach_PHIEUKIEMKHOs), new Action<PHIEUKIEMKHO>(this.detach_PHIEUKIEMKHOs));
 			this._TAIKHOAN = default(EntityRef<TAIKHOAN>);
 			OnCreated();
 		}
@@ -2954,6 +2957,19 @@ namespace DTO
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHANVIEN_PHIEUKIEMKHO", Storage="_PHIEUKIEMKHOs", ThisKey="ID", OtherKey="ID_NV")]
+		public EntitySet<PHIEUKIEMKHO> PHIEUKIEMKHOs
+		{
+			get
+			{
+				return this._PHIEUKIEMKHOs;
+			}
+			set
+			{
+				this._PHIEUKIEMKHOs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TAIKHOAN_NHANVIEN", Storage="_TAIKHOAN", ThisKey="ID_TK", OtherKey="ID", IsForeignKey=true, DeleteRule="CASCADE")]
 		public TAIKHOAN TAIKHOAN
 		{
@@ -3015,6 +3031,18 @@ namespace DTO
 		}
 		
 		private void detach_HOADONs(HOADON entity)
+		{
+			this.SendPropertyChanging();
+			entity.NHANVIEN = null;
+		}
+		
+		private void attach_PHIEUKIEMKHOs(PHIEUKIEMKHO entity)
+		{
+			this.SendPropertyChanging();
+			entity.NHANVIEN = this;
+		}
+		
+		private void detach_PHIEUKIEMKHOs(PHIEUKIEMKHO entity)
 		{
 			this.SendPropertyChanging();
 			entity.NHANVIEN = null;
@@ -4726,13 +4754,21 @@ namespace DTO
 		
 		private string _ID;
 		
+		private string _ID_NV;
+		
 		private System.Nullable<System.DateTime> _NGLAP;
+		
+		private System.Nullable<System.DateTime> _NGHOANTHANH;
 		
 		private System.Nullable<System.TimeSpan> _THOIGIANLAP;
 		
 		private System.Nullable<int> _TONGSLLECH;
 		
+		private System.Nullable<bool> _TRANGTHAI;
+		
 		private EntitySet<CT_PHIEUKIEMKHO> _CT_PHIEUKIEMKHOs;
+		
+		private EntityRef<NHANVIEN> _NHANVIEN;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -4740,17 +4776,24 @@ namespace DTO
     partial void OnCreated();
     partial void OnIDChanging(string value);
     partial void OnIDChanged();
+    partial void OnID_NVChanging(string value);
+    partial void OnID_NVChanged();
     partial void OnNGLAPChanging(System.Nullable<System.DateTime> value);
     partial void OnNGLAPChanged();
+    partial void OnNGHOANTHANHChanging(System.Nullable<System.DateTime> value);
+    partial void OnNGHOANTHANHChanged();
     partial void OnTHOIGIANLAPChanging(System.Nullable<System.TimeSpan> value);
     partial void OnTHOIGIANLAPChanged();
     partial void OnTONGSLLECHChanging(System.Nullable<int> value);
     partial void OnTONGSLLECHChanged();
+    partial void OnTRANGTHAIChanging(System.Nullable<bool> value);
+    partial void OnTRANGTHAIChanged();
     #endregion
 		
 		public PHIEUKIEMKHO()
 		{
 			this._CT_PHIEUKIEMKHOs = new EntitySet<CT_PHIEUKIEMKHO>(new Action<CT_PHIEUKIEMKHO>(this.attach_CT_PHIEUKIEMKHOs), new Action<CT_PHIEUKIEMKHO>(this.detach_CT_PHIEUKIEMKHOs));
+			this._NHANVIEN = default(EntityRef<NHANVIEN>);
 			OnCreated();
 		}
 		
@@ -4774,6 +4817,30 @@ namespace DTO
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_NV", DbType="VarChar(10)")]
+		public string ID_NV
+		{
+			get
+			{
+				return this._ID_NV;
+			}
+			set
+			{
+				if ((this._ID_NV != value))
+				{
+					if (this._NHANVIEN.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnID_NVChanging(value);
+					this.SendPropertyChanging();
+					this._ID_NV = value;
+					this.SendPropertyChanged("ID_NV");
+					this.OnID_NVChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGLAP", DbType="Date")]
 		public System.Nullable<System.DateTime> NGLAP
 		{
@@ -4790,6 +4857,26 @@ namespace DTO
 					this._NGLAP = value;
 					this.SendPropertyChanged("NGLAP");
 					this.OnNGLAPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGHOANTHANH", DbType="Date")]
+		public System.Nullable<System.DateTime> NGHOANTHANH
+		{
+			get
+			{
+				return this._NGHOANTHANH;
+			}
+			set
+			{
+				if ((this._NGHOANTHANH != value))
+				{
+					this.OnNGHOANTHANHChanging(value);
+					this.SendPropertyChanging();
+					this._NGHOANTHANH = value;
+					this.SendPropertyChanged("NGHOANTHANH");
+					this.OnNGHOANTHANHChanged();
 				}
 			}
 		}
@@ -4834,6 +4921,26 @@ namespace DTO
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TRANGTHAI", DbType="Bit")]
+		public System.Nullable<bool> TRANGTHAI
+		{
+			get
+			{
+				return this._TRANGTHAI;
+			}
+			set
+			{
+				if ((this._TRANGTHAI != value))
+				{
+					this.OnTRANGTHAIChanging(value);
+					this.SendPropertyChanging();
+					this._TRANGTHAI = value;
+					this.SendPropertyChanged("TRANGTHAI");
+					this.OnTRANGTHAIChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="PHIEUKIEMKHO_CT_PHIEUKIEMKHO", Storage="_CT_PHIEUKIEMKHOs", ThisKey="ID", OtherKey="ID_PKK")]
 		public EntitySet<CT_PHIEUKIEMKHO> CT_PHIEUKIEMKHOs
 		{
@@ -4844,6 +4951,40 @@ namespace DTO
 			set
 			{
 				this._CT_PHIEUKIEMKHOs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="NHANVIEN_PHIEUKIEMKHO", Storage="_NHANVIEN", ThisKey="ID_NV", OtherKey="ID", IsForeignKey=true)]
+		public NHANVIEN NHANVIEN
+		{
+			get
+			{
+				return this._NHANVIEN.Entity;
+			}
+			set
+			{
+				NHANVIEN previousValue = this._NHANVIEN.Entity;
+				if (((previousValue != value) 
+							|| (this._NHANVIEN.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._NHANVIEN.Entity = null;
+						previousValue.PHIEUKIEMKHOs.Remove(this);
+					}
+					this._NHANVIEN.Entity = value;
+					if ((value != null))
+					{
+						value.PHIEUKIEMKHOs.Add(this);
+						this._ID_NV = value.ID;
+					}
+					else
+					{
+						this._ID_NV = default(string);
+					}
+					this.SendPropertyChanged("NHANVIEN");
+				}
 			}
 		}
 		

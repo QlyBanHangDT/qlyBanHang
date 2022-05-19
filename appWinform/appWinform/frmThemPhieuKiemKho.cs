@@ -14,6 +14,8 @@ namespace appWinform
     public partial class frmThemPhieuKiemKho : Form
     {
         BUS_PhieuKiemKho pkk = new BUS_PhieuKiemKho();
+        BUS_QLNV nv = new BUS_QLNV();
+        BUS_QLTK tk = new BUS_QLTK();
         public frmThemPhieuKiemKho()
         {
             InitializeComponent();
@@ -35,7 +37,10 @@ namespace appWinform
                 return;
             }
 
-            if (pkk.them_PKK(txtMaPhieuKiemKho.Texts.Trim()))
+            string idTK = tk.getID_name(frmLogin.USERNAME);
+            string id_nv = nv.getID(idTK);
+
+            if (pkk.them_PKK(txtMaPhieuKiemKho.Texts.Trim(),id_nv))
             {
                 MessageBox.Show("Thêm phiếu kiểm kho thành công", "Thông báo");
                 this.Close();

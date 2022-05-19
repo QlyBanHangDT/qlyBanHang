@@ -20,5 +20,9 @@ namespace BUS
         {
             return dal_nv.capNhatThongTinNV(nv, username);
         }
+        public string getID(string pID)
+        {
+            return dal_nv.getID(pID);
+        }
     }
 }

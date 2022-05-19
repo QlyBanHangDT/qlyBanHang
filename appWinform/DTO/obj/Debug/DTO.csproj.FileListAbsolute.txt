@@ -11,3 +11,4 @@ C:\Users\ad\Desktop\qlyBanHang\appWinform\DTO\bin\Debug\DTO.pdb
 C:\Users\ad\Desktop\qlyBanHang\appWinform\DTO\bin\Debug\Zen.Barcode.Core.dll
 C:\Users\ad\Desktop\qlyBanHang\appWinform\DTO\obj\Debug\DTO.dll
 C:\Users\ad\Desktop\qlyBanHang\appWinform\DTO\obj\Debug\DTO.pdb
+C:\Users\ad\Desktop\qlyBanHang\appWinform\DTO\obj\Debug\DTO.csprojResolveAssemblyReference.cache

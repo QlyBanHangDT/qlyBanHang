@@ -8,13 +8,14 @@ namespace DTO
 {
     public class ChiTietPhieuKiemKho
     {
-        string id_sp;
+        string tenSP;
 
-        public string ID_SP
+        public string TenSP
         {
-            get { return id_sp; }
-            set { id_sp = value; }
+            get { return tenSP; }
+            set { tenSP = value; }
         }
+
         int? sl_lech, sl_thucte, sl_ton;
 
         public int? SL_TON

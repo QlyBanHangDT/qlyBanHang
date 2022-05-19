@@ -129,6 +129,7 @@
       <Column Name="ID_TK" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
       <Column Name="TINHTRANG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="NHANVIEN_HOADON" Member="HOADONs" ThisKey="ID" OtherKey="ID_NV" Type="HOADON" />
+      <Association Name="NHANVIEN_PHIEUKIEMKHO" Member="PHIEUKIEMKHOs" ThisKey="ID" OtherKey="ID_NV" Type="PHIEUKIEMKHO" />
       <Association Name="TAIKHOAN_NHANVIEN" Member="TAIKHOAN" ThisKey="ID_TK" OtherKey="ID" Type="TAIKHOAN" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
@@ -217,10 +218,14 @@
   <Table Name="dbo.PHIEUKIEMKHO" Member="PHIEUKIEMKHOs">
     <Type Name="PHIEUKIEMKHO">
       <Column Name="ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_NV" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="NGLAP" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NGHOANTHANH" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="THOIGIANLAP" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
       <Column Name="TONGSLLECH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="PHIEUKIEMKHO_CT_PHIEUKIEMKHO" Member="CT_PHIEUKIEMKHOs" ThisKey="ID" OtherKey="ID_PKK" Type="CT_PHIEUKIEMKHO" />
+      <Association Name="NHANVIEN_PHIEUKIEMKHO" Member="NHANVIEN" ThisKey="ID_NV" OtherKey="ID" Type="NHANVIEN" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.sp_ChiTietDonHang_kh" Method="sp_ChiTietDonHang_kh">

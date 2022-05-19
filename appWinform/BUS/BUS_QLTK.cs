@@ -54,11 +54,13 @@ namespace BUS
         {
             return dal_qltk.capNhatTK(pU, pP, ck);
         }
-
-
         public bool xoaTK(string pID)
         {
             return dal_qltk.xoaTK(pID);
+        }
+        public string getID_name(string pName)
+        {
+            return dal_qltk.getID_name(pName);
         }
     }
 }

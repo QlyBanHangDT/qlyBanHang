@@ -49,5 +49,9 @@ namespace DAL
                 return false;
             }
         }
+        public string getID(string pID)
+        {
+            return qlbh.NHANVIENs.Where(nv => nv.ID_TK.Equals(pID)).First().ID;
+        } 
     }
 }
