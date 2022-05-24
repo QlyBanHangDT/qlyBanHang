@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace appWinform
 {
     static class Program
@@ -23,7 +22,7 @@ namespace appWinform
             }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frm_KiemKho());
+            Application.Run(new frmLogin());
         }
     }
 }
