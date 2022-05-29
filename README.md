@@ -13,7 +13,7 @@
         - [giải mã số imei](https://en.tab-tv.com/?p=18840)
     - [link tham khảo 1](https://www.kiotviet.vn/huong-dan-su-dung-kiotviet/huong-dan-hang-hoa/hang-hoa-serial-imei/)
     - [Quản lý nhập xuất hàng theo mã imei](https://eshop.misa.vn/help/vi/kb/quan_ly_hang_hoa_theo_serialimei)
-- Kiểm tra tồn kho
+- [x] Kiểm tra tồn kho
     - Lập phiếu kiểm kho
         - 1 phiếu kiểm kho bao gồm:
             - Mã
