@@ -20,3 +20,14 @@ C:\Users\ad\Desktop\qlyBanHang\appWinform\DAL\obj\Debug\DAL.Properties.Resources
 C:\Users\ad\Desktop\qlyBanHang\appWinform\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache
 C:\Users\ad\Desktop\qlyBanHang\appWinform\DAL\obj\Debug\DAL.dll
 C:\Users\ad\Desktop\qlyBanHang\appWinform\DAL\obj\Debug\DAL.pdb
+D:\github\dotNet\qlyBanHang\appWinform\DAL\bin\Debug\DAL.dll.config
+D:\github\dotNet\qlyBanHang\appWinform\DAL\bin\Debug\DAL.dll
+D:\github\dotNet\qlyBanHang\appWinform\DAL\bin\Debug\DAL.pdb
+D:\github\dotNet\qlyBanHang\appWinform\DAL\bin\Debug\DTO.dll
+D:\github\dotNet\qlyBanHang\appWinform\DAL\bin\Debug\Zen.Barcode.Core.dll
+D:\github\dotNet\qlyBanHang\appWinform\DAL\bin\Debug\DTO.pdb
+D:\github\dotNet\qlyBanHang\appWinform\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+D:\github\dotNet\qlyBanHang\appWinform\DAL\obj\Debug\DAL.Properties.Resources.resources
+D:\github\dotNet\qlyBanHang\appWinform\DAL\obj\Debug\DAL.csproj.GenerateResource.Cache
+D:\github\dotNet\qlyBanHang\appWinform\DAL\obj\Debug\DAL.dll
+D:\github\dotNet\qlyBanHang\appWinform\DAL\obj\Debug\DAL.pdb
