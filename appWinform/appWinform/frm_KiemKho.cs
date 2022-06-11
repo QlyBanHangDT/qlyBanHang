@@ -32,19 +32,24 @@ namespace appWinform
 
         private void frm_KiemKho_Load(object sender, EventArgs e)
         {
-            btnHoanThanh.Enabled = false;
-            btnLuu.Visible = false;
+            btnLuu.Visible = btnHuy.Visible = false;
+
             cboTenSP.Enabled = false;
+
             loadMaPhieuKiem();
+
             btnCapNhat.Enabled = false;
             btnXoa.Enabled = false;
             txtSL_ThucTe.Enabled = false;
             txtSL_Ton.Enabled = false;
+
             if (pkk.getTrangThai_PKK(cbo_PKK.Text) == true)
             {
                 btnThemChiTiet.Enabled = false;
                 btnXoaPhieu.Enabled = false;
+                btnHoanThanh.Enabled = false;
             }
+
             cboTenSP.DataSource = sp.getNames();
             cboTenSP.Text = String.Empty;
         }
@@ -62,7 +67,10 @@ namespace appWinform
                 label1.Text = "chưa cập nhật";
             else
                 label1.Text = sl.ToString();
+
             dgv_CTPKK.DataSource = pkk.loadCT_PhieuKK(ma);
+            dgv_CTPKK.ClearSelection();
+
             if (pkk.getTrangThai_PKK(ma) == false)
             {
                 label12.Text = "Chưa hoàn thành";
@@ -99,7 +107,7 @@ namespace appWinform
             var sl_lech = dgv_CTPKK.CurrentRow.Cells["SL_LECH"].Value;
             txtSL_Lech.Texts = String.Format("{0}", sl_lech);
             var gt = dgv_CTPKK.CurrentRow.Cells["GIATRILECH"].Value;
-            txtGiaTri.Texts = String.Format("{0}", gt);
+            txtGiaTri.Texts = String.Format("{0:#,##0}", gt);
 
             if (pkk.getTrangThai_PKK(cbo_PKK.Text) == true)
                 return;
@@ -173,12 +181,6 @@ namespace appWinform
 
         }
 
-        private void txtSL_ThucTe_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-                e.Handled = true;
-        }
-
         private void btnThemPKK_Click(object sender, EventArgs e)
         {
             frmThemPhieuKiemKho frm = new frmThemPhieuKiemKho();
@@ -223,24 +225,31 @@ namespace appWinform
             }
         }
 
-        private void txtSL_Ton_KeyPress(object sender, KeyPressEventArgs e)
+        private void checkNumber(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                MessageBox.Show("Vui lòng nhập số", "Thông báo");
+                (sender as GUI.textBoxCustom).Focus();
                 e.Handled = true;
+            }
         }
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
             dgv_CTPKK.Enabled = false;
             cboTenSP.Enabled = true;
-            btnLuu.Visible = true;
-            txtSL_Ton.Enabled = true;
+            btnLuu.Visible = btnHuy.Visible = true;
+            txtSL_Ton.Enabled = false;
             txtSL_ThucTe.Enabled = false;
+
+            btnHoanThanh.Enabled = false;
             btnCapNhat.Enabled = false;
             btnXoa.Enabled = false;
+
             cboTenSP.Text = txtSL_Lech.Texts = txtSL_ThucTe.Texts = txtSL_Ton.Texts = txtGiaTri.Texts = String.Empty;
-            txtSL_Ton.BorderColor = Color.BlueViolet;
             txtSL_ThucTe.BorderColor = Color.Gray;
+            txtSL_Ton.BorderColor = Color.Gray;
             cboTenSP.Focus();
         }
 
@@ -292,18 +301,52 @@ namespace appWinform
 
 
             //Thêm dữ liệu
-            string ma= cbo_PKK.Text;
+            string ma = cbo_PKK.Text;
+
             int sl_tk = int.Parse(txtSL_Ton.Texts);
-            if (pkk.them_CTPKK(maSP, ma, sl_tk))
+            int? sl_thucTe;
+
+            if (txtSL_ThucTe.Texts == string.Empty) 
+                sl_thucTe = null;
+            else sl_thucTe = int.Parse(txtSL_ThucTe.Texts);
+
+            if (pkk.them_CTPKK(maSP, ma, sl_tk, sl_thucTe))
             {
                 dgv_CTPKK.Enabled = true;
                 cboTenSP.Enabled = false;
-                txtSL_Ton.Enabled = false;
-                btnLuu.Visible = false;
-                txtSL_Ton.BorderColor = Color.Gray;
-                cboTenSP.Text = txtSL_Ton.Texts = String.Empty;
+                txtSL_ThucTe.Enabled = false;
+                btnLuu.Visible = btnHuy.Visible = false;
+                txtSL_ThucTe.BorderColor = Color.Gray;
+                cboTenSP.Text = txtSL_ThucTe.Texts = txtSL_Ton.Texts = String.Empty;
                 dgv_CTPKK.DataSource = pkk.loadCT_PhieuKK(ma);
                 MessageBox.Show("Thêm chi tiết thành công !", "Thông báo");
+
+                // cập nhật giá trị lệnh (nếu có)
+                if (sl_thucTe != null)
+                {
+                    if (pkk.capNhatKiemKho(ma, maSP, sl_thucTe.Value, sl_tk))
+                    {
+                        dgv_CTPKK.DataSource = pkk.loadCT_PhieuKK(ma);
+                        int? sl = pkk.loadSL_Lech(ma);
+                        if (sl == null)
+                            label1.Text = "Chưa cập nhật";
+                        else
+                            label1.Text = sl.ToString();
+                        btnCapNhat.Enabled = false;
+                        txtSL_ThucTe.Enabled = false;
+                        btnXoa.Enabled = false;
+                        txtSL_Ton.Enabled = false;
+                        txtSL_ThucTe.BorderColor = Color.Gray;
+                        txtSL_Ton.BorderColor = Color.Gray;
+                        cboTenSP.Text = txtSL_Lech.Texts = txtSL_ThucTe.Texts = txtSL_Ton.Texts = txtGiaTri.Texts = String.Empty;
+
+                        if (pkk.kt_TrangThai(ma) == 0)
+                        {
+                            btnHoanThanh.Enabled = true;
+                        }
+
+                    }
+                }
             }
             else
             {
@@ -384,9 +427,86 @@ namespace appWinform
                         label12.Text = "Đã hoàn thành";
                         label12.ForeColor = Color.Green;
                     }
-                    return;
                 }
             }
         }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            string ma = cbo_PKK.Text;
+
+            dgv_CTPKK.Enabled = true;
+            cboTenSP.Enabled = false;
+
+            dgv_CTPKK.DataSource = pkk.loadCT_PhieuKK(ma);
+
+            btnLuu.Visible = btnHuy.Visible = false;
+
+            btnCapNhat.Enabled = false;
+            txtSL_ThucTe.Enabled = false;
+            btnXoa.Enabled = false;
+            txtSL_Ton.Enabled = false;
+
+            txtSL_ThucTe.BorderColor = Color.Gray;
+            txtSL_Ton.BorderColor = Color.Gray;
+
+            cboTenSP.Text = txtSL_Lech.Texts = txtSL_ThucTe.Texts = txtSL_Ton.Texts = txtGiaTri.Texts = String.Empty;
+
+            if (pkk.kt_TrangThai(ma) == 0)
+            {
+                btnHoanThanh.Enabled = true;
+            }
+        }
+
+        private void cboTenSP_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboTenSP.Enabled)
+            {
+                txtSL_Ton.Texts = sp.getSoLuong(cboTenSP.Text).ToString();
+
+                txtSL_ThucTe.Enabled = true;
+
+                txtSL_ThucTe.BorderColor = Color.BlueViolet;
+
+                txtSL_ThucTe.Focus();
+            }
+        }
+
+        private void label12_TextChanged(object sender, EventArgs e)
+        {
+            btnXuatFile.Enabled = label12.Text.Equals("Đã hoàn thành");
+        }
+
+        private void btnXuatFile_Click(object sender, EventArgs e)
+        {
+            List<object> _lstSp = new List<object>();
+            int _tongSoLuongLech = 0;
+            double _tongGTriLech = 0;
+            foreach (DataGridViewRow r in dgv_CTPKK.Rows)
+            {
+                _lstSp.Add(new {
+                    TenSP = r.Cells["ID_SP"].Value.ToString(),
+                    SoLuongTK = string.Format("{0:0}", r.Cells["SL_TONKHO"].Value.ToString()),
+                    SoLuongTT = string.Format("{0:0}", r.Cells["SL_THUCTE"].Value.ToString()),
+                    SoLuongLech = string.Format("{0:0}", r.Cells["SL_LECH"].Value.ToString()),
+                    GiaTriLech = string.Format("{0:#,##0}", double.Parse(r.Cells["GIATRILECH"].Value.ToString())),
+                });
+
+                _tongSoLuongLech += int.Parse(string.Format("{0:0}", r.Cells["SL_LECH"].Value.ToString()));
+                _tongGTriLech += double.Parse(string.Format("{0:0}", r.Cells["GIATRILECH"].Value.ToString()));
+            }
+
+            List<string[]> data = new List<string[]>();
+            data.Add(new string[] { "NhanVien", "TongSLLech", "TongGiaTriLech" });
+            data.Add(new string[] { 
+                new BUS_QLNV().getNhanVien(frmLogin.USERNAME).Ten, 
+                string.Format("{0:0}", _tongSoLuongLech), 
+                string.Format("{0:#,##0}", _tongGTriLech)
+            });
+
+            // Show thông tin phiếu kiểm kho
+            new Reports<object>().export_Word("phieuKT.docx", "KiemKho", _lstSp, data);
+        }
+
     }
 }

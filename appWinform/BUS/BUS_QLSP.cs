@@ -18,6 +18,10 @@ namespace BUS
         {
             return dal_qlsp.getDSSP();
         }
+        public int getSoLuong(string pTenSP)
+        {
+            return dal_qlsp.getSanPham(pTenSP).IMEICODEs.Count;
+        }
         public List<LOAISP> getLoai(int pIdDaMuc)
         {
             return dal_qlsp.getLoai(pIdDaMuc);

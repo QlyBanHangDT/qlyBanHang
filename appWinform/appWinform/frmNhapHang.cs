@@ -34,9 +34,22 @@ namespace appWinform
             string maPN = bus_qlsp.getMaPN();
             NhanVien nv = bus_nv.getNhanVien(frmLogin.USERNAME);
 
+            int _tongSoLuong = 0;
+
+            List<object> _lstSp = new List<object>();
+
             foreach (DataGridViewRow r in dataGridView_pn.Rows)
             {
                 var lstImei = r.Cells["imeicode"].Value.ToString().Split(',').ToList();
+
+                _tongSoLuong += int.Parse(r.Cells["SoLuong"].Value.ToString());
+
+                _lstSp.Add(new
+                {
+                    TenSP = r.Cells["TenSP"].Value.ToString().Trim(),
+                    SoLuong = r.Cells["SoLuong"].Value.ToString(),
+                    Gia = double.Parse(r.Cells["Gia"].Value.ToString()).ToString("#,##0")
+                });
 
                 // thêm vào bảng imei
                 lstImei.ForEach(imei =>
@@ -47,6 +60,12 @@ namespace appWinform
                     bus_qlsp.nhapHang(maPN, cboNCC.Text, nv.Ten, imei);
                 });
             }
+            List<string[]> data = new List<string[]>();
+            data.Add(new string[] { "TenNhanVien", "TenNCC", "TongSoLuong", "TongGia" });
+            data.Add(new string[] { nv.Ten, cboNCC.Text, string.Format("{0}", _tongSoLuong), txtTongTien.Texts });
+
+            // Show thông tin phiếu nhập
+            new Reports<object>().export_Word("reportPhieuNhap.docx", "ListSP", _lstSp, data);
 
             // clear view 
             txtTongTien.Clear();
@@ -108,6 +127,15 @@ namespace appWinform
                 }
             }
             string maSP = bus_qlsp.getID_name(cboSearch.Text.Trim());
+            if (maSP == string.Empty)
+            {
+                MessageBox.Show("Thông tin sản phẩm không tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+
+                cboSearch.Text = string.Empty;
+
+                return;   
+            }
+
             DataRow r = tbSanPham.NewRow();
             r["ma"] = maSP;
             r["TenSP"] = bus_ttsp.getTenSP(maSP);

@@ -29,17 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhapHang));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhapHang));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cboSearch = new System.Windows.Forms.ComboBox();
+            this.btnTimSP = new GUI.CustomButton();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtTongTien = new GUI.textBoxCustom();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnThemNCC = new FontAwesome.Sharp.IconButton();
+            this.btnThanhToan = new GUI.CustomButton();
+            this.cboNCC = new System.Windows.Forms.ComboBox();
             this.dataGridView_pn = new System.Windows.Forms.DataGridView();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,11 +54,6 @@
             this.imeicode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnXoa = new FontAwesome.Sharp.IconMenuItem();
-            this.cboNCC = new System.Windows.Forms.ComboBox();
-            this.btnThemNCC = new FontAwesome.Sharp.IconButton();
-            this.txtTongTien = new GUI.textBoxCustom();
-            this.btnThanhToan = new GUI.CustomButton();
-            this.btnTimSP = new GUI.CustomButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -98,9 +98,29 @@
             this.cboSearch.FormattingEnabled = true;
             this.cboSearch.Location = new System.Drawing.Point(111, 9);
             this.cboSearch.Name = "cboSearch";
-            this.cboSearch.Size = new System.Drawing.Size(271, 24);
+            this.cboSearch.Size = new System.Drawing.Size(342, 24);
             this.cboSearch.TabIndex = 6;
             this.cboSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cboSearch_KeyPress);
+            // 
+            // btnTimSP
+            // 
+            this.btnTimSP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTimSP.BackColor = System.Drawing.Color.White;
+            this.btnTimSP.BackgroundColor = System.Drawing.Color.White;
+            this.btnTimSP.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnTimSP.BorderRadius = 0;
+            this.btnTimSP.BorderSize = 0;
+            this.btnTimSP.FlatAppearance.BorderSize = 0;
+            this.btnTimSP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTimSP.ForeColor = System.Drawing.Color.White;
+            this.btnTimSP.Image = ((System.Drawing.Image)(resources.GetObject("btnTimSP.Image")));
+            this.btnTimSP.Location = new System.Drawing.Point(462, 3);
+            this.btnTimSP.Name = "btnTimSP";
+            this.btnTimSP.Size = new System.Drawing.Size(35, 33);
+            this.btnTimSP.TabIndex = 1;
+            this.btnTimSP.TextColor = System.Drawing.Color.White;
+            this.btnTimSP.UseVisualStyleBackColor = false;
+            this.btnTimSP.Click += new System.EventHandler(this.btnTimSP_Click);
             // 
             // label1
             // 
@@ -140,6 +160,26 @@
             this.panel2.Size = new System.Drawing.Size(390, 150);
             this.panel2.TabIndex = 0;
             // 
+            // txtTongTien
+            // 
+            this.txtTongTien.BackColor = System.Drawing.SystemColors.Window;
+            this.txtTongTien.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.txtTongTien.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.txtTongTien.BorderSize = 2;
+            this.txtTongTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTongTien.ForeColor = System.Drawing.Color.DimGray;
+            this.txtTongTien.Location = new System.Drawing.Point(119, 4);
+            this.txtTongTien.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTongTien.Multiline = false;
+            this.txtTongTien.Name = "txtTongTien";
+            this.txtTongTien.Padding = new System.Windows.Forms.Padding(7);
+            this.txtTongTien.PasswordChar = false;
+            this.txtTongTien.Size = new System.Drawing.Size(204, 35);
+            this.txtTongTien.TabIndex = 1;
+            this.txtTongTien.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTongTien.Texts = "";
+            this.txtTongTien.UnderlinedStyle = true;
+            // 
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -161,6 +201,55 @@
             this.panel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.panel3.Size = new System.Drawing.Size(232, 150);
             this.panel3.TabIndex = 1;
+            // 
+            // btnThemNCC
+            // 
+            this.btnThemNCC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnThemNCC.BackColor = System.Drawing.Color.Blue;
+            this.btnThemNCC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThemNCC.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnThemNCC.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.btnThemNCC.IconColor = System.Drawing.Color.White;
+            this.btnThemNCC.IconSize = 20;
+            this.btnThemNCC.Location = new System.Drawing.Point(198, 4);
+            this.btnThemNCC.Name = "btnThemNCC";
+            this.btnThemNCC.Rotation = 0D;
+            this.btnThemNCC.Size = new System.Drawing.Size(25, 24);
+            this.btnThemNCC.TabIndex = 2;
+            this.btnThemNCC.UseVisualStyleBackColor = false;
+            this.btnThemNCC.Click += new System.EventHandler(this.btnThemNCC_Click);
+            // 
+            // btnThanhToan
+            // 
+            this.btnThanhToan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnThanhToan.BackColor = System.Drawing.Color.Aqua;
+            this.btnThanhToan.BackgroundColor = System.Drawing.Color.Aqua;
+            this.btnThanhToan.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnThanhToan.BorderRadius = 10;
+            this.btnThanhToan.BorderSize = 0;
+            this.btnThanhToan.Enabled = false;
+            this.btnThanhToan.FlatAppearance.BorderSize = 0;
+            this.btnThanhToan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThanhToan.ForeColor = System.Drawing.Color.White;
+            this.btnThanhToan.Location = new System.Drawing.Point(73, 107);
+            this.btnThanhToan.Name = "btnThanhToan";
+            this.btnThanhToan.Size = new System.Drawing.Size(150, 40);
+            this.btnThanhToan.TabIndex = 0;
+            this.btnThanhToan.Text = "Xác nhận";
+            this.btnThanhToan.TextColor = System.Drawing.Color.White;
+            this.btnThanhToan.UseVisualStyleBackColor = false;
+            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
+            // 
+            // cboNCC
+            // 
+            this.cboNCC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboNCC.FormattingEnabled = true;
+            this.cboNCC.Location = new System.Drawing.Point(11, 4);
+            this.cboNCC.Name = "cboNCC";
+            this.cboNCC.Size = new System.Drawing.Size(189, 24);
+            this.cboNCC.TabIndex = 1;
             // 
             // dataGridView_pn
             // 
@@ -217,6 +306,8 @@
             this.Gia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.Gia.DataPropertyName = "Gia";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "#,##0";
+            dataGridViewCellStyle2.NullValue = null;
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.Gia.DefaultCellStyle = dataGridViewCellStyle2;
             this.Gia.HeaderText = "Giá";
@@ -260,95 +351,6 @@
             this.btnXoa.Text = "Xóa";
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
-            // cboNCC
-            // 
-            this.cboNCC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboNCC.FormattingEnabled = true;
-            this.cboNCC.Location = new System.Drawing.Point(11, 4);
-            this.cboNCC.Name = "cboNCC";
-            this.cboNCC.Size = new System.Drawing.Size(189, 24);
-            this.cboNCC.TabIndex = 1;
-            // 
-            // btnThemNCC
-            // 
-            this.btnThemNCC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnThemNCC.BackColor = System.Drawing.Color.Blue;
-            this.btnThemNCC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThemNCC.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnThemNCC.IconChar = FontAwesome.Sharp.IconChar.Plus;
-            this.btnThemNCC.IconColor = System.Drawing.Color.White;
-            this.btnThemNCC.IconSize = 20;
-            this.btnThemNCC.Location = new System.Drawing.Point(198, 4);
-            this.btnThemNCC.Name = "btnThemNCC";
-            this.btnThemNCC.Rotation = 0D;
-            this.btnThemNCC.Size = new System.Drawing.Size(25, 24);
-            this.btnThemNCC.TabIndex = 2;
-            this.btnThemNCC.UseVisualStyleBackColor = false;
-            this.btnThemNCC.Click += new System.EventHandler(this.btnThemNCC_Click);
-            // 
-            // txtTongTien
-            // 
-            this.txtTongTien.BackColor = System.Drawing.SystemColors.Window;
-            this.txtTongTien.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.txtTongTien.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.txtTongTien.BorderSize = 2;
-            this.txtTongTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTongTien.ForeColor = System.Drawing.Color.DimGray;
-            this.txtTongTien.Location = new System.Drawing.Point(119, 4);
-            this.txtTongTien.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTongTien.Multiline = false;
-            this.txtTongTien.Name = "txtTongTien";
-            this.txtTongTien.Padding = new System.Windows.Forms.Padding(7);
-            this.txtTongTien.PasswordChar = false;
-            this.txtTongTien.Size = new System.Drawing.Size(204, 35);
-            this.txtTongTien.TabIndex = 1;
-            this.txtTongTien.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTongTien.Texts = "";
-            this.txtTongTien.UnderlinedStyle = true;
-            // 
-            // btnThanhToan
-            // 
-            this.btnThanhToan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnThanhToan.BackColor = System.Drawing.Color.Aqua;
-            this.btnThanhToan.BackgroundColor = System.Drawing.Color.Aqua;
-            this.btnThanhToan.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnThanhToan.BorderRadius = 10;
-            this.btnThanhToan.BorderSize = 0;
-            this.btnThanhToan.Enabled = false;
-            this.btnThanhToan.FlatAppearance.BorderSize = 0;
-            this.btnThanhToan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThanhToan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThanhToan.ForeColor = System.Drawing.Color.White;
-            this.btnThanhToan.Location = new System.Drawing.Point(73, 107);
-            this.btnThanhToan.Name = "btnThanhToan";
-            this.btnThanhToan.Size = new System.Drawing.Size(150, 40);
-            this.btnThanhToan.TabIndex = 0;
-            this.btnThanhToan.Text = "Xác nhận";
-            this.btnThanhToan.TextColor = System.Drawing.Color.White;
-            this.btnThanhToan.UseVisualStyleBackColor = false;
-            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
-            // 
-            // btnTimSP
-            // 
-            this.btnTimSP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTimSP.BackColor = System.Drawing.Color.White;
-            this.btnTimSP.BackgroundColor = System.Drawing.Color.White;
-            this.btnTimSP.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnTimSP.BorderRadius = 0;
-            this.btnTimSP.BorderSize = 0;
-            this.btnTimSP.FlatAppearance.BorderSize = 0;
-            this.btnTimSP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTimSP.ForeColor = System.Drawing.Color.White;
-            this.btnTimSP.Image = ((System.Drawing.Image)(resources.GetObject("btnTimSP.Image")));
-            this.btnTimSP.Location = new System.Drawing.Point(462, 3);
-            this.btnTimSP.Name = "btnTimSP";
-            this.btnTimSP.Size = new System.Drawing.Size(35, 33);
-            this.btnTimSP.TabIndex = 1;
-            this.btnTimSP.TextColor = System.Drawing.Color.White;
-            this.btnTimSP.UseVisualStyleBackColor = false;
-            this.btnTimSP.Click += new System.EventHandler(this.btnTimSP_Click);
-            // 
             // frmNhapHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -386,16 +388,16 @@
         private System.Windows.Forms.Panel panel3;
         private GUI.CustomButton btnThanhToan;
         private System.Windows.Forms.DataGridView dataGridView_pn;
+        private System.Windows.Forms.ComboBox cboSearch;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private FontAwesome.Sharp.IconMenuItem btnXoa;
+        private System.Windows.Forms.ComboBox cboNCC;
+        private FontAwesome.Sharp.IconButton btnThemNCC;
         private System.Windows.Forms.DataGridViewTextBoxColumn STT;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenSP;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
         private System.Windows.Forms.DataGridViewTextBoxColumn Gia;
         private System.Windows.Forms.DataGridViewTextBoxColumn ma;
         private System.Windows.Forms.DataGridViewTextBoxColumn imeicode;
-        private System.Windows.Forms.ComboBox cboSearch;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private FontAwesome.Sharp.IconMenuItem btnXoa;
-        private System.Windows.Forms.ComboBox cboNCC;
-        private FontAwesome.Sharp.IconButton btnThemNCC;
     }
 }

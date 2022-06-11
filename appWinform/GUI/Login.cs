@@ -93,5 +93,10 @@ namespace GUI
             if (e.KeyChar == KPress.ENTER_KEY)
                 btnDangNhap.PerformClick();
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            txtTDN.Focus();
+        }
     }
 }

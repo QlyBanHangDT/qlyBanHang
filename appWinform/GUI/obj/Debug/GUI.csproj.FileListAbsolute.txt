@@ -61,6 +61,7 @@ D:\github\dotNet\qlyBanHang\appWinform\GUI\bin\Debug\FontAwesome.Sharp.dll
 D:\github\dotNet\qlyBanHang\appWinform\GUI\bin\Debug\Zen.Barcode.Core.dll
 D:\github\dotNet\qlyBanHang\appWinform\GUI\bin\Debug\DAL.dll
 D:\github\dotNet\qlyBanHang\appWinform\GUI\bin\Debug\Syncfusion.XlsIO.Base.dll
+D:\github\dotNet\qlyBanHang\appWinform\GUI\bin\Debug\Syncfusion.DocIO.Base.dll
 D:\github\dotNet\qlyBanHang\appWinform\GUI\bin\Debug\Syncfusion.Compression.Base.dll
 D:\github\dotNet\qlyBanHang\appWinform\GUI\bin\Debug\BUS.pdb
 D:\github\dotNet\qlyBanHang\appWinform\GUI\bin\Debug\DTO.pdb

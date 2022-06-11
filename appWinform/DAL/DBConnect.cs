@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using System.Data.Sql;
+using DTO;
 
 namespace DAL
 {
@@ -72,6 +73,9 @@ namespace DAL
                                                     ";pwd=" + pPw;
             Properties.Settings.Default.Save();
             Properties.Settings.Default.Upgrade();
+
+            // linq
+            DTO.SaveConfig.Save(pSrv, pUs, pPw, pDb);
         }
     }
 }

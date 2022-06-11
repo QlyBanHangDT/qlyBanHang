@@ -93,6 +93,7 @@
             this.kiểmTraTồnKhoToolStripMenuItem.Size = new System.Drawing.Size(227, 24);
             this.kiểmTraTồnKhoToolStripMenuItem.Tag = "M8";
             this.kiểmTraTồnKhoToolStripMenuItem.Text = "Kiểm tra tồn kho";
+            this.kiểmTraTồnKhoToolStripMenuItem.Click += new System.EventHandler(this.kiểmTraTồnKhoToolStripMenuItem_Click);
             // 
             // xemThôngTinCáNhânToolStripMenuItem
             // 

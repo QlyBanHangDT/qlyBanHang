@@ -23,19 +23,9 @@ namespace DAL.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MSI-PC;Initial Catalog=QLDT_LK;User ID=sa;Password=sa123")]
-        public string QLDT_LKConnectionString {
-            get {
-                return ((string)(this["QLDT_LKConnectionString"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MSI-PC;Initial Catalog=QLDT_LK;User ID=sa;Password=sa123")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MSI-PC;Initial Catalog=QLDT_LK;User ID=sa;Password=sa1233")]
         public string SQLConnect {
             get {
                 return ((string)(this["SQLConnect"]));

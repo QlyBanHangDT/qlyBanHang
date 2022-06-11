@@ -16,7 +16,7 @@ namespace DAL
             return qlbh.THONGTINTAIKHOANs.Where(
                 _ttnv => _ttnv.ID_TAIKHOAN == pID).Select(nv => new NhanVien
                 {
-                    Ten = nv.HOTEN,
+                    Ten = qlbh.fn_ConvertFirstLetterinCapital(nv.HOTEN),
                     Sdt = nv.SDT,
                     Email = nv.EMAIL,
                     GioiTinh = nv.GTINH == true ? "Nam" : "Nữ",

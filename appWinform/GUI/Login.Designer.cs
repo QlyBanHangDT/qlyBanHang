@@ -119,6 +119,7 @@
             this.txtPw.PasswordChar = true;
             this.txtPw.Size = new System.Drawing.Size(328, 35);
             this.txtPw.TabIndex = 10;
+            this.txtPw.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtPw.Texts = "";
             this.txtPw.UnderlinedStyle = false;
             this.txtPw.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTDN_KeyPress);
@@ -141,6 +142,7 @@
             this.txtTDN.PasswordChar = false;
             this.txtTDN.Size = new System.Drawing.Size(328, 35);
             this.txtTDN.TabIndex = 7;
+            this.txtTDN.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtTDN.Texts = "";
             this.txtTDN.UnderlinedStyle = false;
             this.txtTDN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTDN_KeyPress);
@@ -182,6 +184,7 @@
             this.Controls.Add(this.label3);
             this.Name = "Login";
             this.Size = new System.Drawing.Size(410, 415);
+            this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

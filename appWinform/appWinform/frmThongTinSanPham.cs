@@ -88,7 +88,7 @@ namespace appWinform
                 });
             }
 
-            Reports<ImeiCode>.export(lstImeiCode, "IMEICODE", "ImeiCode");
+            Reports<ImeiCode>.export_Excel(lstImeiCode, "IMEICODE", "ImeiCode");
         }
 
 

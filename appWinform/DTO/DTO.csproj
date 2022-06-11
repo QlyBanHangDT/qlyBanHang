@@ -76,6 +76,7 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="SanPham.cs" />
+    <Compile Include="SaveConfig.cs" />
     <Compile Include="TaiKhoan.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -59,6 +59,11 @@ namespace DAL
             set { _nv = value; }
         }
 
+        public SANPHAM getSanPham(string pTenSP)
+        {
+            return dbLq.SANPHAMs.Where(sp => sp.TENSP.Equals(pTenSP)).Single();
+        }
+
         public DataTable getDSSP()
         {
             return db.GetDataSP();
@@ -197,7 +202,8 @@ namespace DAL
         }
         public string getID_name(string pName)
         {
-            return dbLq.SANPHAMs.Where(sp => sp.TENSP.Equals(pName)).First().ID;
+            var ttSP = dbLq.SANPHAMs.Where(sp => sp.TENSP.Equals(pName)).FirstOrDefault();
+            return ttSP == null ? string.Empty : ttSP.ID;
         }
         public List<IMEICODE> getCode(string pId)
         {

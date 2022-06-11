@@ -50,9 +50,9 @@ namespace BUS
             return pkk.kt_khoa_CTPKK(pMa, pMaSP);
         }
 
-        public bool them_CTPKK(string id_sp, string id_pkk, int sl_tk)
+        public bool them_CTPKK(string id_sp, string id_pkk, int sl_tk, int? sl_thucTe)
         {
-            return pkk.them_CT_PhieuKiemKho(id_sp, id_pkk, sl_tk);
+            return pkk.them_CT_PhieuKiemKho(id_sp, id_pkk, sl_tk, sl_thucTe);
         }
 
         public bool xoa_CTPKK(string id_sp, string id_pkk)

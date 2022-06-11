@@ -159,5 +159,13 @@ namespace appWinform
 
             frm.Show();
         }
+
+        private void kiểmTraTồnKhoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm_KiemKho frm = new frm_KiemKho();
+            frm.MdiParent = this;
+
+            frm.Show();
+        }
     }
 }

@@ -36,15 +36,22 @@ namespace DAL
             try
             {
                 //Cập nhật chi tiết phiếu kiểm kho
-                double? giaBan = qlbh.DONGIAs.Where(dg => dg.ID_SP == pMa_SP).Select(t => t.GIA).FirstOrDefault();
+                double? giaBan = qlbh.DONGIAs.Where(dg => dg.ID_SP == pMa_SP) // giá mới nhất
+                    .OrderByDescending(dg => dg.NGCAPNHAT)
+                    .Select(t => t.GIA).FirstOrDefault();
+
+                // cập nhật thông tin chi tiết 
                 CT_PHIEUKIEMKHO ct = qlbh.CT_PHIEUKIEMKHOs.Where(k => k.ID_PKK == pMa && k.ID_SP == pMa_SP).FirstOrDefault();
                 ct.SL_TONKHO = sl_tk;
                 ct.SL_THUCTE = sl_tt;
                 int? sl_lech = sl_tk - sl_tt;
                 ct.SL_LECH = sl_lech;
+
                 ct.GIATRILECH = sl_lech * giaBan;
+
                 qlbh.SubmitChanges();
 
+                // cập nhật thông tin số lượng lệch
                 PHIEUKIEMKHO pkk = qlbh.PHIEUKIEMKHOs.Where(pk => pk.ID == pMa).FirstOrDefault();
                 pkk.TONGSLLECH = qlbh.CT_PHIEUKIEMKHOs.Where(k => k.ID_PKK == pMa).Sum(t => t.SL_LECH);
                 qlbh.SubmitChanges();
@@ -113,7 +120,7 @@ namespace DAL
             return qlbh.CT_PHIEUKIEMKHOs.Where(t => t.ID_SP == pMaSP && t.ID_PKK == pMa).Count();
         }
 
-        public bool them_CT_PhieuKiemKho(string id_sp, string id_pkk, int sl_ton)
+        public bool them_CT_PhieuKiemKho(string id_sp, string id_pkk, int sl_ton, int? sl_thucTe)
         {
             try
             {
@@ -123,7 +130,7 @@ namespace DAL
                     ID_SP = id_sp,
                     SL_TONKHO = sl_ton,
                     SL_LECH = null,
-                    SL_THUCTE = null
+                    SL_THUCTE = sl_thucTe
                 };
                 qlbh.CT_PHIEUKIEMKHOs.InsertOnSubmit(ctpk);
                 qlbh.SubmitChanges();

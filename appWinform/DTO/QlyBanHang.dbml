@@ -1,5 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLDT_LK" Class="QlyBanHangDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-7RNKS49\SQLEXPRESS;Initial Catalog=QLDT_LK;User ID=sa" SettingsObjectName="DTO.Properties.Settings" SettingsPropertyName="QLDT_LKConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.CAUHINH" Member="CAUHINHs">
     <Type Name="CAUHINH">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -41,6 +40,18 @@
       <Column Name="DONGIA" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Association Name="IMEICODE_CHITIETPN" Member="IMEICODE" ThisKey="ID_IMEI" OtherKey="ID" Type="IMEICODE" IsForeignKey="true" />
       <Association Name="PHIEUNHAP_CHITIETPN" Member="PHIEUNHAP" ThisKey="ID_PN" OtherKey="ID" Type="PHIEUNHAP" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CT_PHIEUKIEMKHO" Member="CT_PHIEUKIEMKHOs">
+    <Type Name="CT_PHIEUKIEMKHO">
+      <Column Name="ID_SP" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_PKK" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SL_TONKHO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SL_THUCTE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SL_LECH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GIATRILECH" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="PHIEUKIEMKHO_CT_PHIEUKIEMKHO" Member="PHIEUKIEMKHO" ThisKey="ID_PKK" OtherKey="ID" Type="PHIEUKIEMKHO" IsForeignKey="true" />
+      <Association Name="SANPHAM_CT_PHIEUKIEMKHO" Member="SANPHAM" ThisKey="ID_SP" OtherKey="ID" Type="SANPHAM" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.DANHMUC" Member="DANHMUCs">
@@ -123,6 +134,13 @@
       <Association Name="MANHINH_QL_PHANQUYEN" Member="QL_PHANQUYENs" ThisKey="ID" OtherKey="ID_MH" Type="QL_PHANQUYEN" />
     </Type>
   </Table>
+  <Table Name="dbo.NCC" Member="NCCs">
+    <Type Name="NCC">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TENNCC" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Association Name="NCC_PHIEUNHAP" Member="PHIEUNHAPs" ThisKey="ID" OtherKey="ID_NCC" Type="PHIEUNHAP" />
+    </Type>
+  </Table>
   <Table Name="dbo.NHANVIEN" Member="NHANVIENs">
     <Type Name="NHANVIEN">
       <Column Name="ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -130,6 +148,7 @@
       <Column Name="TINHTRANG" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="NHANVIEN_HOADON" Member="HOADONs" ThisKey="ID" OtherKey="ID_NV" Type="HOADON" />
       <Association Name="NHANVIEN_PHIEUKIEMKHO" Member="PHIEUKIEMKHOs" ThisKey="ID" OtherKey="ID_NV" Type="PHIEUKIEMKHO" />
+      <Association Name="NHANVIEN_PHIEUNHAP" Member="PHIEUNHAPs" ThisKey="ID" OtherKey="ID_NV" Type="PHIEUNHAP" />
       <Association Name="TAIKHOAN_NHANVIEN" Member="TAIKHOAN" ThisKey="ID_TK" OtherKey="ID" Type="TAIKHOAN" IsForeignKey="true" DeleteRule="CASCADE" />
     </Type>
   </Table>
@@ -141,12 +160,29 @@
       <Association Name="TAIKHOAN_NHOMNGUOIDUNG" Member="TAIKHOAN" ThisKey="ID_TK" OtherKey="ID" Type="TAIKHOAN" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.PHIEUKIEMKHO" Member="PHIEUKIEMKHOs">
+    <Type Name="PHIEUKIEMKHO">
+      <Column Name="ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_NV" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="NGLAP" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NGHOANTHANH" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="THOIGIANLAP" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="TONGSLLECH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="PHIEUKIEMKHO_CT_PHIEUKIEMKHO" Member="CT_PHIEUKIEMKHOs" ThisKey="ID" OtherKey="ID_PKK" Type="CT_PHIEUKIEMKHO" />
+      <Association Name="NHANVIEN_PHIEUKIEMKHO" Member="NHANVIEN" ThisKey="ID_NV" OtherKey="ID" Type="NHANVIEN" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.PHIEUNHAP" Member="PHIEUNHAPs">
     <Type Name="PHIEUNHAP">
       <Column Name="ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="NGTAO" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="DONGIA" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ID_NV" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ID_NCC" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="PHIEUNHAP_CHITIETPN" Member="CHITIETPNs" ThisKey="ID" OtherKey="ID_PN" Type="CHITIETPN" />
+      <Association Name="NCC_PHIEUNHAP" Member="NCC" ThisKey="ID_NCC" OtherKey="ID" Type="NCC" IsForeignKey="true" />
+      <Association Name="NHANVIEN_PHIEUNHAP" Member="NHANVIEN" ThisKey="ID_NV" OtherKey="ID" Type="NHANVIEN" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.QL_PHANQUYEN" Member="QL_PHANQUYENs">
@@ -167,10 +203,10 @@
       <Column Name="ID_LOAI" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
       <Column Name="ID_HANG" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="SANPHAM_CAUHINH" Member="CAUHINHs" ThisKey="ID" OtherKey="ID_SP" Type="CAUHINH" />
+      <Association Name="SANPHAM_CT_PHIEUKIEMKHO" Member="CT_PHIEUKIEMKHOs" ThisKey="ID" OtherKey="ID_SP" Type="CT_PHIEUKIEMKHO" />
       <Association Name="SANPHAM_DONGIA" Member="DONGIAs" ThisKey="ID" OtherKey="ID_SP" Type="DONGIA" />
       <Association Name="SANPHAM_IMEICODE" Member="IMEICODEs" ThisKey="ID" OtherKey="ID_SP" Type="IMEICODE" />
       <Association Name="SANPHAM_THONGKECMT" Member="THONGKECMTs" ThisKey="ID" OtherKey="ID_SP" Type="THONGKECMT" />
-      <Association Name="SANPHAM_CT_PHIEUKIEMKHO" Member="CT_PHIEUKIEMKHOs" ThisKey="ID" OtherKey="ID_SP" Type="CT_PHIEUKIEMKHO" />
       <Association Name="HANG_SANPHAM" Member="HANG" ThisKey="ID_HANG" OtherKey="ID" Type="HANG" IsForeignKey="true" />
       <Association Name="LOAISP_SANPHAM" Member="LOAISP" ThisKey="ID_LOAI" OtherKey="ID" Type="LOAISP" IsForeignKey="true" />
     </Type>
@@ -195,37 +231,6 @@
       <Column Name="TenKH" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="NGGHI" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="SANPHAM_THONGKECMT" Member="SANPHAM" ThisKey="ID_SP" OtherKey="ID" Type="SANPHAM" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.NCC" Member="NCCs">
-    <Type Name="NCC">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TENNCC" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.CT_PHIEUKIEMKHO" Member="CT_PHIEUKIEMKHOs">
-    <Type Name="CT_PHIEUKIEMKHO">
-      <Column Name="ID_SP" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID_PKK" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="SL_TONKHO" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SL_THUCTE" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SL_LECH" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GIATRILECH" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Association Name="SANPHAM_CT_PHIEUKIEMKHO" Member="SANPHAM" ThisKey="ID_SP" OtherKey="ID" Type="SANPHAM" IsForeignKey="true" />
-      <Association Name="PHIEUKIEMKHO_CT_PHIEUKIEMKHO" Member="PHIEUKIEMKHO" ThisKey="ID_PKK" OtherKey="ID" Type="PHIEUKIEMKHO" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.PHIEUKIEMKHO" Member="PHIEUKIEMKHOs">
-    <Type Name="PHIEUKIEMKHO">
-      <Column Name="ID" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ID_NV" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="NGLAP" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="NGHOANTHANH" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="THOIGIANLAP" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
-      <Column Name="TONGSLLECH" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TRANGTHAI" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Association Name="PHIEUKIEMKHO_CT_PHIEUKIEMKHO" Member="CT_PHIEUKIEMKHOs" ThisKey="ID" OtherKey="ID_PKK" Type="CT_PHIEUKIEMKHO" />
-      <Association Name="NHANVIEN_PHIEUKIEMKHO" Member="NHANVIEN" ThisKey="ID_NV" OtherKey="ID" Type="NHANVIEN" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.sp_ChiTietDonHang_kh" Method="sp_ChiTietDonHang_kh">
@@ -331,5 +336,9 @@
   <Function Name="dbo.sp_GetMaPN" Method="sp_GetMaPN">
     <Parameter Name="maPN" Type="System.String" DbType="VarChar(10)" Direction="InOut" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.fn_ConvertFirstLetterinCapital" Method="fn_ConvertFirstLetterinCapital" IsComposable="true">
+    <Parameter Name="Text" Parameter="text" Type="System.String" DbType="NVarChar(MAX)" />
+    <Return Type="System.String" />
   </Function>
 </Database>
