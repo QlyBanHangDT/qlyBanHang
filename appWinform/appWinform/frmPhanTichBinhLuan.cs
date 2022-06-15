@@ -37,6 +37,10 @@ namespace appWinform
 
                 chartThongKe.Series["ThongKe"].Points.Clear();
 
+                chartThongKe.Series["ThongKe"].LabelForeColor = Color.White;
+
+                chartThongKe.Series["ThongKe"].IsValueShownAsLabel = true;
+
                 var listCMT = new BUS_ThongKeCMT().PhanTichBinhLuan(cboSanPham.SelectedValue.ToString());
 
                 chartThongKe.Series["ThongKe"].Points.AddXY("Tích cực", listCMT.Where(cmt => cmt.DanhGia).Count());

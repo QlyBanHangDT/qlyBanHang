@@ -62,6 +62,12 @@ namespace DAL
                     tttk.ID_TAIKHOAN == kh.ID_TK).First().SDT == pSDT)
                 .Select(k => k.ID_TK).FirstOrDefault();
 
+            if (id_tk == null)
+                return new KhachHang
+                {
+                    Ten = string.Empty
+                };
+
             return qlbh.THONGTINTAIKHOANs.Where(
                 _ttkh => _ttkh.ID_TAIKHOAN == id_tk).Select(kh => new KhachHang
                 {

@@ -250,13 +250,14 @@ namespace appWinform
                 // xuất bill
                 MessageBox.Show("Thanh toán thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
 
-                // show report
+                #region show report
                 frmReportBill rpBill = new frmReportBill();
                 rpBill.MaHD = maHD;
                 rpBill.TienKhach = txtTienKhach.Texts.Trim();
                 rpBill.TienThua = txtTienThua.Texts.Trim();
 
                 rpBill.ShowDialog();
+                #endregion
 
                 #region clear form
                 ckMayQuet.Checked = false;

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.chartThongKe = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.cboSanPham = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.chartThongKe)).BeginInit();
@@ -39,26 +39,27 @@
             // 
             // chartThongKe
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartThongKe.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartThongKe.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chartThongKe.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartThongKe.Legends.Add(legend1);
             this.chartThongKe.Location = new System.Drawing.Point(12, 65);
             this.chartThongKe.Name = "chartThongKe";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "ThongKe";
-            this.chartThongKe.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series1.Legend = "Legend1";
+            series1.Name = "ThongKe";
+            this.chartThongKe.Series.Add(series1);
             this.chartThongKe.Size = new System.Drawing.Size(673, 519);
             this.chartThongKe.TabIndex = 0;
             this.chartThongKe.Text = "Mức độ ưu thích";
-            title2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title2.Name = "PhanHoi";
-            title2.Text = "Phản hồi của khách hàng";
-            title2.TextStyle = System.Windows.Forms.DataVisualization.Charting.TextStyle.Shadow;
-            this.chartThongKe.Titles.Add(title2);
+            title1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.Name = "PhanHoi";
+            title1.Text = "Phản hồi của khách hàng";
+            title1.TextStyle = System.Windows.Forms.DataVisualization.Charting.TextStyle.Shadow;
+            this.chartThongKe.Titles.Add(title1);
             // 
             // cboSanPham
             // 

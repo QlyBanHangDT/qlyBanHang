@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace appWinform
         public ThongTinKhachHang()
         {
             InitializeComponent();
+            rdbNam.Checked = true;
         }
         private void ChkThongTinKH(object sender, EventArgs e)
         {
@@ -47,6 +49,7 @@ namespace appWinform
             }
 
             txtHoTen.Clear();
+            txtEmail.Clear();
             txtNgaySinh.Clear();
             txtDiaChi.Clear();
             txtNgayTao.Clear();
@@ -80,7 +83,7 @@ namespace appWinform
 
                 try
                 {
-                    DateTime dt = DateTime.Parse(txtNgaySinh.Texts.Trim());
+                    DateTime dt = DateTime.ParseExact(txtNgaySinh.Texts.Trim(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 }
                 catch (Exception)
                 {
@@ -108,5 +111,6 @@ namespace appWinform
         {
             this.Dispose();
         }
+
     }
 }
