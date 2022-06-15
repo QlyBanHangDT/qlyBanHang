@@ -85,3 +85,9 @@ D:\github\dotNet\qlyBanHang\appWinform\GUI\bin\Debug\Accord.Statistics.dll
 D:\github\dotNet\qlyBanHang\appWinform\GUI\bin\Debug\Accord.dll
 D:\github\dotNet\qlyBanHang\appWinform\GUI\bin\Debug\Accord.Math.dll
 D:\github\dotNet\qlyBanHang\appWinform\GUI\bin\Debug\Accord.Math.Core.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\bin\Debug\Accord.MachineLearning.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\bin\Debug\Accord.Statistics.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\bin\Debug\Syncfusion.DocIO.Base.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\bin\Debug\Accord.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\bin\Debug\Accord.Math.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\GUI\bin\Debug\Accord.Math.Core.dll

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="QLDT_LKConnectionString" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source=MSI-PC;Initial Catalog=QLDT_LK;User ID=sa;Password=sa1236</Value>
+      <Value Profile="(Default)">Data Source=DESKTOP-7RNKS49\SQLEXPRESS;Initial Catalog=QLDT_LK;User ID=sa;Password=123</Value>
     </Setting>
   </Settings>
 </SettingsFile>

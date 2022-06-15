@@ -3092,7 +3092,53 @@ VALUES
 (N'Máy đẹp, Pin rất ổn , cất hình tốt ,Rất hài lòng','SP024','07/06/2022'),
 (N'Chất lượng sản phẩm tuyệt vời. Tốt trong tầm giá. Cam lồi nhưng cũng ok','SP024','07/06/2022'),
 (N'Điện thoại rất tốt rất hài lòng','SP024','07/06/2022'),
-(N'Quá tuyệt vời luôn,chơi game bao mượt','SP024','07/06/2022')
+(N'Quá tuyệt vời luôn,chơi game bao mượt','SP024','07/06/2022'),
+
+
+(N'Mẫu điện thoại tệ. ko có thương hiệu','SP032','08/06/2022'),
+(N'Muốn đập bỏ máy luôn, sản phẩm quá tệ','SP032','08/06/2022'),
+(N'Máy chậm. Loa nhỏ, mạng lúc được lúc không','SP032','08/06/2022'),
+(N'Tôi lạ lắm mà gọi tôi là chỉ nên chấm rất tệ','SP032','08/06/2022'),
+(N'Máy giá rẻ thì k mong gì tốt nhưng thật sự rất tệ','SP032','08/06/2022'),
+(N'Máy rất đơ lag giật lag liên tục dùng rất bực mình','SP032','08/06/2022'),
+(N'Máy sài 1 đơ kinh khủng máy thì kém mà giá thì lại lên hơn so với lúc mua 400k chả hiểu kiểu gì luôn','SP032','08/06/2022'),
+(N'Máy chậm.không biết ta như thế nào','SP032','08/06/2022'),
+(N'Sản phẩm rất tệ hay bị đơ mang hình rất bực bội','SP032','08/06/2022'),
+(N'Gọi điện bị lỗi. Toàn tắt màn hình','SP032','08/06/2022'),
+
+(N'Máy lag nặng , chơi game có đơ rất nhiều , tác vụ bình thường cũng lag','SP032','08/06/2022'),
+(N'Sản phẩm dùng quá tệ','SP032','08/06/2022'),
+(N'Phản hồi của máy dùng không tốt','SP032','08/06/2022'),
+(N'Thường xuyên bị đơ, không tốt','SP032','08/06/2022'),
+(N'Camera quá tệ trong tầm giá','SP032','08/06/2022'),
+(N'Máy mua về dùng tệ.màn hình không tốt','SP032','08/06/2022'),
+(N'Sản phẩm thật sự rất tệ về pin và cấu hình ạ','SP032','08/06/2022'),
+(N'Quá tệ so với giá tiền','SP032','08/06/2022'),
+(N'Thật sự sử dụng rất tệ','SP032','08/06/2022'),
+(N'Sản phẩm dùng quá tệ, chức năng chậm','SP032','08/06/2022'),
+
+(N'Máy tệ . Máy không tốt . Chơi game chậm .','SP032','08/06/2022'),
+(N'Máy tệ lắm','SP032','08/06/2022'),
+(N'Máy giá không tốt , cấu hình khá tệ','SP032','08/06/2022'),
+(N'Mới dùng cảm thấy khá tệ, chơi game không tốt, nóng máy','SP032','08/06/2022'),
+(N'camera xấu tệ','SP032','08/06/2022'),
+(N'Sài được tuần. Nói chung tệ, không tốt','SP032','08/06/2022'),
+(N'máy còn nhiều lỗi, không hài lòng, sản phẩm quá tệ','SP032','08/06/2022'),
+(N'điện thoại bị đơn cảm giác sử dụng không tốt','SP032','08/06/2022'),
+(N'Mới mua, chụp hình tệ, thực sự tệ','SP032','08/06/2022'),
+(N'thất vọng khi mua sản phẩm','SP032','08/06/2022'),
+
+(N'Pin khỏe, màn hình đẹp, cấu hình ổn','SP032','08/06/2022'),
+(N'Pin khá trâu, màn đẹp','SP032','08/06/2022'),
+(N'Máy đẹp mượt','SP032','08/06/2022'),
+(N'Sài được tuần. Nói chung ok','SP032','08/06/2022'),
+(N'Sản phẩm tuyệt vời màn hình đẹp','SP032','08/06/2022'),
+(N'Máy cơ bản dùng tốt, hiện tại chưa có lỗi gì.','SP032','08/06/2022'),
+(N'Máy dùng mượt tác vụ cơ bản thôi','SP032','08/06/2022'),
+(N'Sản phẩm tốt rất ngon trong tầm giá','SP032','08/06/2022'),
+(N'Pin dùng khá tốt','SP032','08/06/2022'),
+(N'Mọi thứ đều ổn, màn đẹp','SP032','08/06/2022')
+
 -----------------------------------------------------------------------------
 
 -- CREATE PROC sp_AddHD

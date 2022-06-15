@@ -42,3 +42,8 @@ D:\github\dotNet\qlyBanHang\appWinform\BUS\bin\Debug\Accord.MachineLearning.dll
 D:\github\dotNet\qlyBanHang\appWinform\BUS\bin\Debug\Accord.Math.Core.dll
 D:\github\dotNet\qlyBanHang\appWinform\BUS\bin\Debug\Accord.Math.dll
 D:\github\dotNet\qlyBanHang\appWinform\BUS\bin\Debug\Accord.Statistics.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\BUS\bin\Debug\Accord.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\BUS\bin\Debug\Accord.MachineLearning.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\BUS\bin\Debug\Accord.Math.Core.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\BUS\bin\Debug\Accord.Math.dll
+C:\Users\ad\Desktop\qlyBanHang\appWinform\BUS\bin\Debug\Accord.Statistics.dll
