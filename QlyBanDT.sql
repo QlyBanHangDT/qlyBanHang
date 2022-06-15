@@ -1081,6 +1081,7 @@ INSERT MANHINH VALUES('M9', N'Phân quyền')
 INSERT MANHINH VALUES('M10', N'Quản lý nhóm người dùng') 
 INSERT MANHINH VALUES('M11', N'Thêm người dùng vào nhóm')
 INSERT MANHINH VALUES('MMH', N'Quản lý màn hình')
+INSERT MANHINH VALUES('MML', N'Phân tích bình luận khách hàng')
 
 -- BẢNG TB_GRTK
 INSERT GRTK VALUES(N'ADMIN', '00')
@@ -1099,7 +1100,8 @@ INSERT QL_PHANQUYEN VALUES
 (1, 'M8', 1),
 (1, 'M9', 1),
 (1, 'M10', 1),
-(1, 'MMH', 1)
+(1, 'MMH', 1),
+(1, 'MML', 1)
 
 -- phân quyền cho user (mặc định)
 INSERT QL_PHANQUYEN VALUES 
@@ -1113,34 +1115,35 @@ INSERT QL_PHANQUYEN VALUES
 (2, 'M9', 0),
 (2, 'M11', 0),
 (2, 'M10', 0),
-(2, 'MMH', 0)
+(2, 'MMH', 0),
+(2, 'MML', 0)
 
 -- BẢNG TAIKHOAN
 EXEC sp_AddAcc 'admin', 'admin@123456789', N'Admin', '2-5-2001', N'nam', 'admin@gmail.com', '000000000', '',''
 --nhân viên
-EXEC sp_AddAcc 'tuhueson', 'tuhueson@123456789', N'Từ Huệ Sơn', '2-5-2001', N'nam', 'tuhueson@gmail.com', '000000000', '','NV'
-EXEC sp_AddAcc 'leductai', 'leductai@123456789', N'Lê Đức Tài', '12-4-2001', N'nam', 'leductai@gmail.com', '000000000', '','NV'
-EXEC sp_AddAcc 'nguyenvanteo', 'nguyenvanteo@123456789', N'Nguyễn văn Tèo', '12-5-2001', N'nam', 'nguyenvanteo@gmail.com', '000000000', '','NV'
-EXEC sp_AddAcc 'trannhattrung', 'trannhattrung@123456789', N'Trần Nhật Trung', '2-14-2001', N'nam', 'trannhattrung@gmail.com', '000000000', '','NV'
-EXEC sp_AddAcc 'dogianguyen', 'dogianguyen@123456789', N'Đỗ Gia Nguyên', '12-4-2001', N'nữ', 'dogianguyen@gmail.com', '000000000', '','NV'
-EXEC sp_AddAcc 'lytuong', 'lytuong@123456789', N'Lý Tường', '2-4-2001', N'nữ', 'lytuong@gmail.com', '000000000', '','NV'
-EXEC sp_AddAcc 'tranvu', 'tranvu@123456789', N'Trần Vũ', '2-15-2001', N'nam', 'tranvu@gmail.com', '000000000', '','NV'
-EXEC sp_AddAcc 'doquyen', 'doquyen@123456789', N'Đỗ Quyên', '3-15-2001', N'nữ', 'doquyen@gmail.com', '000000000', '','NV'
-EXEC sp_AddAcc 'daokimhue', 'daokimhue@123456789', N'Đào kim huệ', '3-15-2001', N'nữ', 'daokimhue@gmail.com', '000000000', '','NV'
-EXEC sp_AddAcc 'hogiacat', 'hogiacat@123456789', N'hồ gia cát', '5-15-2001', N'nam', 'hogiacat@gmail.com', '000000000', '','NV'
-EXEC sp_AddAcc 'vuthanhlong', 'vuthanhlong@123456789', N'vũ thanh long', '3-15-2001', N'nam', 'vuthanhlong@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'tuhueson', 'tuhueson@123456789', N'Từ Huệ Sơn', '2001/05/02', N'nam', 'tuhueson@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'leductai', 'leductai@123456789', N'Lê Đức Tài', '2001/12/04', N'nam', 'leductai@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'nguyenvanteo', 'nguyenvanteo@123456789', N'Nguyễn văn Tèo', '2001/12/05', N'nam', 'nguyenvanteo@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'trannhattrung', 'trannhattrung@123456789', N'Trần Nhật Trung', '2001/05/10', N'nam', 'trannhattrung@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'dogianguyen', 'dogianguyen@123456789', N'Đỗ Gia Nguyên', '2001/04/10', N'nữ', 'dogianguyen@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'lytuong', 'lytuong@123456789', N'Lý Tường', '2001/05/12', N'nữ', 'lytuong@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'tranvu', 'tranvu@123456789', N'Trần Vũ', '2001/11/12', N'nam', 'tranvu@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'doquyen', 'doquyen@123456789', N'Đỗ Quyên', '2002/05/10', N'nữ', 'doquyen@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'daokimhue', 'daokimhue@123456789', N'Đào kim huệ', '2001/11/10', N'nữ', 'daokimhue@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'hogiacat', 'hogiacat@123456789', N'hồ gia cát', '2001/11/21', N'nam', 'hogiacat@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'vuthanhlong', 'vuthanhlong@123456789', N'vũ thanh long', '2001/05/11', N'nam', 'vuthanhlong@gmail.com', '000000000', '','NV'
 -- khách hàng
-EXEC sp_AddAcc_KH N'Lê Thị Linh', '12-4-2001', N'nữ', 'lethilinh@gmail.com', '0938252524', ''
-EXEC sp_AddAcc_KH N'Hồ Minh Ngọc', '12-3-2001', N'nam', 'hominhngoc@gmail.com', '0935252528', ''
-EXEC sp_AddAcc_KH N'Lý Gia Huy', '2-13-2001', N'nam', 'lygiahuy@gmail.com', '0937151518', ''
-EXEC sp_AddAcc_KH N'Nguyễn Thị Thương', '4-13-2001', N'Nữ', 'thuongnguyen@gmail.com', '0935262628', ''
-EXEC sp_AddAcc_KH N'Trần Ngọc Sang', '3-30-2001', N'nam', 'sangtran@gmail.com', '0915236268', ''
-EXEC sp_AddAcc_KH N'Huỳnh Ái Linh', '7-24-2001', N'Nữ', 'linh247@gmail.com', '0926352528', ''
-EXEC sp_AddAcc_KH N'Đỗ Ái Vy', '11-4-2001', N'nữ', 'vydo@gmail.com', '0925362624', ''
-EXEC sp_AddAcc_KH N'Cao Gia Vinh', '12-3-2001', N'nữ', 'vinh123@gmail.com', '0932562315', ''
-EXEC sp_AddAcc_KH N'Lê Hồng Đào', '2-13-2001', N'Nữ', 'daole132@gmail.com', '0925216358', ''
-EXEC sp_AddAcc_KH N'Nguyễn Văn Cao', '4-13-2001', N'nam', 'caonguyen134@gmail.com', '0935626248', ''
-EXEC sp_AddAcc_KH N'Từ Huệ Sơn', '2-5-2001', N'nam', 'tuhueson@gmail.com', '0938252793', ''
+EXEC sp_AddAcc_KH N'Lê Thị Linh', '2001/12/10', N'nữ', 'lethilinh@gmail.com', '0938252524', ''
+EXEC sp_AddAcc_KH N'Hồ Minh Ngọc', '2001/05/10', N'nam', 'hominhngoc@gmail.com', '0935252528', ''
+EXEC sp_AddAcc_KH N'Lý Gia Huy', '2001/05/21', N'nam', 'lygiahuy@gmail.com', '0937151518', ''
+EXEC sp_AddAcc_KH N'Nguyễn Thị Thương', '2001/04/11', N'Nữ', 'thuongnguyen@gmail.com', '0935262628', ''
+EXEC sp_AddAcc_KH N'Trần Ngọc Sang', '2001/02/11', N'nam', 'sangtran@gmail.com', '0915236268', ''
+EXEC sp_AddAcc_KH N'Huỳnh Ái Linh', '2001/03/14', N'Nữ', 'linh247@gmail.com', '0926352528', ''
+EXEC sp_AddAcc_KH N'Đỗ Ái Vy', '2001/04/12', N'nữ', 'vydo@gmail.com', '0925362624', ''
+EXEC sp_AddAcc_KH N'Cao Gia Vinh', '2002/05/14', N'nữ', 'vinh123@gmail.com', '0932562315', ''
+EXEC sp_AddAcc_KH N'Lê Hồng Đào', '2002/11/21', N'Nữ', 'daole132@gmail.com', '0925216358', ''
+EXEC sp_AddAcc_KH N'Nguyễn Văn Cao', '2002/05/14', N'nam', 'caonguyen134@gmail.com', '0935626248', ''
+EXEC sp_AddAcc_KH N'Từ Huệ Sơn', '2001/05/23', N'nam', 'tuhueson@gmail.com', '0938252793', ''
 
 -- bảng nhóm người dùng
 INSERT NHOMNGUOIDUNG SELECT 1, DBO.fn_getIDTK('admin')
@@ -3000,7 +3003,7 @@ EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Cao Gia Vinh', N'Từ Huệ Sơn', '359159074600002'
 EXEC sp_AddHD @maHD_, N'Cao Gia Vinh', N'Từ Huệ Sơn', '867026129600001'
 EXEC sp_AddHD @maHD_, N'Cao Gia Vinh', N'Từ Huệ Sơn', '359159074600003'
-UPDATE HOADON set NGTAO = '2/13/2019' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '2019/02/13' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Cao Gia Vinh', N'Đỗ Gia Nguyên', '359115074600001'
@@ -3013,27 +3016,27 @@ EXEC sp_AddHD @maHD_, N'Nguyễn Thị Thương', N'Từ Huệ Sơn', '359159074
 EXEC sp_AddHD @maHD_, N'Nguyễn Thị Thương', N'Từ Huệ Sơn', '864723128800006'
 EXEC sp_AddHD @maHD_, N'Nguyễn Thị Thương', N'Từ Huệ Sơn', '865795783100004'
 EXEC sp_AddHD @maHD_, N'Nguyễn Thị Thương', N'Từ Huệ Sơn', '356592512300006'
-UPDATE HOADON set NGTAO = '4/21/2019' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '2019/04/21' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Hồ Minh Ngọc', N'Lê Đức Tài', '359159074600008'
 EXEC sp_AddHD @maHD_, N'Hồ Minh Ngọc', N'Lê Đức Tài', '357292722200001'
 EXEC sp_AddHD @maHD_, N'Hồ Minh Ngọc', N'Lê Đức Tài', '866494613900001'
 EXEC sp_AddHD @maHD_, N'Hồ Minh Ngọc', N'Lê Đức Tài', '868643632100002'
-UPDATE HOADON set NGTAO = '5/22/2019' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '2019/05/22' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Nguyễn văn Tèo', '359159074600004'
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Nguyễn văn Tèo', '868643632100004'
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Nguyễn văn Tèo', '864562478100005'
-UPDATE HOADON set NGTAO = '6/20/2019' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '2019/06/20' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Nguyễn Văn Cao', N'Nguyễn văn Tèo', '359159074600005'
 EXEC sp_AddHD @maHD_, N'Nguyễn Văn Cao', N'Nguyễn văn Tèo', '353415822400007'
 EXEC sp_AddHD @maHD_, N'Nguyễn Văn Cao', N'Nguyễn văn Tèo', '866128936700005'
 EXEC sp_AddHD @maHD_, N'Nguyễn Văn Cao', N'Nguyễn văn Tèo', '866128936700006'
-UPDATE HOADON set NGTAO = '7/16/2019' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '2019/07/14' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Lê Đức Tài', '359159074600007'
@@ -3081,7 +3084,7 @@ EXEC sp_AddHD @maHD_, N'Lê Hồng Đào', N'Trần Vũ', '353694604900007'
 EXEC sp_AddHD @maHD_, N'Lê Hồng Đào', N'Trần Vũ', '355424843300003'
 EXEC sp_AddHD @maHD_, N'Lê Hồng Đào', N'Trần Vũ', '356892841100002'
 EXEC sp_AddHD @maHD_, N'Lê Hồng Đào', N'Trần Vũ', '864794604900003'
-UPDATE HOADON set NGTAO = '2/21/2020' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '2/2/2020' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Hồ Minh Ngọc', N'Từ Huệ Sơn', '359115074600002'
@@ -3104,7 +3107,7 @@ EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Đỗ Gia Nguyên', '358996074600001'
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Đỗ Gia Nguyên', '351492823600004'
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Đỗ Gia Nguyên', '357643621100002'
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Đỗ Gia Nguyên', '863296725500002'
-UPDATE HOADON set NGTAO = '5/17/2020' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '5/12/2020' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Đào kim huệ', '359115074600010'
@@ -3112,7 +3115,7 @@ EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Đào kim huệ', '358996074600004'
 EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Đào kim huệ', '354498822100006'
 EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Đào kim huệ', '357999902100005'
 EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Đào kim huệ', '352478618400009'
-UPDATE HOADON set NGTAO = '5/27/2020' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '5/12/2020' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Đỗ Ái Vy', N'Lê Đức Tài', '358996074600006'
@@ -3131,7 +3134,7 @@ EXEC sp_AddHD @maHD_, N'Hồ Minh Ngọc', N'vũ thanh long', '862415812400005'
 EXEC sp_AddHD @maHD_, N'Hồ Minh Ngọc', N'vũ thanh long', '862492723600001'
 EXEC sp_AddHD @maHD_, N'Hồ Minh Ngọc', N'vũ thanh long', '865921346900010'
 EXEC sp_AddHD @maHD_, N'Hồ Minh Ngọc', N'vũ thanh long', '862475618400010'
-UPDATE HOADON set NGTAO = '7/27/2020' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '7/2/2020' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Lê Hồng Đào', N'Trần Vũ', '353415822400009'
@@ -3155,7 +3158,7 @@ EXEC sp_AddHD @maHD_, N'Lê Hồng Đào', N'Trần Vũ', '356926829600007'
 EXEC sp_AddHD @maHD_, N'Lê Hồng Đào', N'Trần Vũ', '353694604900004'
 EXEC sp_AddHD @maHD_, N'Lê Hồng Đào', N'Trần Vũ', '354911646900004'
 EXEC sp_AddHD @maHD_, N'Lê Hồng Đào', N'Trần Vũ', '354763643800007'
-UPDATE HOADON set NGTAO = '9/21/2020' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '9/4/2020' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Hồ Minh Ngọc', N'Đỗ Gia Nguyên', '359096724500003'
@@ -3164,7 +3167,7 @@ EXEC sp_AddHD @maHD_, N'Hồ Minh Ngọc', N'Đỗ Gia Nguyên', '35779350270000
 EXEC sp_AddHD @maHD_, N'Hồ Minh Ngọc', N'Đỗ Gia Nguyên', '355632926800010'
 EXEC sp_AddHD @maHD_, N'Hồ Minh Ngọc', N'Đỗ Gia Nguyên', '869726074600001'
 EXEC sp_AddHD @maHD_, N'Hồ Minh Ngọc', N'Đỗ Gia Nguyên', '868463907900008'
-UPDATE HOADON set NGTAO = '10/27/2020' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '10/1/2020' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Đỗ Gia Nguyên', '358996074600010'
@@ -3172,7 +3175,7 @@ EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Đỗ Gia Nguyên', '35909672450000
 EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Đỗ Gia Nguyên', '352245934100005'
 EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Đỗ Gia Nguyên', '352546812800007'
 EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Đỗ Gia Nguyên', '868928475100002'
-UPDATE HOADON set NGTAO = '11/22/2020' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '11/5/2020' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Lê Đức Tài', '359096724500009'
@@ -3181,7 +3184,7 @@ EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Lê Đức Tài', '866128936700007'
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Lê Đức Tài', '865672936800002'
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Lê Đức Tài', '865672936800007'
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Lê Đức Tài', '868928475100005'
-UPDATE HOADON set NGTAO = '12/2/2020' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '12/12/2020' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Lê Đức Tài', '351492823600006'
@@ -3189,7 +3192,7 @@ EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Lê Đức Tài', '354462478100005'
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Lê Đức Tài', '352478618400001'
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Lê Đức Tài', '866128936700002'
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Lê Đức Tài', '865672936800006'
-UPDATE HOADON set NGTAO = '12/21/2020' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '12/1/2020' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Lê Thị Linh', N'Đỗ Gia Nguyên', '358996074600008'
@@ -3201,7 +3204,7 @@ EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Cao Gia Vinh', N'Từ Huệ Sơn', '861191504800007'
 EXEC sp_AddHD @maHD_, N'Cao Gia Vinh', N'Từ Huệ Sơn', '866239905000002'
 EXEC sp_AddHD @maHD_, N'Cao Gia Vinh', N'Từ Huệ Sơn', '864996729200007'
-UPDATE HOADON set NGTAO = '1/13/2021' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '1/12/2021' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Cao Gia Vinh', N'Đỗ Gia Nguyên', '351190504800006'
@@ -3213,13 +3216,13 @@ EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Nguyễn Thị Thương', N'Từ Huệ Sơn', '353623728800003'
 EXEC sp_AddHD @maHD_, N'Nguyễn Thị Thương', N'Từ Huệ Sơn', '357516244700003'
 EXEC sp_AddHD @maHD_, N'Nguyễn Thị Thương', N'Từ Huệ Sơn', '863922830900009'
-UPDATE HOADON set NGTAO = '2/21/2021' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '2/6/2021' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Hồ Minh Ngọc', N'Lê Đức Tài', '351492823600010'
 EXEC sp_AddHD @maHD_, N'Hồ Minh Ngọc', N'Lê Đức Tài', '354728926700009'
 EXEC sp_AddHD @maHD_, N'Hồ Minh Ngọc', N'Lê Đức Tài', '867992721200004'
-UPDATE HOADON set NGTAO = '2/22/2021' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '2/5/2021' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Nguyễn văn Tèo', '353296244500005'
@@ -3232,7 +3235,7 @@ EXEC sp_AddHD @maHD_, N'Nguyễn Văn Cao', N'Nguyễn văn Tèo', '357922820900
 EXEC sp_AddHD @maHD_, N'Nguyễn Văn Cao', N'Nguyễn văn Tèo', '356129905000002'
 EXEC sp_AddHD @maHD_, N'Nguyễn Văn Cao', N'Nguyễn văn Tèo', '867912726800008'
 EXEC sp_AddHD @maHD_, N'Nguyễn Văn Cao', N'Nguyễn văn Tèo', '864863516600001'
-UPDATE HOADON set NGTAO = '3/23/2021' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '3/4/2021' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Lê Đức Tài', '356129905000006'
@@ -3240,7 +3243,7 @@ EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Lê Đức Tài', '357999902100006'
 EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Lê Đức Tài', '358619388700007'
 EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Lê Đức Tài', '869726074600002'
 EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Lê Đức Tài', '864863516600004'
-UPDATE HOADON set NGTAO = '4/22/2021' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '4/3/2021' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Nguyễn Thị Thương', N'Từ Huệ Sơn', '867912726800009'
@@ -3253,13 +3256,13 @@ EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Trần Ngọc Sang', N'Lê Đức Tài', '351190504800007'
 EXEC sp_AddHD @maHD_, N'Trần Ngọc Sang', N'Lê Đức Tài', '354462478100001'
 EXEC sp_AddHD @maHD_, N'Trần Ngọc Sang', N'Lê Đức Tài', '862415812400001'
-UPDATE HOADON set NGTAO = '6/14/2021' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '6/11/2021' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Nguyễn văn Tèo', '357999902100008'
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Nguyễn văn Tèo', '352245934100007'
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Nguyễn văn Tèo', '867026129600008'
-UPDATE HOADON set NGTAO = '6/20/2021' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '6/1/2021' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Nguyễn Thị Thương', N'Trần Vũ', '355763506600004'
@@ -3273,7 +3276,7 @@ EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Lê Đức Tài', '355763506600010'
 EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Lê Đức Tài', '356129905000005'
 EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Lê Đức Tài', '354763643800009'
 EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Lê Đức Tài', '863645134100002'
-UPDATE HOADON set NGTAO = '7/21/2021' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '7/5/2021' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Đỗ Ái Vy', N'Trần Vũ', '352245934100006'
@@ -3287,7 +3290,7 @@ EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Lý Tường', '355424843300009'
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Lý Tường', '356892841100007'
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Lý Tường', '866234723900009'
 EXEC sp_AddHD @maHD_, N'Lý Gia Huy', N'Lý Tường', '864261643800007'
-UPDATE HOADON set NGTAO = '8/19/2021' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '8/6/2021' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Cao Gia Vinh', N'Lê Đức Tài', '358996074600007'
@@ -3295,7 +3298,7 @@ EXEC sp_AddHD @maHD_, N'Cao Gia Vinh', N'Lê Đức Tài', '353694604900006'
 EXEC sp_AddHD @maHD_, N'Cao Gia Vinh', N'Lê Đức Tài', '863296725500006'
 EXEC sp_AddHD @maHD_, N'Cao Gia Vinh', N'Lê Đức Tài', '865921346900008'
 EXEC sp_AddHD @maHD_, N'Cao Gia Vinh', N'Lê Đức Tài', '864723128800002'
-UPDATE HOADON set NGTAO = '9/13/2021' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '9/7/2021' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Đỗ Ái Vy', N'Trần Vũ', '354911646900008'
@@ -3303,7 +3306,7 @@ EXEC sp_AddHD @maHD_, N'Đỗ Ái Vy', N'Trần Vũ', '353623728800001'
 EXEC sp_AddHD @maHD_, N'Đỗ Ái Vy', N'Trần Vũ', '863296725500001'
 EXEC sp_AddHD @maHD_, N'Đỗ Ái Vy', N'Trần Vũ', '867992721200003'
 EXEC sp_AddHD @maHD_, N'Đỗ Ái Vy', N'Trần Vũ', '862475618400002'
-UPDATE HOADON set NGTAO = '9/23/2021' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '9/12/2021' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Lê Hồng Đào', N'Lê Đức Tài', '359096724500004'
@@ -3312,7 +3315,7 @@ EXEC sp_AddHD @maHD_, N'Lê Hồng Đào', N'Lê Đức Tài', '352546812800002'
 EXEC sp_AddHD @maHD_, N'Lê Hồng Đào', N'Lê Đức Tài', '867992721200005'
 EXEC sp_AddHD @maHD_, N'Lê Hồng Đào', N'Lê Đức Tài', '863186244500004'
 EXEC sp_AddHD @maHD_, N'Lê Hồng Đào', N'Lê Đức Tài', '868928475100010'
-UPDATE HOADON set NGTAO = '10/22/2021' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '10/11/2021' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Nguyễn Thị Thương', N'vũ thanh long', '359296725500002'
@@ -3321,7 +3324,7 @@ EXEC sp_AddHD @maHD_, N'Nguyễn Thị Thương', N'vũ thanh long', '3579999021
 EXEC sp_AddHD @maHD_, N'Nguyễn Thị Thương', N'vũ thanh long', '868026074600003'
 EXEC sp_AddHD @maHD_, N'Nguyễn Thị Thương', N'vũ thanh long', '866494613900010'
 EXEC sp_AddHD @maHD_, N'Nguyễn Thị Thương', N'vũ thanh long', '862565283700005'
-UPDATE HOADON set NGTAO = '10/23/2021' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '10/10/2021' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Nguyễn Văn Cao', N'Từ Huệ Sơn', '355763506600002'
@@ -3336,14 +3339,14 @@ EXEC sp_AddHD @maHD_, N'Cao Gia Vinh', N'Từ Huệ Sơn', '359115074600006'
 EXEC sp_AddHD @maHD_, N'Cao Gia Vinh', N'Từ Huệ Sơn', '355494623900003'
 EXEC sp_AddHD @maHD_, N'Cao Gia Vinh', N'Từ Huệ Sơn', '863645134100007'
 EXEC sp_AddHD @maHD_, N'Cao Gia Vinh', N'Từ Huệ Sơn', '865427849300005'
-UPDATE HOADON set NGTAO = '11/21/2021' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '11/2/2021' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Lý Tường', '356892841100003'
 EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Lý Tường', '869259074600002'
 EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Lý Tường', '868463907900002'
 EXEC sp_AddHD @maHD_, N'Huỳnh Ái Linh', N'Lý Tường', '864261643800005'
-UPDATE HOADON set NGTAO = '12/2/2021' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '12/5/2021' WHERE ID = @maHD_
 
 EXEC sp_GetMaHD @maHD_ OUTPUT
 EXEC sp_AddHD @maHD_, N'Nguyễn Thị Thương', N'vũ thanh long', '354728926700003'
@@ -3351,7 +3354,7 @@ EXEC sp_AddHD @maHD_, N'Nguyễn Thị Thương', N'vũ thanh long', '3565925123
 EXEC sp_AddHD @maHD_, N'Nguyễn Thị Thương', N'vũ thanh long', '868783502700004'
 EXEC sp_AddHD @maHD_, N'Nguyễn Thị Thương', N'vũ thanh long', '864562478100008'
 EXEC sp_AddHD @maHD_, N'Nguyễn Thị Thương', N'vũ thanh long', '866592712300006'
-UPDATE HOADON set NGTAO = '12/21/2021' WHERE ID = @maHD_
+UPDATE HOADON set NGTAO = '12/11/2021' WHERE ID = @maHD_
 
 SET DATEFORMAT DMY
 INSERT INTO PHIEUKIEMKHO
