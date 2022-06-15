@@ -65,6 +65,10 @@ namespace appWinform
                 double tienHD = double.Parse(txtTongTien.Texts.Trim().Replace(",", null));
                 txtTienThua.Texts = string.Format("{0:#,##0}", (double)val - tienHD);
             }
+            else
+            {
+                txtTienThua.Texts = string.Empty;
+            }
         }
 
         private void txtTienKhach_KeyPress(object sender, KeyPressEventArgs e)
@@ -100,11 +104,6 @@ namespace appWinform
 
         private void txtFind_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (ckMayQuet.Checked)
-            {
-                e.Handled = true;
-                return;
-            }
             // kiểm tra nhập số 
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
@@ -191,7 +190,7 @@ namespace appWinform
 
                 this.OnLoad((EventArgs)e);
             }
-            else
+            else if (txtFind.Text.Trim().Length > 15)
             {
                 MessageBox.Show("Mã imei không phù hợp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
             }
@@ -200,6 +199,12 @@ namespace appWinform
         private void btnTimSP_Click(object sender, EventArgs e)
         {
             if (ckMayQuet.Checked) return;
+
+            if (txtFind.Text.Trim().Length != 15)
+            {
+                MessageBox.Show("Mã imei không phù hợp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                return;
+            }
             xuLy(e);
         }
 
@@ -271,6 +276,11 @@ namespace appWinform
             // xóa sản phẩm ra hóa đơn
             dataGridView_hd.Rows.RemoveAt(dataGridView_hd.CurrentRow.Index);
             btnThanhToan.Enabled = !(dataGridView_hd.Rows.Count == 0);
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            btnXoa.Enabled = dataGridView_hd.RowCount != 0;
         }
 
     }

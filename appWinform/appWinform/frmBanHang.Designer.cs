@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBanHang));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBanHang));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ckMayQuet = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnTimSP = new GUI.CustomButton();
             this.txtFind = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView_hd = new System.Windows.Forms.DataGridView();
@@ -48,15 +49,14 @@
             this.btnXoa = new FontAwesome.Sharp.IconMenuItem();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtTienThua = new GUI.textBoxCustom();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtTienKhach = new GUI.textBoxCustom();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtTongTien = new GUI.textBoxCustom();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtTienThua = new GUI.textBoxCustom();
-            this.txtTienKhach = new GUI.textBoxCustom();
-            this.txtTongTien = new GUI.textBoxCustom();
             this.btnThanhToan = new GUI.CustomButton();
-            this.btnTimSP = new GUI.CustomButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_hd)).BeginInit();
@@ -106,6 +106,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(625, 39);
             this.panel1.TabIndex = 0;
+            // 
+            // btnTimSP
+            // 
+            this.btnTimSP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTimSP.BackColor = System.Drawing.Color.White;
+            this.btnTimSP.BackgroundColor = System.Drawing.Color.White;
+            this.btnTimSP.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnTimSP.BorderRadius = 0;
+            this.btnTimSP.BorderSize = 0;
+            this.btnTimSP.FlatAppearance.BorderSize = 0;
+            this.btnTimSP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTimSP.ForeColor = System.Drawing.Color.White;
+            this.btnTimSP.Image = ((System.Drawing.Image)(resources.GetObject("btnTimSP.Image")));
+            this.btnTimSP.Location = new System.Drawing.Point(571, 3);
+            this.btnTimSP.Name = "btnTimSP";
+            this.btnTimSP.Size = new System.Drawing.Size(35, 33);
+            this.btnTimSP.TabIndex = 1;
+            this.btnTimSP.TextColor = System.Drawing.Color.White;
+            this.btnTimSP.UseVisualStyleBackColor = false;
+            this.btnTimSP.Click += new System.EventHandler(this.btnTimSP_Click);
             // 
             // txtFind
             // 
@@ -212,7 +232,8 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnXoa});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(114, 36);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(162, 58);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // btnXoa
             // 
@@ -223,7 +244,7 @@
             this.btnXoa.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Rotation = 0D;
-            this.btnXoa.Size = new System.Drawing.Size(113, 32);
+            this.btnXoa.Size = new System.Drawing.Size(161, 32);
             this.btnXoa.Text = "Xóa";
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
@@ -259,46 +280,6 @@
             this.panel2.Size = new System.Drawing.Size(390, 150);
             this.panel2.TabIndex = 0;
             // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 90);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(109, 35);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Tiền thừa:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 47);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 35);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Tiền khách:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 4);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 35);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Tổng tiền:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btnThanhToan);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(727, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.panel3.Size = new System.Drawing.Size(322, 150);
-            this.panel3.TabIndex = 1;
-            // 
             // txtTienThua
             // 
             this.txtTienThua.BackColor = System.Drawing.SystemColors.Window;
@@ -319,6 +300,16 @@
             this.txtTienThua.Texts = "";
             this.txtTienThua.UnderlinedStyle = true;
             this.txtTienThua.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTongTien_KeyPress);
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 90);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(109, 35);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Tiền thừa:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtTienKhach
             // 
@@ -342,6 +333,16 @@
             this.txtTienKhach._TextChanged += new System.EventHandler(this.txtTienKhach__TextChanged);
             this.txtTienKhach.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTienKhach_KeyPress);
             // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 47);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(109, 35);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Tiền khách:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txtTongTien
             // 
             this.txtTongTien.BackColor = System.Drawing.SystemColors.Window;
@@ -362,6 +363,26 @@
             this.txtTongTien.Texts = "";
             this.txtTongTien.UnderlinedStyle = true;
             this.txtTongTien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTongTien_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 4);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(109, 35);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Tổng tiền:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnThanhToan);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(727, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.panel3.Size = new System.Drawing.Size(322, 150);
+            this.panel3.TabIndex = 1;
             // 
             // btnThanhToan
             // 
@@ -384,26 +405,6 @@
             this.btnThanhToan.TextColor = System.Drawing.Color.White;
             this.btnThanhToan.UseVisualStyleBackColor = false;
             this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
-            // 
-            // btnTimSP
-            // 
-            this.btnTimSP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTimSP.BackColor = System.Drawing.Color.White;
-            this.btnTimSP.BackgroundColor = System.Drawing.Color.White;
-            this.btnTimSP.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnTimSP.BorderRadius = 0;
-            this.btnTimSP.BorderSize = 0;
-            this.btnTimSP.FlatAppearance.BorderSize = 0;
-            this.btnTimSP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTimSP.ForeColor = System.Drawing.Color.White;
-            this.btnTimSP.Image = ((System.Drawing.Image)(resources.GetObject("btnTimSP.Image")));
-            this.btnTimSP.Location = new System.Drawing.Point(571, 3);
-            this.btnTimSP.Name = "btnTimSP";
-            this.btnTimSP.Size = new System.Drawing.Size(35, 33);
-            this.btnTimSP.TabIndex = 1;
-            this.btnTimSP.TextColor = System.Drawing.Color.White;
-            this.btnTimSP.UseVisualStyleBackColor = false;
-            this.btnTimSP.Click += new System.EventHandler(this.btnTimSP_Click);
             // 
             // frmBanHang
             // 

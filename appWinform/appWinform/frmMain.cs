@@ -167,5 +167,14 @@ namespace appWinform
 
             frm.Show();
         }
+
+        private void phânTíchBìnhLuậnKháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPhanTichBinhLuan frm = new frmPhanTichBinhLuan();
+            frm.MdiParent = this;
+
+            frm.Show();
+        }
+
     }
 }

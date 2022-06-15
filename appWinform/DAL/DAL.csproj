@@ -59,6 +59,7 @@
     <Compile Include="DAL_QLNV.cs" />
     <Compile Include="DAL_QLSP.cs" />
     <Compile Include="DAL_QLTK.cs" />
+    <Compile Include="DAL_ThongKeCMT.cs" />
     <Compile Include="DAL_ThongTinSanPham.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="Program.cs" />

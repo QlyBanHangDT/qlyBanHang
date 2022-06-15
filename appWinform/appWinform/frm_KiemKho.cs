@@ -43,22 +43,21 @@ namespace appWinform
             txtSL_ThucTe.Enabled = false;
             txtSL_Ton.Enabled = false;
 
-            if (pkk.getTrangThai_PKK(cbo_PKK.Text) == true)
-            {
-                btnThemChiTiet.Enabled = false;
-                btnXoaPhieu.Enabled = false;
-                btnHoanThanh.Enabled = false;
-            }
-
             cboTenSP.DataSource = sp.getNames();
             cboTenSP.Text = String.Empty;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cbo_PKK.SelectedValue == null)
+            {                
+                return;
+            }
+
             string ma = cbo_PKK.SelectedValue.ToString();
             btnCapNhat.Enabled = false;
             btnXoa.Enabled = false;
+            btnHoanThanh.Enabled = true;
             //Kiểm tra tổng số lượng tồn kho
             //Nếu null thì chưa cập nhật
             //Nếu co thì hiển thị số lượng
@@ -90,7 +89,7 @@ namespace appWinform
                 label12.ForeColor = Color.Green;
             }
 
-            if (pkk.kt_TrangThai(ma) > 0)
+            if (pkk.kt_TrangThai(ma) > 0 || label12.Text.Equals("Đã hoàn thành") || dgv_CTPKK.RowCount == 0)
             {
                 btnHoanThanh.Enabled = false;
             }
@@ -112,12 +111,12 @@ namespace appWinform
             if (pkk.getTrangThai_PKK(cbo_PKK.Text) == true)
                 return;
             txtSL_ThucTe.Enabled = true;
-            txtSL_Ton.Enabled = true;
+            txtSL_Ton.Enabled = false;
             txtSL_ThucTe.BorderColor = Color.BlueViolet;
-            txtSL_Ton.BorderColor = Color.BlueViolet;
+            txtSL_Ton.BorderColor = Color.Gray;
             btnCapNhat.Enabled = true;
             btnXoa.Enabled = true;
-            txtSL_Ton.Focus();
+            txtSL_ThucTe.Focus();
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)
@@ -384,6 +383,11 @@ namespace appWinform
                 cboTenSP.Text = txtSL_Lech.Texts = txtSL_ThucTe.Texts = txtSL_Ton.Texts = txtGiaTri.Texts = String.Empty;
                 dgv_CTPKK.DataSource = pkk.loadCT_PhieuKK(ma);
                 MessageBox.Show("Xóa chi tiết thành công !", "Thông báo");
+
+                if (pkk.kt_TrangThai(ma) == 0)
+                {
+                    btnHoanThanh.Enabled = true;
+                }
             }
             else
             {
@@ -452,7 +456,7 @@ namespace appWinform
 
             cboTenSP.Text = txtSL_Lech.Texts = txtSL_ThucTe.Texts = txtSL_Ton.Texts = txtGiaTri.Texts = String.Empty;
 
-            if (pkk.kt_TrangThai(ma) == 0)
+            if (pkk.kt_TrangThai(ma) == 0 && dgv_CTPKK.RowCount != 0)
             {
                 btnHoanThanh.Enabled = true;
             }

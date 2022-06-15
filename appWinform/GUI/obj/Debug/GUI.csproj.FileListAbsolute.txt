@@ -80,3 +80,8 @@ D:\github\dotNet\qlyBanHang\appWinform\GUI\obj\Debug\GUI.ThongTinKH.resources
 D:\github\dotNet\qlyBanHang\appWinform\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
 D:\github\dotNet\qlyBanHang\appWinform\GUI\obj\Debug\GUI.dll
 D:\github\dotNet\qlyBanHang\appWinform\GUI\obj\Debug\GUI.pdb
+D:\github\dotNet\qlyBanHang\appWinform\GUI\bin\Debug\Accord.MachineLearning.dll
+D:\github\dotNet\qlyBanHang\appWinform\GUI\bin\Debug\Accord.Statistics.dll
+D:\github\dotNet\qlyBanHang\appWinform\GUI\bin\Debug\Accord.dll
+D:\github\dotNet\qlyBanHang\appWinform\GUI\bin\Debug\Accord.Math.dll
+D:\github\dotNet\qlyBanHang\appWinform\GUI\bin\Debug\Accord.Math.Core.dll

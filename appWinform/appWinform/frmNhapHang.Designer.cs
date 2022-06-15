@@ -336,7 +336,8 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnXoa});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(114, 36);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(162, 58);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // btnXoa
             // 
@@ -347,7 +348,7 @@
             this.btnXoa.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Rotation = 0D;
-            this.btnXoa.Size = new System.Drawing.Size(113, 32);
+            this.btnXoa.Size = new System.Drawing.Size(161, 32);
             this.btnXoa.Text = "Xóa";
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 

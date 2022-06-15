@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbo_PKK = new System.Windows.Forms.ComboBox();
             this.dgv_CTPKK = new System.Windows.Forms.DataGridView();
             this.ID_SP = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -134,10 +134,10 @@
             // GIATRILECH
             // 
             this.GIATRILECH.DataPropertyName = "GIATRI";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "#,##0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.GIATRILECH.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "#,##0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.GIATRILECH.DefaultCellStyle = dataGridViewCellStyle1;
             this.GIATRILECH.HeaderText = "Giá trị lệch";
             this.GIATRILECH.Name = "GIATRILECH";
             this.GIATRILECH.ReadOnly = true;
@@ -358,7 +358,7 @@
             // 
             // cboTenSP
             // 
-            this.cboTenSP.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cboTenSP.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboTenSP.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboTenSP.FormattingEnabled = true;
             this.cboTenSP.Location = new System.Drawing.Point(111, 29);

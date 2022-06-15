@@ -44,6 +44,9 @@ namespace appWinform
 
                 _tongSoLuong += int.Parse(r.Cells["SoLuong"].Value.ToString());
 
+                if (int.Parse(r.Cells["SoLuong"].Value.ToString()) == 0)
+                    continue;
+
                 _lstSp.Add(new
                 {
                     TenSP = r.Cells["TenSP"].Value.ToString().Trim(),
@@ -193,6 +196,11 @@ namespace appWinform
             frm.ShowDialog();
 
             loadNCC();
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            btnXoa.Enabled = dataGridView_pn.RowCount != 0;
         }
     }
 }

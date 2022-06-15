@@ -16,6 +16,6 @@ D:\github\dotNet\qlyBanHang\appWinform\DTO\bin\Debug\DTO.dll.config
 D:\github\dotNet\qlyBanHang\appWinform\DTO\bin\Debug\DTO.dll
 D:\github\dotNet\qlyBanHang\appWinform\DTO\bin\Debug\DTO.pdb
 D:\github\dotNet\qlyBanHang\appWinform\DTO\bin\Debug\Zen.Barcode.Core.dll
-D:\github\dotNet\qlyBanHang\appWinform\DTO\obj\Debug\DTO.csprojResolveAssemblyReference.cache
 D:\github\dotNet\qlyBanHang\appWinform\DTO\obj\Debug\DTO.dll
 D:\github\dotNet\qlyBanHang\appWinform\DTO\obj\Debug\DTO.pdb
+D:\github\dotNet\qlyBanHang\appWinform\DTO\obj\Debug\DTO.csprojResolveAssemblyReference.cache

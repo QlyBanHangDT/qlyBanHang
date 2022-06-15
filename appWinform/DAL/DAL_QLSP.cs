@@ -63,6 +63,10 @@ namespace DAL
         {
             return dbLq.SANPHAMs.Where(sp => sp.TENSP.Equals(pTenSP)).Single();
         }
+        public List<SANPHAM> getSanPhams()
+        {
+            return dbLq.SANPHAMs.ToList();
+        }
 
         public DataTable getDSSP()
         {

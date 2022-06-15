@@ -111,7 +111,6 @@ namespace DTO
         {
             OnCreated();
         }
-		
 		public QlyBanHangDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
@@ -5025,8 +5024,6 @@ namespace DTO
 		
 		private string _ID_SP;
 		
-		private string _TenKH;
-		
 		private System.Nullable<System.DateTime> _NGGHI;
 		
 		private EntityRef<SANPHAM> _SANPHAM;
@@ -5041,8 +5038,6 @@ namespace DTO
     partial void OnNOIDUNGChanged();
     partial void OnID_SPChanging(string value);
     partial void OnID_SPChanged();
-    partial void OnTenKHChanging(string value);
-    partial void OnTenKHChanged();
     partial void OnNGGHIChanging(System.Nullable<System.DateTime> value);
     partial void OnNGGHIChanged();
     #endregion
@@ -5113,26 +5108,6 @@ namespace DTO
 					this._ID_SP = value;
 					this.SendPropertyChanged("ID_SP");
 					this.OnID_SPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenKH", DbType="NVarChar(50)")]
-		public string TenKH
-		{
-			get
-			{
-				return this._TenKH;
-			}
-			set
-			{
-				if ((this._TenKH != value))
-				{
-					this.OnTenKHChanging(value);
-					this.SendPropertyChanging();
-					this._TenKH = value;
-					this.SendPropertyChanged("TenKH");
-					this.OnTenKHChanged();
 				}
 			}
 		}

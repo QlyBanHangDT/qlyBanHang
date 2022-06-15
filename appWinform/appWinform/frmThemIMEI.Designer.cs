@@ -34,9 +34,9 @@
             this.No = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HinhAnh = new System.Windows.Forms.DataGridViewImageColumn();
-            this.customButton1 = new GUI.CustomButton();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnXoa = new FontAwesome.Sharp.IconMenuItem();
+            this.customButton1 = new GUI.CustomButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLstCode)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -97,6 +97,27 @@
             this.HinhAnh.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.HinhAnh.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnXoa});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(162, 58);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.btnXoa.IconChar = FontAwesome.Sharp.IconChar.Times;
+            this.btnXoa.IconColor = System.Drawing.Color.Red;
+            this.btnXoa.IconSize = 25;
+            this.btnXoa.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Rotation = 0D;
+            this.btnXoa.Size = new System.Drawing.Size(161, 32);
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
             // customButton1
             // 
             this.customButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -117,26 +138,6 @@
             this.customButton1.TextColor = System.Drawing.Color.White;
             this.customButton1.UseVisualStyleBackColor = false;
             this.customButton1.Click += new System.EventHandler(this.customButton1_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnXoa});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(162, 58);
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.btnXoa.IconChar = FontAwesome.Sharp.IconChar.Times;
-            this.btnXoa.IconColor = System.Drawing.Color.Red;
-            this.btnXoa.IconSize = 25;
-            this.btnXoa.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Rotation = 0D;
-            this.btnXoa.Size = new System.Drawing.Size(161, 32);
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // frmThemIMEI
             // 

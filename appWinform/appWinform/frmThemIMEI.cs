@@ -110,6 +110,11 @@ namespace appWinform
             dataGridViewLstCode.Rows.RemoveAt(dataGridViewLstCode.CurrentRow.Index);
         }
 
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            btnXoa.Enabled = dataGridViewLstCode.RowCount != 0;
+        }
+
         
     }
 }

@@ -1094,10 +1094,10 @@ INSERT QL_PHANQUYEN VALUES
 (1, 'M2', 1),
 (1, 'M3', 1),
 (1, 'M11', 1),
-(1, 'M5', 1),
-(1, 'M6', 1),
-(1, 'M7', 1),
-(1, 'M8', 1),
+(1, 'M5', 0),
+(1, 'M6', 0),
+(1, 'M7', 0),
+(1, 'M8', 0),
 (1, 'M9', 1),
 (1, 'M10', 1),
 (1, 'MMH', 1),
@@ -1119,10 +1119,10 @@ INSERT QL_PHANQUYEN VALUES
 (2, 'MML', 0)
 
 -- BẢNG TAIKHOAN
-EXEC sp_AddAcc 'admin', 'admin@123456789', N'Admin', '2-5-2001', N'nam', 'admin@gmail.com', '000000000', '',''
+EXEC sp_AddAcc 'admin', '123', N'Admin', '2-5-2001', N'nam', 'admin@gmail.com', '000000000', '',''
 --nhân viên
-EXEC sp_AddAcc 'tuhueson', 'tuhueson@123456789', N'Từ Huệ Sơn', '2001/05/02', N'nam', 'tuhueson@gmail.com', '000000000', '','NV'
-EXEC sp_AddAcc 'leductai', 'leductai@123456789', N'Lê Đức Tài', '2001/12/04', N'nam', 'leductai@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'tuhueson', '123', N'Từ Huệ Sơn', '2001/05/02', N'nam', 'tuhueson@gmail.com', '000000000', '','NV'
+EXEC sp_AddAcc 'leductai', '123', N'Lê Đức Tài', '2001/12/04', N'nam', 'leductai@gmail.com', '000000000', '','NV'
 EXEC sp_AddAcc 'nguyenvanteo', 'nguyenvanteo@123456789', N'Nguyễn văn Tèo', '2001/12/05', N'nam', 'nguyenvanteo@gmail.com', '000000000', '','NV'
 EXEC sp_AddAcc 'trannhattrung', 'trannhattrung@123456789', N'Trần Nhật Trung', '2001/05/10', N'nam', 'trannhattrung@gmail.com', '000000000', '','NV'
 EXEC sp_AddAcc 'dogianguyen', 'dogianguyen@123456789', N'Đỗ Gia Nguyên', '2001/04/10', N'nữ', 'dogianguyen@gmail.com', '000000000', '','NV'

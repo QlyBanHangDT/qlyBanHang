@@ -51,6 +51,7 @@
             this.Controls.Add(this.rpBill);
             this.Name = "frmReportBill";
             this.Text = "frmReportBill";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmReportBill_Load);
             this.ResumeLayout(false);
 
