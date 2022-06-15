@@ -1,10 +1,10 @@
 # QlyBanHang
 
 # Thành Viên
-| MSSV          | Họ tên                        |
-| :---:         | :---:                         |
-| 2001190791    | Từ Huệ Sơn (@sunny-THS)       |
-| 2001190794    | Lê Đức Tài (@LDT-HiHiHiHi)    |
+| MSSV          | Họ tên        |
+| :---:         | :---:         |
+| 2001190791    | Từ Huệ Sơn    |
+| 2001190794    | Lê Đức Tài    |
 
 # Nghiệp vụ
 - [x] Quản lý sản phẩm theo số imei/serial
