@@ -104,7 +104,7 @@ namespace appWinform
                 // thêm khách hàng mới
                 bus_qlkh.themKhachHang(kh);
             }
-            else this.Close();
+            this.Close();
         }
 
         private void btnQuayLai_Click(object sender, EventArgs e)
