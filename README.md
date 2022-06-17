@@ -36,3 +36,6 @@
 - [x] AI: Đánh giá cảm xúc khách hàng thông qua bình luận
     - [x] Dùng thuật toán ***Logistic Regression*** để phân loại (tích cực | tiêu cực)
     - [x] TF-IDF (***Term Frequency – Inverse Document Frequency***): để phân tích đoạn bình luận
+
+# Demo
+https://firebasestorage.googleapis.com/v0/b/chat-ab728.appspot.com/o/demo.mp4?alt=media&token=d99f4925-b13c-4106-be49-476472f5f6ce
