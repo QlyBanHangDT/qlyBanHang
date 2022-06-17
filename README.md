@@ -38,6 +38,6 @@
     - [x] TF-IDF (***Term Frequency – Inverse Document Frequency***): để phân tích đoạn bình luận
 
 # Demo
-<!-- https://user-images.githubusercontent.com/58986949/115314310-805b2780-a1a7-11eb-8558-648a367ea231.mp4 -->
-
-https://firebasestorage.googleapis.com/v0/b/chat-ab728.appspot.com/o/demo.mp4
+<video controls="" autoplay="" name="media" width="950">
+<source src="https://firebasestorage.googleapis.com/v0/b/chat-ab728.appspot.com/o/demo.mp4?alt=media&amp;token=d99f4925-b13c-4106-be49-476472f5f6ce" type="video/mp4">
+</video>
